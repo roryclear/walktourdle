@@ -257,7 +257,29 @@ function fake_load(distance,angle,value,i){
     updateScoreAnimation(percentage,i);
     document.getElementById("county-name"+String(i)).textContent = value;
     document.getElementById("distance"+String(i)).textContent = String(distance) +" km";
-    document.getElementById("chosen-emoji"+String(i)).textContent = "🌍"; // Example emoji
+    emoji = "↗️"
+    if(angle > 77.5 && angle <= 122.5) {
+        emoji = "➡️"
+    }
+    if(angle > 122.5 && angle <= 167.5) {
+        emoji = "↘️"
+    }
+    if(angle > 167.5 && angle <= 212.5) {
+        emoji = "⬇️"
+    }
+    if(angle > 212.5 && angle <= 257.5) {
+        emoji = "↙️"
+    }
+    if(angle > 257.5 && angle <= 302.5) {
+        emoji = "⬅️"
+    }
+    if(angle > 302.5 && angle <= 347.5) {
+        emoji = "↖️"
+    }
+    if(angle > 347.5  || angle <= 32.5) {
+        emoji = "⬆️"
+    }
+    document.getElementById("chosen-emoji"+String(i)).textContent = emoji; // Example emoji
 }
 
 function populate(){
@@ -537,7 +559,7 @@ function calculate_distance(guess){
     latDir = null;
     lonDir = null;
     angle = bearing(centres[guess][0],centres[guess][1],centres["czech republic"][0],centres["czech republic"][1]);
-    return [Math.round(distance),Math.round(angle)];
+    return [Math.round(distance),angle];
 }
 
 function calcCrow(lat1, lon1, lat2, lon2)
