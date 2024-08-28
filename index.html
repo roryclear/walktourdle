@@ -110,22 +110,22 @@
 </style>
 <script>
 function make_guess(){
-    value = document.getElementById("european-countries").value;
-    x = sessionStorage.getItem("variableName");
-    if(x==null) {
-        x = Number(0);
-        sessionStorage.setItem("variableName",x);
-    } else{
-        if(x < 5) {
-        x = Number(x)+Number(1);
-        sessionStorage.setItem("variableName",x);
-        } else{
-            sessionStorage.setItem("variableName",Number(0)); 
-            x = 0
-        }
+    i = 0
+    while(sessionStorage.getItem("guesses"+String(i)) != null && i < 6) {
+        i+=1;
     }
-    alert(value+" "+x);
-    calculate_distance(value)
+    alert("you're on guess"+i);
+
+    value = document.getElementById("european-countries").value;
+    y = calculate_distance(value); 
+    guess = value+" "+y[0]+" "+y[1];
+    alert("guess -> "+guess);
+    sessionStorage.setItem("guesses"+String(i),guess);
+    document.getElementById("guess"+String(i)).textContent=guess;
+}
+
+function show_guesses(){
+
 }
 
 function calculate_distance(guess){
@@ -396,14 +396,14 @@ function calculate_distance(guess){
     alert("answer = "+centres["czech republic"]);
     distance = calcCrow(centres[guess][0],centres[guess][1],centres["czech republic"][0],centres["czech republic"][1])
     alert("distance = "+distance);
-
     latDir = null;
     lonDir = null;
-    angle = bearing(centres[guess][0],centres[guess][1],centres["czech republic"][0],centres["czech republic"][1])
-    alert("angle = "+angle)
+    angle = bearing(centres[guess][0],centres[guess][1],centres["czech republic"][0],centres["czech republic"][1]);
+    alert("anglezzzzz = "+angle);
+    return [distance,angle];
 }
 
-function calcCrow(lat1, lon1, lat2, lon2) 
+function calcCrow(lat1, lon1, lat2, lon2)
     {
       var R = 6371; // km
       var dLat = toRad(lat2-lat1);
