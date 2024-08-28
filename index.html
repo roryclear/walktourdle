@@ -39,6 +39,53 @@
         <span class="percentage-display" id="percentage-display1">0%</span>
     </div>
 
+    <div class="score-container" id="load2" style="bottom: calc(180px + 90*4px);">
+        <span class="emoji" id="emoji2-1">⬜</span>
+        <span class="emoji" id="emoji2-2">⬜</span>
+        <span class="emoji" id="emoji2-3">⬜</span>
+        <span class="emoji" id="emoji2-4">⬜</span>
+        <span class="emoji" id="emoji2-5">⬜</span>
+        <span class="new-content hidden" id="county-name2">County Name</span>
+        <span class="new-content hidden" id="distance2">Distance</span>
+        <span class="new-content hidden" id="chosen-emoji2">🗺️</span>
+        <span class="percentage-display" id="percentage-display2">0%</span>
+    </div>
+
+    <div class="score-container" id="load3" style="bottom: calc(180px + 90*3px);">
+        <span class="emoji" id="emoji3-1">⬜</span>
+        <span class="emoji" id="emoji3-2">⬜</span>
+        <span class="emoji" id="emoji3-3">⬜</span>
+        <span class="emoji" id="emoji3-4">⬜</span>
+        <span class="emoji" id="emoji3-5">⬜</span>
+        <span class="new-content hidden" id="county-name3">County Name</span>
+        <span class="new-content hidden" id="distance3">Distance</span>
+        <span class="new-content hidden" id="chosen-emoji3">🗺️</span>
+        <span class="percentage-display" id="percentage-display3">0%</span>
+    </div>
+
+    <div class="score-container" id="load4" style="bottom: calc(180px + 90*2px);">
+        <span class="emoji" id="emoji4-1">⬜</span>
+        <span class="emoji" id="emoji4-2">⬜</span>
+        <span class="emoji" id="emoji4-3">⬜</span>
+        <span class="emoji" id="emoji4-4">⬜</span>
+        <span class="emoji" id="emoji4-5">⬜</span>
+        <span class="new-content hidden" id="county-name4">County Name</span>
+        <span class="new-content hidden" id="distance4">Distance</span>
+        <span class="new-content hidden" id="chosen-emoji4">🗺️</span>
+        <span class="percentage-display" id="percentage-display4">0%</span>
+    </div>
+
+    <div class="score-container" id="load5" style="bottom: calc(180px + 90*1px);">
+        <span class="emoji" id="emoji5-1">⬜</span>
+        <span class="emoji" id="emoji5-2">⬜</span>
+        <span class="emoji" id="emoji5-3">⬜</span>
+        <span class="emoji" id="emoji5-4">⬜</span>
+        <span class="emoji" id="emoji5-5">⬜</span>
+        <span class="new-content hidden" id="county-name5">County Name</span>
+        <span class="new-content hidden" id="distance5">Distance</span>
+        <span class="new-content hidden" id="chosen-emoji5">🗺️</span>
+        <span class="percentage-display" id="percentage-display5">0%</span>
+    </div>
 
     </select>
 </div>
@@ -551,7 +598,7 @@ function calcCrow(lat1, lon1, lat2, lon2)
             ];
 
             let currentPercentage = 0;
-            let intervalSpeed = 100; // Speed of percentage counting and emoji animation
+            let intervalSpeed = 30; // Speed of percentage counting and emoji animation
 
             const percentageDisplay = document.getElementById("percentage-display"+String(i));
 
