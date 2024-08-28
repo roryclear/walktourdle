@@ -15,15 +15,28 @@
     <div class="guess" id="guess1" style="bottom:calc(180px + 90*5px);">ffs 1</div>
     <div class="guess" id="guess0" style="bottom:calc(180px + 90*6px);">ffs 0</div>
 
-    <!--<div class="load" id="load0" style="bottom:calc(180px + 90*6px);">ffs 0</div>-->
-
     <div class="score-container" id="load0">
-        <span class="emoji" id="emoji1">⬜</span>
-        <span class="emoji" id="emoji2">⬜</span>
-        <span class="emoji" id="emoji3">⬜</span>
-        <span class="emoji" id="emoji4">⬜</span>
-        <span class="emoji" id="emoji5">⬜</span>
-        <span class="percentage-display" id="percentage-display">0%</span>
+        <span class="emoji" id="emoji0-1">⬜</span>
+        <span class="emoji" id="emoji0-2">⬜</span>
+        <span class="emoji" id="emoji0-3">⬜</span>
+        <span class="emoji" id="emoji0-4">⬜</span>
+        <span class="emoji" id="emoji0-5">⬜</span>
+        <span class="new-content hidden" id="county-name0">County Name</span>
+        <span class="new-content hidden" id="distance0">Distance</span>
+        <span class="new-content hidden" id="chosen-emoji0">🗺️</span>
+        <span class="percentage-display" id="percentage-display0">0%</span>
+    </div>
+
+    <div class="score-container" id="load1" style="bottom: calc(180px + 90*5px);">
+        <span class="emoji" id="emoji1-1">⬜</span>
+        <span class="emoji" id="emoji1-2">⬜</span>
+        <span class="emoji" id="emoji1-3">⬜</span>
+        <span class="emoji" id="emoji1-4">⬜</span>
+        <span class="emoji" id="emoji1-5">⬜</span>
+        <span class="new-content hidden" id="county-name1">County Name</span>
+        <span class="new-content hidden" id="distance1">Distance</span>
+        <span class="new-content hidden" id="chosen-emoji1">🗺️</span>
+        <span class="percentage-display" id="percentage-display1">0%</span>
     </div>
 
 
@@ -113,28 +126,37 @@
             height: 80px;
             position: absolute;
             bottom: 720px;
+            z-index: 1000;
             left: 50%;
             transform: translateX(-50%);
-            display: none;
+            display: flex;
             align-items: center;
             justify-content: space-between; /* Spread out the elements */
             background-color: #fff;
-            padding: 0 20px; /* Padding to keep elements away from edges */
+            padding: 0 40px; /* Padding to keep elements away from edges */
             border-radius: 12px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 10000;
         }
 
-.emoji {
-    font-size: 2rem;
-    opacity: 0; /* Initially hidden */
-    transition: opacity 0.5s ease;
-}
+        .emoji, .new-content {
+            font-size: 2rem;
+            opacity: 0; /* Initially hidden */
+            transition: opacity 0.5s ease;
+        }
 
-.percentage-display {
-    font-size: 2rem;
-    font-weight: bold;
-}
+        .percentage-display {
+            font-size: 2rem;
+            font-weight: bold;
+            display: none
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .visible {
+            opacity: 1;
+        }
 
 .guess {
     height: 80px;
@@ -170,25 +192,25 @@ function make_guess(){
     }
     value = document.getElementById("european-countries").value;
     y = calculate_distance(value);
-    fake_load(distance,i);
+    distance = y[0]
+    angle = y[1]
+    fake_load(distance,angle,i);
     guess = value+" "+y[0]+" "+y[1];
     sessionStorage.setItem("guesses"+String(i),guess);
     document.getElementById("guess"+String(i)).textContent=guess;
 }
-function fake_load(distance,i){
+function fake_load(distance,angle,i){
     let percentage = 100 - Math.round(distance*100 / 20038);
-    for (let i = 1; i < 6; i++) {
+    for (let j = 1; j < 6; j++) {
         //document.getElementById("emoji"+String(i)).textContent = "⬜";
-        document.getElementById("emoji"+String(i)).style.opacity = 0; // Make the emoji appear
+        document.getElementById("emoji"+String(i)+"-"+String(j)).style.opacity = 0; // Make the emoji appear
     }
-    document.getElementById('load0').style.bottom = 180+90*(6-i);
-    document.getElementById('load0').style.display = 'flex';
-    updateScoreAnimation(percentage);
-    setTimeout(() => document.getElementById('load0').style.display = 'none', 4000);
-    //for(let i = 0; i < 5; i++) {
-    //    setTimeout(() => alert("m88"), 1000);
-    //}
-    //bar.style.display = 'none';
+    document.getElementById('load'+String(i)).style.display = 'flex';
+    document.getElementById('percentage-display'+String(i)).style.display = 'block'
+    updateScoreAnimation(percentage,i);
+    document.getElementById("county-name"+String(i)).textContent = "Nairobi";
+    document.getElementById("distance"+String(i)).textContent = "1234 km";
+    document.getElementById("chosen-emoji"+String(i)).textContent = "🌍"; // Example emoji
 }
 
 function populate(){
@@ -513,23 +535,25 @@ function calcCrow(lat1, lon1, lat2, lon2)
     return (brng + 360) % 360;
     }
 
-    function updateScoreAnimation(score) {
+    function updateScoreAnimation(score,i) {
             const emojis = [
-                document.getElementById("emoji1"),
-                document.getElementById("emoji2"),
-                document.getElementById("emoji3"),
-                document.getElementById("emoji4"),
-                document.getElementById("emoji5"),
+                document.getElementById("emoji"+String(i)+"-1"),
+                document.getElementById("emoji"+String(i)+"-2"),
+                document.getElementById("emoji"+String(i)+"-3"),
+                document.getElementById("emoji"+String(i)+"-4"),
+                document.getElementById("emoji"+String(i)+"-5"),
+            ];
+
+            const newContentElements = [
+                document.getElementById("county-name"+String(i)),
+                document.getElementById("distance"+String(i)),
+                document.getElementById("chosen-emoji"+String(i))
             ];
 
             let currentPercentage = 0;
-            let intervalSpeed = 30; // Speed of percentage counting and emoji animation
+            let intervalSpeed = 100; // Speed of percentage counting and emoji animation
 
-            // Calculate steps for each 20% increment
-            let step = Math.floor(score / 20);
-            let remaining = score % 20;
-
-            const percentageDisplay = document.getElementById("percentage-display");
+            const percentageDisplay = document.getElementById("percentage-display"+String(i));
 
             let interval = setInterval(() => {
                 // Update the percentage display
@@ -546,19 +570,31 @@ function calcCrow(lat1, lon1, lat2, lon2)
                 }
 
                 // Handle the yellow emoji only at the end of the animation
-                if (currentPercentage === score && remaining > 0 && filledEmojis < 5) {
+                if (currentPercentage === score && filledEmojis < 5) {
                     emojis[filledEmojis].textContent = "🟨";
                     emojis[filledEmojis].style.opacity = 1;
                 }
-                    
+
                 // Stop the interval when the score is reached
                 if (currentPercentage >= score) {
                     clearInterval(interval);
+
+                    // After animation is complete, show new content
+                    setTimeout(() => {
+                        // Hide the emojis
+                        emojis.forEach(emoji => {
+                            emoji.style.display = 'none';
+                        });
+
+                        // Show the new content
+                        newContentElements.forEach(el => {
+                            el.classList.remove("hidden");
+                            el.classList.add("visible");
+                        });
+                    }, 1000);
                 }
             }, intervalSpeed);
-
         }
-
         // Example usage with a score percentage
         //const score = 73;  // Adjust this value to test different percentages
         //updateScoreAnimation(score);
