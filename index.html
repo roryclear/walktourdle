@@ -1,5 +1,5 @@
 <!-- https://www.youtube.com/watch?v=ZwC74uv3zic -->
-<body>
+<body onload="populate()">
 <div class="yt-embed-holder">
     <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/FeOL2myTopk?si=b_kt77svV7CQRb3h&amp;start=330
     &autoplay=1&mute=1&controls=0&color=white&modestbranding=0&rel=0&playsinline=enable&playlist=FeOL2myTopk&showinfo=0&iv_load_policy=1&cc_load_policy=3
@@ -115,7 +115,6 @@ function make_guess(){
         i+=1;
     }
     alert("you're on guess"+i);
-
     value = document.getElementById("european-countries").value;
     y = calculate_distance(value); 
     guess = value+" "+y[0]+" "+y[1];
@@ -124,8 +123,13 @@ function make_guess(){
     document.getElementById("guess"+String(i)).textContent=guess;
 }
 
-function show_guesses(){
-
+function populate(){
+    i = 0
+    while(sessionStorage.getItem("guesses"+String(i)) != null && i < 6) {
+        guess = sessionStorage.getItem("guesses"+String(i));
+        document.getElementById("guess"+String(i)).textContent=guess;
+        i+=1;
+    }
 }
 
 function calculate_distance(guess){
