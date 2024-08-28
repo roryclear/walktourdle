@@ -18,7 +18,13 @@
 </div>
 <div class="guess" style="bottom:calc(180px + 90*0px);">
     <form onsubmit="return make_guess();">
-        <input type="text" id="fname" name="fname" placeholder="Pick a locaition" style="width: 50%; height: 100%;">
+        <input list="browsers" name="browser" id="browser" placeholder="Pick a location" 
+        style="width: 50%; height: 100%; font-size: x-large;">
+        <datalist id="browsers">
+          <option value="Ireland"></option>
+          <option value="India"></option>
+          <option value="Iceland"></option>
+        </datalist>
         <input type="submit" value="Submit" style="width: 50%; height: 100%; float:right;">
       </form> 
 </div>
