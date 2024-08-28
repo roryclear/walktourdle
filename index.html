@@ -2,11 +2,17 @@
 <!-- https://www.youtube.com/watch?v=ZwC74uv3zic -->
 <div class="yt-embed-holder">
     <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ZwC74uv3zic?si=b_kt77svV7CQRb3h&amp;start=330
-    &autoplay=1&mute=1&controls=0&color=white&modestbranding=0&rel=0&playsinline=enable&playlist=ZwC74uv3zic&showinfo=0&iv_load_policy=1&cc_load_policy=3" 
+    &autoplay=1&mute=1&controls=0&color=white&modestbranding=0&rel=0&playsinline=enable&playlist=ZwC74uv3zic&showinfo=0&iv_load_policy=1&cc_load_policy=3
+    &wmode=opaque" 
     title="YouTube video player" frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
     gyroscope; picture-in-picture; web-share" 
-    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+
+    <div class="guess">ffs</div>
+
+</div>
+
 </div>
 
 <style>
@@ -15,16 +21,31 @@
     }
 .yt-embed-holder {
     width: 100%;
+    height: 100%;
     overflow: hidden;
-    aspect-ratio: 16/9;
     pointer-events: none;
+    #aspect-ratio: 16/9;
 }
 
 .yt-embed-holder iframe {
     width: 300%;
-    height: 100%;
+    height: 90%;
     margin-left: -100%;
+    z-index: 1;
 }
+
+.guess {
+    height: 60px;
+    width:700px;
+    overflow:hidden;
+    cursor:pointer;
+    z-index:100000;
+    background-color:rgb(52, 217, 239);
+    position: absolute;
+    bottom: 0px;
+    left:calc(50% - 700px / 2);
+}
+
 </style>
 
 </body>
