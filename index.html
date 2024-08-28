@@ -8,16 +8,15 @@
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
     gyroscope; picture-in-picture; web-share" 
     referrerpolicy="strict-origin-when-cross-origin"></iframe>
-    <div class="guess" style="bottom:calc(180px + 90*1px);">ffs 1</div>
-    <div class="guess" style="bottom:calc(180px + 90*2px);">ffs 2</div>
-    <div class="guess" style="bottom:calc(180px + 90*3px);">ffs 3</div>
-    <div class="guess" style="bottom:calc(180px + 90*4px);">ffs 4</div>
-    <div class="guess" style="bottom:calc(180px + 90*5px);">ffs 5</div>
-    <div class="guess" style="bottom:calc(180px + 90*6px);">ffs 6</div>
+    <div class="guess" id="guess5" style="bottom:calc(180px + 90*1px);">ffs 5</div>
+    <div class="guess" id="guess4" style="bottom:calc(180px + 90*2px);">ffs 4</div>
+    <div class="guess" id="guess3" style="bottom:calc(180px + 90*3px);">ffs 3</div>
+    <div class="guess" id="guess2" style="bottom:calc(180px + 90*4px);">ffs 2</div>
+    <div class="guess" id="guess1" style="bottom:calc(180px + 90*5px);">ffs 1</div>
+    <div class="guess" id="guess0" style="bottom:calc(180px + 90*6px);">ffs 0</div>
     </select>
 </div>
 <div class="guess" style="bottom:calc(180px + 90*0px);">
-    <form onsubmit="return make_guess();">
         <select id="european-countries" name="european-countries" style="width: 50%; height: 100%; font-size: large;">
             <option value="none">Pick a location 🗺️</option>
             <option value="albania">Albania 🇦🇱</option>
@@ -72,8 +71,7 @@
             <option value="united-kingdom">United Kingdom 🇬🇧</option>
             <option value="vatican-city">Vatican City 🇻🇦</option>
         </select>
-        <input type="submit" value="Submit" style="width: 50%; height: 100%; float:right;">
-      </form> 
+        <input type="submit" value="Submit" style="width: 50%; height: 100%; float:right;" onclick="make_guess()">
 </div>
 
 </div>
@@ -112,7 +110,21 @@
 </style>
 <script>
 function make_guess(){
-    alert("guessed");
+    value = document.getElementById("european-countries").value;
+    x = sessionStorage.getItem("variableName");
+    if(x==null) {
+        x = Number(0);
+        sessionStorage.setItem("variableName",x);
+    } else{
+        if(x < 5) {
+        x = Number(x)+Number(1);
+        sessionStorage.setItem("variableName",x);
+        } else{
+            sessionStorage.setItem("variableName",Number(0)); 
+            x = 0
+        }
+    }
+    alert(value+" "+x);
 }
 </script>
 
