@@ -1,8 +1,8 @@
 <!-- https://www.youtube.com/watch?v=ZwC74uv3zic -->
 <body>
 <div class="yt-embed-holder">
-    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ZwC74uv3zic?si=b_kt77svV7CQRb3h&amp;start=330
-    &autoplay=1&mute=1&controls=0&color=white&modestbranding=0&rel=0&playsinline=enable&playlist=ZwC74uv3zic&showinfo=0&iv_load_policy=1&cc_load_policy=3
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/FeOL2myTopk?si=b_kt77svV7CQRb3h&amp;start=330
+    &autoplay=1&mute=1&controls=0&color=white&modestbranding=0&rel=0&playsinline=enable&playlist=FeOL2myTopk&showinfo=0&iv_load_policy=1&cc_load_policy=3
     &wmode=opaque" 
     title="YouTube video player" frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
@@ -174,7 +174,7 @@ function calculate_distance(guess){
     "croatia": [45.1, 15.2],
     "cuba": [21.521757, -77.781167],
     "cyprus": [35.126413, 33.429859],
-    "czech republic": [49.817492, 15.472962],
+    "czech republic": [49.817492, 15.472962], //TODO wrong name
     "denmark": [56.26392, 9.501785],
     "djibouti": [11.825138, 42.590275],
     "dominica": [15.414999, -61.370976],
@@ -393,9 +393,14 @@ function calculate_distance(guess){
     "palestinian territories": [31.9474, 35.3026]
     }
     alert("your guess = "+centres[guess]);
-    alert("answer = "+centres["ireland"]);
-    distance = calcCrow(centres[guess][0],centres[guess][1],centres["ireland"][0],centres["ireland"][1])
-    alert("distance = "+distance)
+    alert("answer = "+centres["czech republic"]);
+    distance = calcCrow(centres[guess][0],centres[guess][1],centres["czech republic"][0],centres["czech republic"][1])
+    alert("distance = "+distance);
+
+    latDir = null;
+    lonDir = null;
+    angle = bearing(centres[guess][0],centres[guess][1],centres["czech republic"][0],centres["czech republic"][1])
+    alert("angle = "+angle)
 }
 
 function calcCrow(lat1, lon1, lat2, lon2) 
@@ -417,6 +422,27 @@ function calcCrow(lat1, lon1, lat2, lon2)
     function toRad(Value) 
     {
         return Value * Math.PI / 180;
+    }
+
+    
+    // Converts from radians to degrees.
+    function toDeg(radians) {
+    return radians * 180 / Math.PI;
+    }
+
+
+    function bearing(startLat, startLng, destLat, destLng){
+    startLat = toRad(startLat);
+    startLng = toRad(startLng);
+    destLat = toRad(destLat);
+    destLng = toRad(destLng);
+
+    y = Math.sin(destLng - startLng) * Math.cos(destLat);
+    x = Math.cos(startLat) * Math.sin(destLat) -
+            Math.sin(startLat) * Math.cos(destLat) * Math.cos(destLng - startLng);
+    brng = Math.atan2(y, x);
+    brng = toDeg(brng);
+    return (brng + 360) % 360;
     }
 
 </script>
