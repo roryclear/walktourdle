@@ -14,6 +14,19 @@
     <div class="guess" id="guess2" style="bottom:calc(180px + 90*4px);">ffs 2</div>
     <div class="guess" id="guess1" style="bottom:calc(180px + 90*5px);">ffs 1</div>
     <div class="guess" id="guess0" style="bottom:calc(180px + 90*6px);">ffs 0</div>
+
+    <!--<div class="load" id="load0" style="bottom:calc(180px + 90*6px);">ffs 0</div>-->
+
+    <div class="score-container" id="load0">
+        <span class="emoji" id="emoji1">⬜</span>
+        <span class="emoji" id="emoji2">⬜</span>
+        <span class="emoji" id="emoji3">⬜</span>
+        <span class="emoji" id="emoji4">⬜</span>
+        <span class="emoji" id="emoji5">⬜</span>
+        <span class="percentage-display" id="percentage-display">0%</span>
+    </div>
+
+
     </select>
 </div>
 <div class="guess" style="bottom:calc(180px + 90*0px);">
@@ -95,13 +108,54 @@
     z-index: 100;
 }
 
+.score-container {
+            width: 860px;
+            height: 80px;
+            position: absolute;
+            bottom: 720px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none;
+            align-items: center;
+            justify-content: space-between; /* Spread out the elements */
+            background-color: #fff;
+            padding: 0 20px; /* Padding to keep elements away from edges */
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 10000;
+        }
+
+.emoji {
+    font-size: 2rem;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.5s ease;
+}
+
+.percentage-display {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
 .guess {
     height: 80px;
     width:900px;
     overflow:hidden;
     cursor:pointer;
-    z-index:100000;
+    z-index:1;
     background-color:rgb(52, 217, 239);
+    position: absolute;
+    bottom: 180px;
+    left:calc(50% - 900px / 2);
+}
+
+.load {
+    display: None;
+    height: 80px;
+    width:900px;
+    overflow:hidden;
+    cursor:pointer;
+    z-index:100000;
+    background-color:rgb(239, 52, 52);
     position: absolute;
     bottom: 180px;
     left:calc(50% - 900px / 2);
@@ -114,13 +168,24 @@ function make_guess(){
     while(sessionStorage.getItem("guesses"+String(i)) != null && i < 6) {
         i+=1;
     }
-    alert("you're on guess"+i);
     value = document.getElementById("european-countries").value;
-    y = calculate_distance(value); 
+    y = calculate_distance(value);
+    fake_load(distance);
     guess = value+" "+y[0]+" "+y[1];
-    alert("guess -> "+guess);
     sessionStorage.setItem("guesses"+String(i),guess);
     document.getElementById("guess"+String(i)).textContent=guess;
+}
+
+function fake_load(distance){
+    let percentage = Math.round(distance*100 / 20038);
+    document.getElementById('load0').style.display = 'flex';
+    updateScoreAnimation(percentage);
+    setTimeout(() => document.getElementById('load0').style.display = 'none', 4000);
+    //for(let i = 0; i < 5; i++) {
+    //    setTimeout(() => alert("m88"), 1000);
+    //}
+    updateScoreAnimation(63);
+    //bar.style.display = 'none';
 }
 
 function populate(){
@@ -396,15 +461,11 @@ function calculate_distance(guess){
     "south georgia and south sandwich islands": [-54.4292, -36.5874],
     "palestinian territories": [31.9474, 35.3026]
     }
-    alert("your guess = "+centres[guess]);
-    alert("answer = "+centres["czech republic"]);
     distance = calcCrow(centres[guess][0],centres[guess][1],centres["czech republic"][0],centres["czech republic"][1])
-    alert("distance = "+distance);
     latDir = null;
     lonDir = null;
     angle = bearing(centres[guess][0],centres[guess][1],centres["czech republic"][0],centres["czech republic"][1]);
-    alert("anglezzzzz = "+angle);
-    return [distance,angle];
+    return [Math.round(distance),Math.round(angle)];
 }
 
 function calcCrow(lat1, lon1, lat2, lon2)
@@ -448,6 +509,56 @@ function calcCrow(lat1, lon1, lat2, lon2)
     brng = toDeg(brng);
     return (brng + 360) % 360;
     }
+
+    function updateScoreAnimation(score) {
+            const emojis = [
+                document.getElementById("emoji1"),
+                document.getElementById("emoji2"),
+                document.getElementById("emoji3"),
+                document.getElementById("emoji4"),
+                document.getElementById("emoji5"),
+            ];
+
+            let currentPercentage = 0;
+            let intervalSpeed = 30; // Speed of percentage counting and emoji animation
+
+            // Calculate steps for each 20% increment
+            let step = Math.floor(score / 20);
+            let remaining = score % 20;
+
+            const percentageDisplay = document.getElementById("percentage-display");
+
+            let interval = setInterval(() => {
+                // Update the percentage display
+                if (currentPercentage < score) {
+                    currentPercentage++;
+                    percentageDisplay.textContent = `${currentPercentage}%`;
+                }
+
+                // Animate filled green emojis
+                let filledEmojis = Math.floor(currentPercentage / 20);
+                for (let i = 0; i < filledEmojis; i++) {
+                    emojis[i].textContent = "🟩";
+                    emojis[i].style.opacity = 1; // Make the emoji appear
+                }
+
+                // Handle the yellow emoji only at the end of the animation
+                if (currentPercentage === score && remaining > 0 && filledEmojis < 5) {
+                    emojis[filledEmojis].textContent = "🟨";
+                    emojis[filledEmojis].style.opacity = 1;
+                }
+                    
+                // Stop the interval when the score is reached
+                if (currentPercentage >= score) {
+                    clearInterval(interval);
+                }
+            }, intervalSpeed);
+
+        }
+
+        // Example usage with a score percentage
+        //const score = 73;  // Adjust this value to test different percentages
+        //updateScoreAnimation(score);
 
 </script>
 
