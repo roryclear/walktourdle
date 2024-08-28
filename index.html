@@ -194,12 +194,12 @@ function make_guess(){
     y = calculate_distance(value);
     distance = y[0]
     angle = y[1]
-    fake_load(distance,angle,i);
+    fake_load(distance,angle,value,i);
     guess = value+" "+y[0]+" "+y[1];
     sessionStorage.setItem("guesses"+String(i),guess);
     document.getElementById("guess"+String(i)).textContent=guess;
 }
-function fake_load(distance,angle,i){
+function fake_load(distance,angle,value,i){
     let percentage = 100 - Math.round(distance*100 / 20038);
     for (let j = 1; j < 6; j++) {
         //document.getElementById("emoji"+String(i)).textContent = "⬜";
@@ -208,8 +208,8 @@ function fake_load(distance,angle,i){
     document.getElementById('load'+String(i)).style.display = 'flex';
     document.getElementById('percentage-display'+String(i)).style.display = 'block'
     updateScoreAnimation(percentage,i);
-    document.getElementById("county-name"+String(i)).textContent = "Nairobi";
-    document.getElementById("distance"+String(i)).textContent = "1234 km";
+    document.getElementById("county-name"+String(i)).textContent = value;
+    document.getElementById("distance"+String(i)).textContent = String(distance) +" km";
     document.getElementById("chosen-emoji"+String(i)).textContent = "🌍"; // Example emoji
 }
 
