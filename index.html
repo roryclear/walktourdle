@@ -776,7 +776,7 @@ function fake_load(distance,angle,value,i) {
     updateScoreAnimation(percentage,i);
     let text = country_emojis[value]+value;
     document.getElementById("county-name"+String(i)).textContent = text.length > 15 ? text.slice(0, 15) + "..." : text
-    document.getElementById("distance"+String(i)).textContent = distance.toLocaleString('en', {useGrouping:true}) +" km";
+    document.getElementById("distance"+String(i)).textContent = Number(distance).toLocaleString('en', {useGrouping:true}) +" km";
     if(distance > 0) {
         emoji = "↗️"
         if(angle > 77.5 && angle <= 122.5) {
