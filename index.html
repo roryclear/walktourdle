@@ -26,7 +26,7 @@
         <div id="correct-answer" class="correct-answer"></div>
     </div>
 
-    <div class="score-container" id="load1" style="bottom: calc(180px + 90*5px);">
+    <div class="score-container" id="load1" style="bottom: calc(90*5px);">
         <span class="emoji" id="emoji1-1">⬜</span>
         <span class="emoji" id="emoji1-2">⬜</span>
         <span class="emoji" id="emoji1-3">⬜</span>
@@ -40,7 +40,7 @@
         <span class="percentage-display" id="percentage-display1">0%</span>
     </div>
 
-    <div class="score-container" id="load2" style="bottom: calc(180px + 90*4px);">
+    <div class="score-container" id="load2" style="bottom: calc(90*4px);">
         <span class="emoji" id="emoji2-1">⬜</span>
         <span class="emoji" id="emoji2-2">⬜</span>
         <span class="emoji" id="emoji2-3">⬜</span>
@@ -54,7 +54,7 @@
         <span class="percentage-display" id="percentage-display2">0%</span>
     </div>
 
-    <div class="score-container" id="load3" style="bottom: calc(180px + 90*3px);">
+    <div class="score-container" id="load3" style="bottom: calc(90*3px);">
         <span class="emoji" id="emoji3-1">⬜</span>
         <span class="emoji" id="emoji3-2">⬜</span>
         <span class="emoji" id="emoji3-3">⬜</span>
@@ -68,7 +68,7 @@
         <span class="percentage-display" id="percentage-display3">0%</span>
     </div>
 
-    <div class="score-container" id="load4" style="bottom: calc(180px + 90*2px);">
+    <div class="score-container" id="load4" style="bottom: calc(90*2px);">
         <span class="emoji" id="emoji4-1">⬜</span>
         <span class="emoji" id="emoji4-2">⬜</span>
         <span class="emoji" id="emoji4-3">⬜</span>
@@ -82,7 +82,7 @@
         <span class="percentage-display" id="percentage-display4">0%</span>
     </div>
 
-    <div class="score-container" id="load5" style="bottom: calc(180px + 90*1px);">
+    <div class="score-container" id="load5" style="bottom: calc(90*1px);">
         <span class="emoji" id="emoji5-1">⬜</span>
         <span class="emoji" id="emoji5-2">⬜</span>
         <span class="emoji" id="emoji5-3">⬜</span>
@@ -98,7 +98,7 @@
 
     </select>
 </div>
-<div class="guess" style="bottom:calc(180px + 90*0px);">
+<div class="guess" style="bottom:calc(90*0px);">
         <select id="locations" name="locations" style="width: 50%; height: 100%;">
             <option value="none">Pick a location 🗺️</option>
             <option value="afghanistan">🇦🇫Afghanistan</option>
@@ -371,7 +371,7 @@
 
 
 body{
-    background-color: black;
+    background-color: white;
     font-family: Arial, sans-serif;
     font-size: 40;
 }
@@ -432,7 +432,7 @@ body{
             width: 860px;
             height: 80px;
             position: absolute;
-            bottom: 720px;
+            bottom: 540px;
             z-index: 1000;
             left: 50%;
             transform: translateX(-50%);
@@ -468,7 +468,6 @@ body{
     width: 900px;
     opacity: 100%;
     position: absolute;
-    bottom: 180px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
