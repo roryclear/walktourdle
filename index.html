@@ -1,9 +1,7 @@
 <!-- https://www.youtube.com/watch?v=ZwC74uv3zic -->
 <body onload="populate()">
 <div class="yt-embed-holder">
-    <iframe width="560" id="ytvid" height="315" src="https://www.youtube-nocookie.com/embed/FeOL2myTopk?si=b_kt77svV7CQRb3h&amp;start=330
-    &autoplay=1&mute=1&controls=0&color=white&modestbranding=0&rel=0&playsinline=enable&playlist=FeOL2myTopk&showinfo=0&iv_load_policy=1&cc_load_policy=3
-    &wmode=opaque" 
+    <iframe width="560" id="ytvid" height="315" src="" 
     title="YouTube video player" frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
     gyroscope; picture-in-picture; web-share" 
@@ -902,11 +900,19 @@ function fake_load(distance,angle,value,i) {
 }
 
 function populate(){
+    now = Date.now()
+    now = now - 1724889600000
+    days = Math.floor(now / 8.64e+7)
+
+    locations = [["uganda","LjubyL5nwAY"],["czechia","FeOL2myTopk"]];
+    correctAnswer = locations[days][0];
+
+    //1724889600
     //https://www.youtube-nocookie.com/embed/FeOL2myTopk?si=b_kt77svV7CQRb3h&amp;start=330
     //&autoplay=1&mute=1&controls=0&color=white&modestbranding=0&rel=0&playsinline=enable&playlist=FeOL2myTopk&showinfo=0&iv_load_policy=1&cc_load_policy=3
     //&wmode=opaque
     vid = document.getElementById("ytvid")
-    vid.src = "https://www.youtube-nocookie.com/embed/LjubyL5nwAY?si=b_kt77svV7CQRb3h&amp;start=330&autoplay=1&mute=1&controls=0&color=white&modestbranding=0&rel=0&playsinline=enable&playlist=LjubyL5nwAY&showinfo=0&iv_load_policy=1&cc_load_policy=3&wmode=opaque"
+    vid.src = "https://www.youtube-nocookie.com/embed/"+locations[days][1]+"?si=b_kt77svV7CQRb3h&amp;start=330&autoplay=1&mute=1&controls=0&color=white&modestbranding=0&rel=0&playsinline=enable&playlist="+locations[days][1]+"&showinfo=0&iv_load_policy=1&cc_load_policy=3&wmode=opaque"
     k = 0
     while(sessionStorage.getItem("guesses"+String(k)) != null && k < 6) {
         guess = sessionStorage.getItem("guesses"+String(k));
@@ -1194,7 +1200,6 @@ function calculate_distance(guess){
   "zimbabwe": {"latitude": -19.015438, "longitude": 29.154857},
   "åland islands": {"latitude": 60.178524, "longitude": 19.91561}
     }
-    correctAnswer = "uganda"
     distance = calcCrow(centres[guess]["latitude"],centres[guess]["longitude"],centres[correctAnswer]["latitude"],centres[correctAnswer]["longitude"]);
     latDir = null;
     lonDir = null;
