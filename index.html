@@ -346,9 +346,8 @@
             <option value="zambia">🇿🇲Zambia</option>
             <option value="zimbabwe">🇿🇼Zimbabwe</option>
             <option value="åland islands">🇦🇽Åland Islands</option>
-            
         </select>
-        <input type="submit" value="Submit" style="width: 50%; height: 100%; float:right;" onclick="make_guess()">
+        <button class="submit-btn" onclick="make_guess()">Guess</button>
 </div>
 
 </div>
@@ -414,14 +413,51 @@
 
 .guess {
     height: 80px;
-    width:900px;
-    overflow:hidden;
-    cursor:pointer;
-    z-index:1;
-    background-color:rgb(52, 217, 239);
+    width: 900px;
+    opacity: 100%;
     position: absolute;
     bottom: 180px;
-    left:calc(50% - 900px / 2);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    overflow: hidden;
+}
+
+.guess select {
+    width: 48%;
+    height: 50px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 5px 10px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.guess select:focus {
+    border-color: #007BFF;
+}
+
+.submit-btn {
+    width: 48%;
+    height: 80px;
+    font-size: 18px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
 }
 
 .load {
