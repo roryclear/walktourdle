@@ -102,7 +102,7 @@
     </select>
 </div>
 <div class="guess" style="bottom:calc(180px + 90*0px);">
-        <select id="european-countries" name="european-countries" style="width: 50%; height: 100%; font-size: 42;">
+        <select id="european-countries" name="european-countries" style="width: 50%; height: 100%;">
             <option value="none">Pick a location 🗺️</option>
             <option value="afghanistan">🇦🇫Afghanistan</option>
             <option value="albania">🇦🇱Albania</option>
@@ -371,11 +371,46 @@
 </div>
 
 <style>
-    body{
-        background-color: black;
-        font-family: Arial, sans-serif;
-        font-size: 36;
-    }
+
+
+body{
+    background-color: black;
+    font-family: Arial, sans-serif;
+    font-size: 40;
+}
+
+.guess {
+    font-size: 40;
+}
+
+.guess select {
+    font-size: 40;
+}
+
+.submit-btn {
+    font-size: 40;
+}
+
+@media (min-width: 1200px) {
+body{
+    background-color: black;
+    font-family: Arial, sans-serif;
+    font-size: 24;
+}
+
+.guess {
+    font-size: 24;
+}
+
+.guess select {
+    font-size: 24;
+}
+
+.submit-btn {
+    font-size: 24;
+}
+
+}
 
 .yt-embed-holder {
     width: 100%;
@@ -472,7 +507,6 @@
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-size: 36;
 }
 
 .submit-btn:hover {
@@ -493,7 +527,6 @@
 }
 
 .popup {
-        font-size: 36;
         display: none;
         position: fixed;
         top: 50%;
@@ -519,7 +552,6 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 36;
         }
         .popup .share-button:hover {
             background-color: #45a049;
