@@ -23,6 +23,12 @@
         <span class="percentage-display" id="percentage-display0">0%</span>
     </div>
 
+    <div id="popup" class="popup">
+        <div id="score" class="score"></div>
+        <div id="correct-answer" class="correct-answer"></div>
+        <button class="share-button" onclick="shareScore()">Share</button>
+    </div>
+
     <div class="score-container" id="load1" style="bottom: calc(180px + 90*5px);">
         <span class="emoji" id="emoji1-1">⬜</span>
         <span class="emoji" id="emoji1-2">⬜</span>
@@ -488,8 +494,63 @@
     left:calc(50% - 900px / 2);
 }
 
+.popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        text-align: center;
+        z-index: 1000000;
+        }
+        .popup .score {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .popup .correct-answer {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .popup .share-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .popup .share-button:hover {
+            background-color: #45a049;
+        }
+
 </style>
 <script>
+
+function showPopup(scoreArray, correctAnswer) {
+        const scoreElement = document.getElementById('score');
+        const correctAnswerElement = document.getElementById('correct-answer');
+        scoreElement.innerHTML = scoreArray.map(score => {
+            let greenSquares = Math.floor(score / 20);
+            let yellowSquare = score % 20 > 0 ? 1 : 0;
+            let greySquares = 5 - greenSquares - yellowSquare;
+            return '🟩'.repeat(greenSquares) + '🟨'.repeat(yellowSquare) + '⬜'.repeat(greySquares);
+        }).join('<br>');
+        correctAnswerElement.textContent = `Correct Answer: ${country_emojis[correctAnswer]}${correctAnswer}`;
+        document.getElementById('popup').style.display = 'block';
+    }
+
+    function hidePopup() {
+        document.getElementById('popup').style.display = 'none';
+    }
+
+    function shareScore() {
+        alert('Score shared!');
+    }
+
 function make_guess(){
     i = 0
     while(sessionStorage.getItem("guesses"+String(i)) != null && i < 6) {
@@ -505,7 +566,7 @@ function make_guess(){
     document.getElementById("guess"+String(i)).textContent=guess;
 }
 function fake_load(distance,angle,value,i) {
-    const country_emojis = {
+    country_emojis = {
     "afghanistan": "🇦🇫",
     "albania": "🇦🇱",
     "algeria": "🇩🇿",
@@ -768,6 +829,9 @@ function fake_load(distance,angle,value,i) {
     };
 
     let percentage = 100 - Math.round(distance*100 / 13238);
+    if(sessionStorage.getItem("percent"+String(i)) == null) {
+        sessionStorage.setItem("percent"+String(i),String(percentage))
+    }
     for (let j = 1; j < 6; j++) {
         document.getElementById("emoji"+String(i)+"-"+String(j)).style.opacity = 0; // Make the emoji appear
     }
@@ -813,6 +877,20 @@ function populate(){
         var guess_array = guess.split(',');
         fake_load(guess_array[1],guess_array[2],guess_array[0],k);
         k+=1;
+    }
+}
+
+function share(won) {
+    k = 0
+    scores = []
+    while(sessionStorage.getItem("percent"+String(k)) != null) {
+        scores.push(Number(sessionStorage.getItem("percent"+String(k))));
+        k=k+1
+    }
+    if(won == true) {
+        showPopup(scores,correctAnswer);
+    } else {
+        showPopup(scores,correctAnswer);
     }
 }
 
@@ -1078,6 +1156,7 @@ function calculate_distance(guess){
   "zimbabwe": {"latitude": -19.015438, "longitude": 29.154857},
   "åland islands": {"latitude": 60.178524, "longitude": 19.91561}
     }
+    correctAnswer = "czechia"
     distance = calcCrow(centres[guess]["latitude"],centres[guess]["longitude"],centres["czechia"]["latitude"],centres["czechia"]["longitude"]);
     latDir = null;
     lonDir = null;
@@ -1188,6 +1267,15 @@ function calcCrow(lat1, lon1, lat2, lon2)
                         document.getElementById("grid"+String(i)).style.display = 'grid';
                         document.getElementById("grid"+String(i)).style.alignItems = 'center';
                         document.getElementById("grid"+String(i)).style.gridTemplateColumns = '300px 300px 80px';
+                        
+                        if(distance == 0) {
+                            share(true);
+                        } else {
+                            if(i == 5) {
+                                share(false);
+                            }
+                        }
+
                     }, 1000);
                 }
             }, intervalSpeed);
