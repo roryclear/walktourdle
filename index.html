@@ -102,7 +102,7 @@
     </select>
 </div>
 <div class="guess" style="bottom:calc(180px + 90*0px);">
-        <select id="european-countries" name="european-countries" style="width: 50%; height: 100%; font-size: large;">
+        <select id="european-countries" name="european-countries" style="width: 50%; height: 100%; font-size: 36;">
             <option value="none">Pick a location 🗺️</option>
             <option value="afghanistan">🇦🇫Afghanistan</option>
             <option value="albania">🇦🇱Albania</option>
@@ -374,6 +374,7 @@
     body{
         background-color: black;
         font-family: Arial, sans-serif;
+        font-size: 36;
     }
 
 .yt-embed-holder {
@@ -413,13 +414,11 @@
         }
 
         .emoji, .new-content {
-            font-size: 2rem;
             opacity: 0; /* Initially hidden */
             transition: opacity 0.5s ease;
         }
 
         .percentage-display {
-            font-size: 2rem;
             font-weight: bold;
             display: none
         }
@@ -453,7 +452,6 @@
 .guess select {
     width: 48%;
     height: 50px;
-    font-size: 18px;
     border: 1px solid #ccc;
     border-radius: 6px;
     padding: 5px 10px;
@@ -468,13 +466,13 @@
 .submit-btn {
     width: 48%;
     height: 80px;
-    font-size: 18px;
     background-color: #007BFF;
     color: white;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-size: 36;
 }
 
 .submit-btn:hover {
@@ -495,6 +493,7 @@
 }
 
 .popup {
+        font-size: 36;
         display: none;
         position: fixed;
         top: 50%;
@@ -508,11 +507,9 @@
         z-index: 1000000;
         }
         .popup .score {
-            font-size: 24px;
             margin-bottom: 10px;
         }
         .popup .correct-answer {
-            font-size: 18px;
             margin-bottom: 20px;
         }
         .popup .share-button {
@@ -522,6 +519,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 36;
         }
         .popup .share-button:hover {
             background-color: #45a049;
