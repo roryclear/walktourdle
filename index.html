@@ -365,7 +365,7 @@
             <option value="zimbabwe">🇿🇼Zimbabwe</option>
             <option value="åland islands">🇦🇽Åland Islands</option>
         </select>
-        <button class="submit-btn" onclick="make_guess()">Guess</button>
+        <button class="submit-btn" id="submit-btn" onclick="make_guess()">Guess</button>
 </div>
 
 </div>
@@ -864,6 +864,7 @@ function fake_load(distance,angle,value,i) {
         }
     } else {
         emoji = "😎"
+        document.getElementById("submit-btn").disabled = true;
     }
     document.getElementById("chosen-emoji"+String(i)).textContent = emoji; // Example emoji
 }
@@ -887,8 +888,10 @@ function share(won) {
     }
     if(won == true) {
         showPopup(scores,correctAnswer);
+        document.getElementById("submit-btn").disabled = true;
     } else {
         showPopup(scores,correctAnswer);
+        document.getElementById("submit-btn").disabled = true;
     }
 }
 
