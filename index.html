@@ -1,7 +1,7 @@
 <!-- https://www.youtube.com/watch?v=ZwC74uv3zic -->
 <body onload="populate()">
 <div class="yt-embed-holder">
-    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/FeOL2myTopk?si=b_kt77svV7CQRb3h&amp;start=330
+    <iframe width="560" id="ytvid" height="315" src="https://www.youtube-nocookie.com/embed/FeOL2myTopk?si=b_kt77svV7CQRb3h&amp;start=330
     &autoplay=1&mute=1&controls=0&color=white&modestbranding=0&rel=0&playsinline=enable&playlist=FeOL2myTopk&showinfo=0&iv_load_policy=1&cc_load_policy=3
     &wmode=opaque" 
     title="YouTube video player" frameborder="0" 
@@ -902,6 +902,11 @@ function fake_load(distance,angle,value,i) {
 }
 
 function populate(){
+    //https://www.youtube-nocookie.com/embed/FeOL2myTopk?si=b_kt77svV7CQRb3h&amp;start=330
+    //&autoplay=1&mute=1&controls=0&color=white&modestbranding=0&rel=0&playsinline=enable&playlist=FeOL2myTopk&showinfo=0&iv_load_policy=1&cc_load_policy=3
+    //&wmode=opaque
+    vid = document.getElementById("ytvid")
+    vid.src = "https://www.youtube-nocookie.com/embed/LjubyL5nwAY?si=b_kt77svV7CQRb3h&amp;start=330&autoplay=1&mute=1&controls=0&color=white&modestbranding=0&rel=0&playsinline=enable&playlist=LjubyL5nwAY&showinfo=0&iv_load_policy=1&cc_load_policy=3&wmode=opaque"
     k = 0
     while(sessionStorage.getItem("guesses"+String(k)) != null && k < 6) {
         guess = sessionStorage.getItem("guesses"+String(k));
@@ -1189,11 +1194,11 @@ function calculate_distance(guess){
   "zimbabwe": {"latitude": -19.015438, "longitude": 29.154857},
   "åland islands": {"latitude": 60.178524, "longitude": 19.91561}
     }
-    correctAnswer = "czechia"
-    distance = calcCrow(centres[guess]["latitude"],centres[guess]["longitude"],centres["czechia"]["latitude"],centres["czechia"]["longitude"]);
+    correctAnswer = "uganda"
+    distance = calcCrow(centres[guess]["latitude"],centres[guess]["longitude"],centres[correctAnswer]["latitude"],centres[correctAnswer]["longitude"]);
     latDir = null;
     lonDir = null;
-    angle = bearing(centres[guess]["latitude"],centres[guess]["longitude"],centres["czechia"]["latitude"],centres["czechia"]["longitude"]);
+    angle = bearing(centres[guess]["latitude"],centres[guess]["longitude"],centres[correctAnswer]["latitude"],centres[correctAnswer]["longitude"]);
     return [Math.round(distance),angle];
 }
 
