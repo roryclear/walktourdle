@@ -500,12 +500,11 @@ function make_guess(){
     distance = y[0]
     angle = y[1]
     fake_load(distance,angle,value,i);
-    guess = value+" "+y[0]+" "+y[1];
+    guess = value+","+y[0]+","+y[1];
     sessionStorage.setItem("guesses"+String(i),guess);
     document.getElementById("guess"+String(i)).textContent=guess;
 }
 function fake_load(distance,angle,value,i) {
-
     const country_emojis = {
     "afghanistan": "🇦🇫",
     "albania": "🇦🇱",
@@ -808,11 +807,12 @@ function fake_load(distance,angle,value,i) {
 }
 
 function populate(){
-    i = 0
-    while(sessionStorage.getItem("guesses"+String(i)) != null && i < 6) {
-        guess = sessionStorage.getItem("guesses"+String(i));
-        document.getElementById("guess"+String(i)).textContent=guess;
-        i+=1;
+    k = 0
+    while(sessionStorage.getItem("guesses"+String(k)) != null && k < 6) {
+        guess = sessionStorage.getItem("guesses"+String(k));
+        var guess_array = guess.split(',');
+        fake_load(guess_array[1],guess_array[2],guess_array[0],k);
+        k+=1;
     }
 }
 
