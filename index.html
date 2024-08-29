@@ -24,7 +24,6 @@
     <div id="popup" class="popup">
         <div id="score" class="score"></div>
         <div id="correct-answer" class="correct-answer"></div>
-        <button class="share-button" onclick="shareScore()">Share</button>
     </div>
 
     <div class="score-container" id="load1" style="bottom: calc(180px + 90*5px);">
@@ -543,18 +542,6 @@ body{
         .popup .correct-answer {
             margin-bottom: 20px;
         }
-        .popup .share-button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 36;
-        }
-        .popup .share-button:hover {
-            background-color: #45a049;
-        }
 
 </style>
 <script>
@@ -570,6 +557,9 @@ function showPopup(scoreArray, correctAnswer) {
         }).join('<br>');
         correctAnswerElement.textContent = `Correct Answer: ${country_emojis[correctAnswer]}${correctAnswer}`;
         document.getElementById('popup').style.display = 'block';
+        document.getElementById('submit-btn').innerHTML = 'Share';
+        document.getElementById('submit-btn').onclick = function() { shareScore(); }
+        document.getElementById('submit-btn').style.backgroundColor = "#008000";
     }
 
     function hidePopup() {
@@ -895,7 +885,6 @@ function fake_load(distance,angle,value,i) {
         }
     } else {
         emoji = "😎"
-        document.getElementById("submit-btn").disabled = true;
     }
     document.getElementById("chosen-emoji"+String(i)).textContent = emoji; // Example emoji
 }
@@ -932,10 +921,8 @@ function share(won) {
     }
     if(won == true) {
         showPopup(scores,correctAnswer);
-        document.getElementById("submit-btn").disabled = true;
     } else {
         showPopup(scores,correctAnswer);
-        document.getElementById("submit-btn").disabled = true;
     }
 }
 
