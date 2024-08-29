@@ -567,7 +567,9 @@ function showPopup(scoreArray, correctAnswer) {
     }
 
     function shareScore() {
-        alert('Score shared!');
+        const scoreElement = document.getElementById('score')
+        text = "#walkingtourdle #" + (days+1) + "\n" + scoreElement.innerText + "\nwalkingtourdle.com";
+        navigator.clipboard.writeText(text);
     }
 
 function make_guess(){
