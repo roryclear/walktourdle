@@ -15,9 +15,11 @@
         <span class="emoji" id="emoji0-3">⬜</span>
         <span class="emoji" id="emoji0-4">⬜</span>
         <span class="emoji" id="emoji0-5">⬜</span>
-        <span class="new-content hidden" id="county-name0">County Name</span>
-        <span class="new-content hidden" id="distance0">Distance</span>
-        <span class="new-content hidden" id="chosen-emoji0">🗺️</span>
+        <div class="grid-container" id="grid0">
+            <span class="new-content hidden" id="county-name0">County Name</span>
+            <span class="new-content hidden" id="distance0">Distance</span>
+            <span class="new-content hidden" id="chosen-emoji0">🗺️</span>
+        </div>
         <span class="percentage-display" id="percentage-display0">0%</span>
     </div>
 
@@ -27,9 +29,11 @@
         <span class="emoji" id="emoji1-3">⬜</span>
         <span class="emoji" id="emoji1-4">⬜</span>
         <span class="emoji" id="emoji1-5">⬜</span>
-        <span class="new-content hidden" id="county-name1">County Name</span>
-        <span class="new-content hidden" id="distance1">Distance</span>
-        <span class="new-content hidden" id="chosen-emoji1">🗺️</span>
+        <div class="grid-container" id="grid1">
+            <span class="new-content hidden" id="county-name1">County Name</span>
+            <span class="new-content hidden" id="distance1">Distance</span>
+            <span class="new-content hidden" id="chosen-emoji1">🗺️</span>
+        </div>
         <span class="percentage-display" id="percentage-display1">0%</span>
     </div>
 
@@ -39,9 +43,11 @@
         <span class="emoji" id="emoji2-3">⬜</span>
         <span class="emoji" id="emoji2-4">⬜</span>
         <span class="emoji" id="emoji2-5">⬜</span>
-        <span class="new-content hidden" id="county-name2">County Name</span>
-        <span class="new-content hidden" id="distance2">Distance</span>
-        <span class="new-content hidden" id="chosen-emoji2">🗺️</span>
+        <div class="grid-container" id="grid2">
+            <span class="new-content hidden" id="county-name2">County Name</span>
+            <span class="new-content hidden" id="distance2">Distance</span>
+            <span class="new-content hidden" id="chosen-emoji2">🗺️</span>
+        </div>
         <span class="percentage-display" id="percentage-display2">0%</span>
     </div>
 
@@ -51,9 +57,11 @@
         <span class="emoji" id="emoji3-3">⬜</span>
         <span class="emoji" id="emoji3-4">⬜</span>
         <span class="emoji" id="emoji3-5">⬜</span>
-        <span class="new-content hidden" id="county-name3">County Name</span>
-        <span class="new-content hidden" id="distance3">Distance</span>
-        <span class="new-content hidden" id="chosen-emoji3">🗺️</span>
+        <div class="grid-container" id="grid3">
+            <span class="new-content hidden" id="county-name3">County Name</span>
+            <span class="new-content hidden" id="distance3">Distance</span>
+            <span class="new-content hidden" id="chosen-emoji3">🗺️</span>
+        </div>
         <span class="percentage-display" id="percentage-display3">0%</span>
     </div>
 
@@ -63,9 +71,11 @@
         <span class="emoji" id="emoji4-3">⬜</span>
         <span class="emoji" id="emoji4-4">⬜</span>
         <span class="emoji" id="emoji4-5">⬜</span>
-        <span class="new-content hidden" id="county-name4">County Name</span>
-        <span class="new-content hidden" id="distance4">Distance</span>
-        <span class="new-content hidden" id="chosen-emoji4">🗺️</span>
+        <div class="grid-container" id="grid4">
+            <span class="new-content hidden" id="county-name4">County Name</span>
+            <span class="new-content hidden" id="distance4">Distance</span>
+            <span class="new-content hidden" id="chosen-emoji4">🗺️</span>
+        </div>
         <span class="percentage-display" id="percentage-display4">0%</span>
     </div>
 
@@ -75,9 +85,11 @@
         <span class="emoji" id="emoji5-3">⬜</span>
         <span class="emoji" id="emoji5-4">⬜</span>
         <span class="emoji" id="emoji5-5">⬜</span>
-        <span class="new-content hidden" id="county-name5">County Name</span>
-        <span class="new-content hidden" id="distance5">Distance</span>
-        <span class="new-content hidden" id="chosen-emoji5">🗺️</span>
+        <div class="grid-container" id="grid5">
+            <span class="new-content hidden" id="county-name5">County Name</span>
+            <span class="new-content hidden" id="distance5">Distance</span>
+            <span class="new-content hidden" id="chosen-emoji5">🗺️</span>
+        </div>
         <span class="percentage-display" id="percentage-display5">0%</span>
     </div>
 
@@ -371,6 +383,10 @@
     height: 90%;
     margin-left: -100%;
     z-index: 100;
+}
+
+.grid-container {
+    display: none; /* Activate grid layout */
 }
 
 .score-container {
@@ -1168,6 +1184,11 @@ function calcCrow(lat1, lon1, lat2, lon2)
                             el.classList.remove("hidden");
                             el.classList.add("visible");
                         });
+
+                        document.getElementById("grid"+String(i)).style.gap = '20px';
+                        document.getElementById("grid"+String(i)).style.display = 'grid';
+                        document.getElementById("grid"+String(i)).style.alignItems = 'center';
+                        document.getElementById("grid"+String(i)).style.gridTemplateColumns = '300px 300px 80px';
                     }, 1000);
                 }
             }, intervalSpeed);
