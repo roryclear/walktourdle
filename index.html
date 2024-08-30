@@ -628,8 +628,9 @@ function showPopup(scoreArray, correctAnswer) {
        document.getElementById('submit-btn').style.backgroundColor = "#008000";
        document.getElementById('locations').style.display = 'none';
        document.getElementById('learn-btn').style.display = 'block';
-       document.getElementById('learn-btn').innerHTML = "<a href=\""+wiki_pages[correctAnswer]+"\" target=\"_blank\">"+location_emojis[correctAnswer]+" wikipedia</a>\
-         <a href=\"https://www.youtube.com/watch?v="+videos[correctAnswer]+"\" target=\"_blank\">"+location_emojis[correctAnswer]+" video</a>";
+       document.getElementById('learn-btn').style.height = 'block';
+       document.getElementById('learn-btn').innerHTML = "<a href=\""+wiki_pages[correctAnswer]+"\" target=\"_blank\">"+location_emojis[correctAnswer]+"wiki</a>\
+         &nbsp&nbsp<a href=\"https://www.youtube.com/watch?v="+videos[correctAnswer]+"\" target=\"_blank\">"+location_emojis[correctAnswer]+"video</a>";
    }
 
    function hidePopup() {
