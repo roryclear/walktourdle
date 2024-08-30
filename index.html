@@ -628,7 +628,8 @@ function showPopup(scoreArray, correctAnswer) {
        document.getElementById('submit-btn').style.backgroundColor = "#008000";
        document.getElementById('locations').style.display = 'none';
        document.getElementById('learn-btn').style.display = 'block';
-       document.getElementById('learn-btn').innerHTML = "<a href=\""+wiki_pages[correctAnswer]+"\" target=\"_blank\">"+location_emojis[correctAnswer] + correctAnswer+" wikipedia</a>";
+       document.getElementById('learn-btn').innerHTML = "<a href=\""+wiki_pages[correctAnswer]+"\" target=\"_blank\">"+location_emojis[correctAnswer]+" wikipedia</a>\
+         <a href=\"https://www.youtube.com/watch?v="+videos[correctAnswer]+"\" target=\"_blank\">"+location_emojis[correctAnswer]+" video</a>";
    }
 
    function hidePopup() {
@@ -1239,31 +1240,40 @@ function populate(){
    now = now - 1724889600000
    days = Math.floor(now / 8.64e+7)
    //yes, you can cheat
-   locations = [['uganda', 'LjubyL5nwAY'],
-['czechia', 'FeOL2myTopk'],
-['congo - brazzaville', 'AMaStW4UwNQ'],
-['senegal', '_gWqyfJ0knU'],
-['british virgin islands', 'NuFvR_OpIP8'],
-['hungary', 'ZLCUP4Sb_lw'],
-['suriname', '_rOET3m--w0'],
-['curaçao', 'EZ_4qtjprEU'],
-['western sahara', 'ivXDnAFT-P4'],
-['germany', '-l9E7OAexQM'],
-['myanmar (burma)', 'X8_hCjxJ5vA'],
-['liberia', 'FHzKlolQJr8'],
-['mauritania', 'pk0byDy33gg'],
-['french southern territories', 'LOhj9gtZl6A'],
-['new zealand', 'DLru1iQlCJo'],
-['dominica', 'LM6gV9ey8vQ']]
+   locations = ['uganda', 'czechia', 'congo - brazzaville', 'senegal', 
+   'british virgin islands', 'hungary', 'suriname', 'curaçao', 'western sahara', 
+   'germany', 'myanmar (burma)', 'liberia', 'mauritania', 'french southern territories', 
+   'new zealand', 'dominica']
 
-   correctAnswer = locations[days][0];
+
+    videos = {
+    "british virgin islands": "NuFvR_OpIP8",
+    "congo - brazzaville": "AMaStW4UwNQ",
+    "curaçao": "EZ_4qtjprEU",
+    "czechia": "FeOL2myTopk",
+    "dominica": "LM6gV9ey8vQ",
+    "french southern territories": "LOhj9gtZl6A",
+    "germany": "-l9E7OAexQM",
+    "hungary": "ZLCUP4Sb_lw",
+    "liberia": "FHzKlolQJr8",
+    "mauritania": "pk0byDy33gg",
+    "myanmar (burma)": "X8_hCjxJ5vA",
+    "new zealand": "DLru1iQlCJo",
+    "senegal": "_gWqyfJ0knU",
+    "suriname": "_rOET3m--w0",
+    "uganda": "LjubyL5nwAY",
+    "western sahara": "ivXDnAFT-P4"
+    }
+
+   correctAnswer = locations[days];
 
    //1724889600
    //https://www.youtube-nocookie.com/embed/FeOL2myTopk?si=b_kt77svV7CQRb3h&amp;start=330
    //&autoplay=1&mute=1&controls=0&color=white&modestbranding=0&rel=0&playsinline=enable&playlist=FeOL2myTopk&showinfo=0&iv_load_policy=1&cc_load_policy=3
    //&wmode=opaque
    vid = document.getElementById("ytvid")
-   vid.src = "https://www.youtube-nocookie.com/embed/"+locations[days][1]+"?si=b_kt77svV7CQRb3h&amp;start=330&autoplay=1&mute=1&controls=0&color=white&modestbranding=0&rel=0&playsinline=enable&playlist="+locations[days][1]+"&showinfo=0&iv_load_policy=1&cc_load_policy=3&wmode=opaque"
+
+   vid.src = "https://www.youtube-nocookie.com/embed/"+videos[locations[days]]+"?si=b_kt77svV7CQRb3h&amp;start=330&autoplay=1&mute=1&controls=0&color=white&modestbranding=0&rel=0&playsinline=enable&playlist="+videos[locations[days]]+"&showinfo=0&iv_load_policy=1&cc_load_policy=3&wmode=opaque"
    k = 0
    while(sessionStorage.getItem("guesses"+String(k)+"-"+String(days)) != null && k < 6) {
        guess = sessionStorage.getItem("guesses"+String(k)+"-"+String(days));
