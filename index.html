@@ -611,7 +611,7 @@ function showPopup(scoreArray, correctAnswer) {
             let greySquares = 5 - greenSquares - yellowSquare;
             return '🟩'.repeat(greenSquares) + '🟨'.repeat(yellowSquare) + '⬜'.repeat(greySquares);
         }).join('<br>');
-        correctAnswerElement.textContent = `Correct Answer: ${location_emojis[correctAnswer]}${correctAnswer}`;
+        correctAnswerElement.textContent = "Correct Answer: "+ location_emojis[correctAnswer] + correctAnswer;
         document.getElementById('popup').style.display = 'block';
         document.getElementById('submit-btn').innerHTML = 'Share';
         document.getElementById('submit-btn').onclick = function() { shareScore(); }
@@ -961,8 +961,24 @@ function populate(){
     now = Date.now()
     now = now - 1724889600000
     days = Math.floor(now / 8.64e+7)
+    //yes, you can cheat
+    locations = [['uganda', 'LjubyL5nwAY'],
+ ['czechia', 'FeOL2myTopk'],
+ ['congo - brazzaville', 'AMaStW4UwNQ'],
+ ['senegal', '_gWqyfJ0knU'],
+ ['british virgin islands', 'NuFvR_OpIP8'],
+ ['hungary', 'ZLCUP4Sb_lw'],
+ ['suriname', '_rOET3m--w0'],
+ ['curaçao', 'EZ_4qtjprEU'],
+ ['western sahara', 'ivXDnAFT-P4'],
+ ['germany', '-l9E7OAexQM'],
+ ['myanmar (burma)', 'X8_hCjxJ5vA'],
+ ['liberia', 'FHzKlolQJr8'],
+ ['mauritania', 'pk0byDy33gg'],
+ ['french southern territories', 'LOhj9gtZl6A'],
+ ['new zealand', 'DLru1iQlCJo'],
+ ['dominica', 'LM6gV9ey8vQ']]
 
-    locations = [["uganda","LjubyL5nwAY"],["czechia","FeOL2myTopk"],["western sahara","ivXDnAFT-P4"]];
     correctAnswer = locations[days][0];
 
     //1724889600
