@@ -1224,7 +1224,7 @@ function fake_load(distance,angle,value,i) {
    } else {
        emoji = "✅"
    }
-   document.getElementById("chosen-emoji"+String(i)).textContent = emoji; // Example emoji
+   document.getElementById("chosen-emoji"+String(i)).textContent = emoji;
 }
 
 function populate(){
@@ -1316,18 +1316,14 @@ function populate(){
    }
 }
 
-function share(won) {
+function share() {
    k = 0
    scores = []
    while(sessionStorage.getItem("percent"+String(k)+"-"+String(days)) != null) {
        scores.push(Number(sessionStorage.getItem("percent"+String(k)+"-"+String(days))));
        k=k+1
    }
-   if(won == true) {
-       showPopup(scores,correctAnswer);
-   } else {
-       showPopup(scores,correctAnswer);
-   }
+   showPopup(scores,correctAnswer);
 }
 
 function calculate_distance(guess){
@@ -1706,7 +1702,7 @@ function calcCrow(lat1, lon1, lat2, lon2)
                        } else {
                            document.getElementById("grid"+String(i)).style.gridTemplateColumns = '300px 300px 80px';
                        }
-                       if(score == 100) {
+                       if(score == 100 || i==5) {
                            k = 0
                            scores = []
                            while(sessionStorage.getItem("percent"+String(k)+"-"+String(days)) != null) {
@@ -1719,15 +1715,6 @@ function calcCrow(lat1, lon1, lat2, lon2)
                            document.getElementById('submit-btn').style.backgroundColor = "#008000";
                        }
                        document.getElementById('submit-btn').disabled = false;
-                       
-                       if(distance == 0) {
-                           share(true);
-                       } else {
-                           if(i == 5) {
-                               share(false);
-                           }
-                       }
-
                    }, 1000);
                }
            }, intervalSpeed);
