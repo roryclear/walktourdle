@@ -1,4 +1,14 @@
 <!-- https://www.youtube.com/watch?v=ZwC74uv3zic -->
+ <head></head>
+ <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VNE6R8FFTG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VNE6R8FFTG');
+</script>
 <body onload="populate()">
 <div class="yt-embed-holder">
     <iframe width="560" id="ytvid" height="315" src="" 
@@ -947,7 +957,7 @@ function fake_load(distance,angle,value,i) {
             emoji = "⬆️"
         }
     } else {
-        emoji = "😎"
+        emoji = "✅"
     }
     document.getElementById("chosen-emoji"+String(i)).textContent = emoji; // Example emoji
 }
