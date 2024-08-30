@@ -326,8 +326,8 @@
            <option value="st. kitts &amp; nevis">🇰🇳St. Kitts &amp; Nevis</option>
            <option value="st. lucia">🇱🇨St. Lucia</option>
            <option value="st. martin">🇲🇫St. Martin</option>
-           <option value="st. pierre &amp; miquelon">🇵🇲St. Pierre &amp; Miquelon</option>
-           <option value="st. vincent &amp; grenadines">🇻🇨St. Vincent &amp; Grenadines</option>
+           <option value="st. pierre & miquelon">🇵🇲St. Pierre &amp; Miquelon</option>
+           <option value="st. vincent & grenadines">🇻🇨St. Vincent &amp; Grenadines</option>
            <option value="sudan">🇸🇩Sudan</option>
            <option value="suriname">🇸🇷Suriname</option>
            <option value="svalbard &amp; jan mayen">🇸🇯Svalbard &amp; Jan Mayen</option>
@@ -343,7 +343,7 @@
            <option value="togo">🇹🇬Togo</option>
            <option value="tokelau">🇹🇰Tokelau</option>
            <option value="tonga">🇹🇴Tonga</option>
-           <option value="trinidad &amp; tobago">🇹🇹Trinidad &amp; Tobago</option>
+           <option value="trinidad & tobago">🇹🇹Trinidad &amp; Tobago</option>
            <option value="tristan da cunha">🇹🇦Tristan Da Cunha</option>
            <option value="tunisia">🇹🇳Tunisia</option>
            <option value="turkey">🇹🇷Turkey</option>
@@ -1244,7 +1244,12 @@ function populate(){
    locations = ['uganda', 'czechia', 'congo - brazzaville', 'senegal', 
    'british virgin islands', 'hungary', 'suriname', 'curaçao', 'western sahara', 
    'germany', 'myanmar (burma)', 'liberia', 'mauritania', 'french southern territories', 
-   'new zealand', 'dominica']
+   'new zealand', 'dominica','england','madagascar','singapore','india','costa rica',
+    'fiji','armenia','kosovo','niue','guatemala','nigeria','russia','somalia',
+    'vatican city','eritrea','liechtenstein','bangladesh','scotland','malawi',
+    'pakistan','timor-leste','st. pierre & miquelon','switzerland','uruguay',
+    'iraq','spain','mayotte','micronesia','montserrat','georgia','bulgaria','trinidad & tobago',
+    'qatar','cambodia']
 
 
     videos = {
@@ -1263,7 +1268,41 @@ function populate(){
     "senegal": "_gWqyfJ0knU",
     "suriname": "_rOET3m--w0",
     "uganda": "LjubyL5nwAY",
-    "western sahara": "ivXDnAFT-P4"
+    "western sahara": "ivXDnAFT-P4",
+    "england":"YZprzLHgK9o",
+    "madagascar":"15auGypKX_I",
+    "singapore":"O00fnIJ1tPc",
+    "india":"mUVPj3kQs4Q",
+    "costa rica":"3Nzogfxj2vQ",
+    "fiji":"lhXGD78jPcI",
+    "armenia":"GUzr2UQXCDA",
+    "kosovo":"k2PNn5y4XBg",
+    "niue":"qjFNCd_KRoI",
+    "guatemala":"G7NHGvb0Q",
+    "nigeria":"dcMJwGmNnMU",
+    "russia":"0WSfGXVO8Kk",
+    "somalia":"RwMph5sV1HA",
+    "vatican city":"MwmRJB3SWGs",
+    "eritrea":"2wWnTQcPCk8",
+    "liechtenstein":"kqsFnxDNEn0",
+    "bangladesh":"uRXcw5q_XAs",
+    "scotland":"darrlrIVVoo",
+    "malawi":"cNnkZF1-YxM",
+    "pakistan":"TfiGzMlLy5g",
+    "timor-leste":"4froE08ZEAU",
+    "st. pierre & miquelon":"2uqdJGTZyFQ",
+    "switzerland":"Bq4rmeIvJbs",
+    "uruguay":"8hVETnRpG_o",
+    "iraq":"oXsumCr5LqI",
+    "spain":"T3KE-UVrjbI",
+    "mayotte":"NkhpDq5Rud0",
+    "micronesia":"wd-KbKAp2SM",
+    "montserrat":"xihCq-ouDTw",
+    "georgia":"Mdff4r6KzIw",
+    "bulgaria":"zg39KFRfgVQ",
+    "trinidad & tobago":"mVeuedbET6I",
+    "qatar":"cfJ28bNva6s",
+    "cambodia":"IemnHA6Kgls"
     }
 
    correctAnswer = locations[days];
@@ -1274,7 +1313,7 @@ function populate(){
    //&wmode=opaque
    vid = document.getElementById("ytvid")
 
-   vid.src = "https://www.youtube-nocookie.com/embed/"+videos[locations[days]]+"?si=b_kt77svV7CQRb3h&amp;start=330&autoplay=1&mute=1&controls=0&color=white&modestbranding=0&rel=0&playsinline=enable&playlist="+videos[locations[days]]+"&showinfo=0&iv_load_policy=1&cc_load_policy=3&wmode=opaque"
+   vid.src = "https://www.youtube-nocookie.com/embed/"+videos[locations[days]]+"?si=b_kt77svV7CQRb3h&amp;start=240&autoplay=1&mute=1&controls=0&color=white&modestbranding=0&rel=0&playsinline=enable&playlist="+videos[locations[days]]+"&showinfo=0&iv_load_policy=1&cc_load_policy=3&wmode=opaque"
    k = 0
    while(sessionStorage.getItem("guesses"+String(k)+"-"+String(days)) != null && k < 6) {
        guess = sessionStorage.getItem("guesses"+String(k)+"-"+String(days));
