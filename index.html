@@ -2887,8 +2887,11 @@ function populate(){
    //&autoplay=1&mute=1&controls=0&color=white&modestbranding=0&rel=0&playsinline=enable&playlist=FeOL2myTopk&showinfo=0&iv_load_policy=1&cc_load_policy=3
    //&wmode=opaque
    vid = document.getElementById("ytvid")
-   
-   vid.src = "https://www.youtube-nocookie.com/embed/"+loc_data[locations[days]]["video_id"]+"?si=b_kt77svV7CQRb3h&amp;start=240&autoplay=1&mute=1&controls=0&color=white&modestbranding=0&rel=0&playsinline=enable&playlist="+loc_data[locations[days]]["video_id"]+"&showinfo=0&iv_load_policy=1&cc_load_policy=3&wmode=opaque"
+   start_time = 240
+   if(loc_data[locations[days]]["start_time"] != null) {
+    start_time = loc_data[locations[days]]["start_time"];
+   }
+   vid.src = "https://www.youtube-nocookie.com/embed/"+loc_data[locations[days]]["video_id"]+"?si=b_kt77svV7CQRb3h&amp;start="+String(start_time)+"&autoplay=1&mute=1&controls=0&color=white&modestbranding=0&rel=0&playsinline=enable&playlist="+loc_data[locations[days]]["video_id"]+"&showinfo=0&iv_load_policy=1&cc_load_policy=3&wmode=opaque"
    k = 0
    while(sessionStorage.getItem("guesses"+String(k)+"-"+String(days)) != null && k < 6) {
        guess = sessionStorage.getItem("guesses"+String(k)+"-"+String(days));
