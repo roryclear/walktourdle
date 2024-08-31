@@ -1666,9 +1666,9 @@ function calcCrow(lat1, lon1, lat2, lon2)
 
                // Animate filled green emojis
                let filledEmojis = Math.floor(currentPercentage / 20);
-               for (let i = 0; i < filledEmojis; i++) {
-                   emojis[i].textContent = "🟩";
-                   emojis[i].style.opacity = 1; // Make the emoji appear
+               for (let x = 0; x < filledEmojis; x++) {
+                   emojis[x].textContent = "🟩";
+                   emojis[x].style.opacity = 1; // Make the emoji appear
                }
 
                // Handle the yellow emoji only at the end of the animation
