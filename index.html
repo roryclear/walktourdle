@@ -620,7 +620,7 @@ function showPopup(scoreArray, correctAnswer) {
            let greySquares = 5 - greenSquares - yellowSquare;
            return '🟩'.repeat(greenSquares) + '🟨'.repeat(yellowSquare) + '⬜'.repeat(greySquares);
        }).join('<br>');
-       correctAnswerElement.innerHTML = "Correct Answer: "+ location_emojis[correctAnswer] + correctAnswer;
+       correctAnswerElement.innerHTML = "Correct Answer: "+ flags_wikis[correctAnswer]["flag"] + correctAnswer;
        document.getElementById('popup').style.display = 'block';
        document.getElementById('submit-btn').innerHTML = 'Share';
        document.getElementById('submit-btn').onclick = function() { shareScore(); }
@@ -628,8 +628,8 @@ function showPopup(scoreArray, correctAnswer) {
        document.getElementById('locations').style.display = 'none';
        document.getElementById('learn-btn').style.display = 'block';
        document.getElementById('learn-btn').style.height = 'block';
-       document.getElementById('learn-btn').innerHTML = "<a href=\""+wiki_pages[correctAnswer]+"\" target=\"_blank\">"+location_emojis[correctAnswer]+"wiki</a>\
-         &nbsp&nbsp<a href=\"https://www.youtube.com/watch?v="+videos[correctAnswer]+"\" target=\"_blank\">"+location_emojis[correctAnswer]+"video</a>";
+       document.getElementById('learn-btn').innerHTML = "<a href=\""+flags_wikis[correctAnswer]["wiki"]+"\" target=\"_blank\">"+flags_wikis[correctAnswer]["flag"]+"wiki</a>\
+         &nbsp&nbsp<a href=\"https://www.youtube.com/watch?v="+videos[correctAnswer]+"\" target=\"_blank\">"+flags_wikis[correctAnswer]["flag"]+"video</a>";
    }
 
    function hidePopup() {
@@ -658,528 +658,1041 @@ function make_guess(){
    document.getElementById("guess"+String(i)).textContent=guess;
 }
 function fake_load(distance,angle,value,i) {
-   location_emojis = {
-   "afghanistan": "🇦🇫",
-   "albania": "🇦🇱",
-   "algeria": "🇩🇿",
-   "american samoa": "🇦🇸",
-   "andorra": "🇦🇩",
-   "angola": "🇦🇴",
-   "anguilla": "🇦🇮",
-   "antarctica": "🇦🇶",
-   "antigua & barbuda": "🇦🇬",
-   "argentina": "🇦🇷",
-   "armenia": "🇦🇲",
-   "aruba": "🇦🇼",
-   "ascension island": "🇦🇨",
-   "australia": "🇦🇺",
-   "austria": "🇦🇹",
-   "azerbaijan": "🇦🇿",
-   "bahamas": "🇧🇸",
-   "bahrain": "🇧🇭",
-   "bangladesh": "🇧🇩",
-   "barbados": "🇧🇧",
-   "belarus": "🇧🇾",
-   "belgium": "🇧🇪",
-   "belize": "🇧🇿",
-   "benin": "🇧🇯",
-   "bermuda": "🇧🇲",
-   "bhutan": "🇧🇹",
-   "bolivia": "🇧🇴",
-   "bosnia & herzegovina": "🇧🇦",
-   "botswana": "🇧🇼",
-   "bouvet island": "🇧🇻",
-   "brazil": "🇧🇷",
-   "british indian ocean territory": "🇮🇴",
-   "british virgin islands": "🇻🇬",
-   "brunei": "🇧🇳",
-   "bulgaria": "🇧🇬",
-   "burkina faso": "🇧🇫",
-   "burundi": "🇧🇮",
-   "cambodia": "🇰🇭",
-   "cameroon": "🇨🇲",
-   "canada": "🇨🇦",
-   "canary islands": "🇮🇨",
-   "cape verde": "🇨🇻",
-   "caribbean netherlands": "🇧🇶",
-   "cayman islands": "🇰🇾",
-   "central african republic": "🇨🇫",
-   "ceuta & melilla": "🇪🇦",
-   "chad": "🇹🇩",
-   "chile": "🇨🇱",
-   "china": "🇨🇳",
-   "christmas island": "🇨🇽",
-   "clipperton island": "🇨🇵",
-   "cocos (keeling) islands": "🇨🇨",
-   "colombia": "🇨🇴",
-   "comoros": "🇰🇲",
-   "congo - brazzaville": "🇨🇬",
-   "congo - kinshasa": "🇨🇩",
-   "cook islands": "🇨🇰",
-   "costa rica": "🇨🇷",
-   "croatia": "🇭🇷",
-   "cuba": "🇨🇺",
-   "curaçao": "🇨🇼",
-   "cyprus": "🇨🇾",
-   "czechia": "🇨🇿",
-   "côte d’ivoire": "🇨🇮",
-   "denmark": "🇩🇰",
-   "diego garcia": "🇩🇬",
-   "djibouti": "🇩🇯",
-   "dominica": "🇩🇲",
-   "dominican republic": "🇩🇴",
-   "ecuador": "🇪🇨",
-   "egypt": "🇪🇬",
-   "el salvador": "🇸🇻",
-   "england": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-   "equatorial guinea": "🇬🇶",
-   "eritrea": "🇪🇷",
-   "estonia": "🇪🇪",
-   "eswatini": "🇸🇿",
-   "ethiopia": "🇪🇹",
-   "falkland islands": "🇫🇰",
-   "fiji": "🇫🇯",
-   "finland": "🇫🇮",
-   "france": "🇫🇷",
-   "french guiana": "🇬🇫",
-   "french polynesia": "🇵🇫",
-   "french southern territories": "🇹🇫",
-   "gabon": "🇬🇦",
-   "gambia": "🇬🇲",
-   "georgia": "🇬🇪",
-   "germany": "🇩🇪",
-   "ghana": "🇬🇭",
-   "gibraltar": "🇬🇮",
-   "greece": "🇬🇷",
-   "greenland": "🇬🇱",
-   "grenada": "🇬🇩",
-   "guadeloupe": "🇬🇵",
-   "guam": "🇬🇺",
-   "guatemala": "🇬🇹",
-   "guernsey": "🇬🇬",
-   "guinea": "🇬🇳",
-   "guinea-bissau": "🇬🇼",
-   "guyana": "🇬🇾",
-   "haiti": "🇭🇹",
-   "heard & mcdonald islands": "🇭🇲",
-   "honduras": "🇭🇳",
-   "hong kong sar china": "🇭🇰",
-   "hungary": "🇭🇺",
-   "iceland": "🇮🇸",
-   "india": "🇮🇳",
-   "indonesia": "🇮🇩",
-   "iran": "🇮🇷",
-   "iraq": "🇮🇶",
-   "ireland": "🇮🇪",
-   "isle of man": "🇮🇲",
-   "israel": "🇮🇱",
-   "italy": "🇮🇹",
-   "jamaica": "🇯🇲",
-   "japan": "🇯🇵",
-   "jersey": "🇯🇪",
-   "jordan": "🇯🇴",
-   "kazakhstan": "🇰🇿",
-   "kenya": "🇰🇪",
-   "kiribati": "🇰🇮",
-   "kosovo": "🇽🇰",
-   "kuwait": "🇰🇼",
-   "kyrgyzstan": "🇰🇬",
-   "laos": "🇱🇦",
-   "latvia": "🇱🇻",
-   "lebanon": "🇱🇧",
-   "lesotho": "🇱🇸",
-   "liberia": "🇱🇷",
-   "libya": "🇱🇾",
-   "liechtenstein": "🇱🇮",
-   "lithuania": "🇱🇹",
-   "luxembourg": "🇱🇺",
-   "macao sar china": "🇲🇴",
-   "madagascar": "🇲🇬",
-   "malawi": "🇲🇼",
-   "malaysia": "🇲🇾",
-   "maldives": "🇲🇻",
-   "mali": "🇲🇱",
-   "malta": "🇲🇹",
-   "marshall islands": "🇲🇭",
-   "martinique": "🇲🇶",
-   "mauritania": "🇲🇷",
-   "mauritius": "🇲🇺",
-   "mayotte": "🇾🇹",
-   "mexico": "🇲🇽",
-   "micronesia": "🇫🇲",
-   "moldova": "🇲🇩",
-   "monaco": "🇲🇨",
-   "mongolia": "🇲🇳",
-   "montenegro": "🇲🇪",
-   "montserrat": "🇲🇸",
-   "morocco": "🇲🇦",
-   "mozambique": "🇲🇿",
-   "myanmar (burma)": "🇲🇲",
-   "namibia": "🇳🇦",
-   "nauru": "🇳🇷",
-   "nepal": "🇳🇵",
-   "netherlands": "🇳🇱",
-   "new caledonia": "🇳🇨",
-   "new zealand": "🇳🇿",
-   "nicaragua": "🇳🇮",
-   "niger": "🇳🇪",
-   "nigeria": "🇳🇬",
-   "niue": "🇳🇺",
-   "norfolk island": "🇳🇫",
-   "north korea": "🇰🇵",
-   "north macedonia": "🇲🇰",
-   "northern mariana islands": "🇲🇵",
-   "norway": "🇳🇴",
-   "oman": "🇴🇲",
-   "pakistan": "🇵🇰",
-   "palau": "🇵🇼",
-   "palestinian territories": "🇵🇸",
-   "panama": "🇵🇦",
-   "papua new guinea": "🇵🇬",
-   "paraguay": "🇵🇾",
-   "peru": "🇵🇪",
-   "philippines": "🇵🇭",
-   "pitcairn islands": "🇵🇳",
-   "poland": "🇵🇱",
-   "portugal": "🇵🇹",
-   "puerto rico": "🇵🇷",
-   "qatar": "🇶🇦",
-   "romania": "🇷🇴",
-   "russia": "🇷🇺",
-   "rwanda": "🇷🇼",
-   "réunion": "🇷🇪",
-   "samoa": "🇼🇸",
-   "san marino": "🇸🇲",
-   "saudi arabia": "🇸🇦",
-   "scotland": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
-   "senegal": "🇸🇳",
-   "serbia": "🇷🇸",
-   "seychelles": "🇸🇨",
-   "sierra leone": "🇸🇱",
-   "singapore": "🇸🇬",
-   "sint maarten": "🇸🇽",
-   "slovakia": "🇸🇰",
-   "slovenia": "🇸🇮",
-   "solomon islands": "🇸🇧",
-   "somalia": "🇸🇴",
-   "south africa": "🇿🇦",
-   "south georgia & south sandwich islands": "🇬🇸",
-   "south korea": "🇰🇷",
-   "south sudan": "🇸🇸",
-   "spain": "🇪🇸",
-   "sri lanka": "🇱🇰",
-   "st. barthélemy": "🇧🇱",
-   "st. helena": "🇸🇭",
-   "st. kitts & nevis": "🇰🇳",
-   "st. lucia": "🇱🇨",
-   "st. martin": "🇲🇫",
-   "st. pierre & miquelon": "🇵🇲",
-   "st. vincent & grenadines": "🇻🇨",
-   "sudan": "🇸🇩",
-   "suriname": "🇸🇷",
-   "svalbard & jan mayen": "🇸🇯",
-   "sweden": "🇸🇪",
-   "switzerland": "🇨🇭",
-   "syria": "🇸🇾",
-   "são tomé & príncipe": "🇸🇹",
-   "taiwan": "🇹🇼",
-   "tajikistan": "🇹🇯",
-   "tanzania": "🇹🇿",
-   "thailand": "🇹🇭",
-   "timor-leste": "🇹🇱",
-   "togo": "🇹🇬",
-   "tokelau": "🇹🇰",
-   "tonga": "🇹🇴",
-   "trinidad & tobago": "🇹🇹",
-   "tristan da cunha": "🇹🇦",
-   "tunisia": "🇹🇳",
-   "turkey": "🇹🇷",
-   "turkmenistan": "🇹🇲",
-   "turks & caicos islands": "🇹🇨",
-   "tuvalu": "🇹🇻",
-   "u.s. outlying islands": "🇺🇲",
-   "u.s. virgin islands": "🇻🇮",
-   "uganda": "🇺🇬",
-   "ukraine": "🇺🇦",
-   "united arab emirates": "🇦🇪",
-   "united kingdom": "🇬🇧",
-   "united states": "🇺🇸",
-   "uruguay": "🇺🇾",
-   "uzbekistan": "🇺🇿",
-   "vanuatu": "🇻🇺",
-   "vatican city": "🇻🇦",
-   "venezuela": "🇻🇪",
-   "vietnam": "🇻🇳",
-   "wales": "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
-   "wallis & futuna": "🇼🇫",
-   "western sahara": "🇪🇭",
-   "yemen": "🇾🇪",
-   "zambia": "🇿🇲",
-   "zimbabwe": "🇿🇼",
-   "åland islands": "🇦🇽"
-   };
-
-  wiki_pages = {
-  "afghanistan": "https://en.wikipedia.org/wiki/Afghanistan",
-  "albania": "https://en.wikipedia.org/wiki/Albania",
-  "algeria": "https://en.wikipedia.org/wiki/Algeria",
-  "american samoa": "https://en.wikipedia.org/wiki/American_Samoa",
-  "andorra": "https://en.wikipedia.org/wiki/Andorra",
-  "angola": "https://en.wikipedia.org/wiki/Angola",
-  "anguilla": "https://en.wikipedia.org/wiki/Anguilla",
-  "antarctica": "https://en.wikipedia.org/wiki/Antarctica",
-  "antigua & barbuda": "https://en.wikipedia.org/wiki/Antigua_and_Barbuda",
-  "argentina": "https://en.wikipedia.org/wiki/Argentina",
-  "armenia": "https://en.wikipedia.org/wiki/Armenia",
-  "aruba": "https://en.wikipedia.org/wiki/Aruba",
-  "ascension island": "https://en.wikipedia.org/wiki/Ascension_Island",
-  "australia": "https://en.wikipedia.org/wiki/Australia",
-  "austria": "https://en.wikipedia.org/wiki/Austria",
-  "azerbaijan": "https://en.wikipedia.org/wiki/Azerbaijan",
-  "bahamas": "https://en.wikipedia.org/wiki/The_Bahamas",
-  "bahrain": "https://en.wikipedia.org/wiki/Bahrain",
-  "bangladesh": "https://en.wikipedia.org/wiki/Bangladesh",
-  "barbados": "https://en.wikipedia.org/wiki/Barbados",
-  "belarus": "https://en.wikipedia.org/wiki/Belarus",
-  "belgium": "https://en.wikipedia.org/wiki/Belgium",
-  "belize": "https://en.wikipedia.org/wiki/Belize",
-  "benin": "https://en.wikipedia.org/wiki/Benin",
-  "bermuda": "https://en.wikipedia.org/wiki/Bermuda",
-  "bhutan": "https://en.wikipedia.org/wiki/Bhutan",
-  "bolivia": "https://en.wikipedia.org/wiki/Bolivia",
-  "bosnia & herzegovina": "https://en.wikipedia.org/wiki/Bosnia_and_Herzegovina",
-  "botswana": "https://en.wikipedia.org/wiki/Botswana",
-  "bouvet island": "https://en.wikipedia.org/wiki/Bouvet_Island",
-  "brazil": "https://en.wikipedia.org/wiki/Brazil",
-  "british indian ocean territory": "https://en.wikipedia.org/wiki/British_Indian_Ocean_Territory",
-  "british virgin islands": "https://en.wikipedia.org/wiki/British_Virgin_Islands",
-  "brunei": "https://en.wikipedia.org/wiki/Brunei",
-  "bulgaria": "https://en.wikipedia.org/wiki/Bulgaria",
-  "burkina faso": "https://en.wikipedia.org/wiki/Burkina_Faso",
-  "burundi": "https://en.wikipedia.org/wiki/Burundi",
-  "cambodia": "https://en.wikipedia.org/wiki/Cambodia",
-  "cameroon": "https://en.wikipedia.org/wiki/Cameroon",
-  "canada": "https://en.wikipedia.org/wiki/Canada",
-  "canary islands": "https://en.wikipedia.org/wiki/Canary_Islands",
-  "cape verde": "https://en.wikipedia.org/wiki/Cape_Verde",
-  "caribbean netherlands": "https://en.wikipedia.org/wiki/Caribbean_Netherlands",
-  "cayman islands": "https://en.wikipedia.org/wiki/Cayman_Islands",
-  "central african republic": "https://en.wikipedia.org/wiki/Central_African_Republic",
-  "ceuta & melilla": "https://en.wikipedia.org/wiki/Ceuta_and_Melilla",
-  "chad": "https://en.wikipedia.org/wiki/Chad",
-  "chile": "https://en.wikipedia.org/wiki/Chile",
-  "china": "https://en.wikipedia.org/wiki/China",
-  "christmas island": "https://en.wikipedia.org/wiki/Christmas_Island",
-  "clipperton island": "https://en.wikipedia.org/wiki/Clipperton_Island",
-  "cocos (keeling) islands": "https://en.wikipedia.org/wiki/Cocos_(Keeling)_Islands",
-  "colombia": "https://en.wikipedia.org/wiki/Colombia",
-  "comoros": "https://en.wikipedia.org/wiki/Comoros",
-  "congo - brazzaville": "https://en.wikipedia.org/wiki/Republic_of_the_Congo",
-  "congo - kinshasa": "https://en.wikipedia.org/wiki/Democratic_Republic_of_the_Congo",
-  "cook islands": "https://en.wikipedia.org/wiki/Cook_Islands",
-  "costa rica": "https://en.wikipedia.org/wiki/Costa_Rica",
-  "croatia": "https://en.wikipedia.org/wiki/Croatia",
-  "cuba": "https://en.wikipedia.org/wiki/Cuba",
-  "curaçao": "https://en.wikipedia.org/wiki/Cura%C3%A7ao",
-  "cyprus": "https://en.wikipedia.org/wiki/Cyprus",
-  "czechia": "https://en.wikipedia.org/wiki/Czech_Republic",
-  "côte d’ivoire": "https://en.wikipedia.org/wiki/Ivory_Coast",
-  "denmark": "https://en.wikipedia.org/wiki/Denmark",
-  "diego garcia": "https://en.wikipedia.org/wiki/Diego_Garcia",
-  "djibouti": "https://en.wikipedia.org/wiki/Djibouti",
-  "dominica": "https://en.wikipedia.org/wiki/Dominica",
-  "dominican republic": "https://en.wikipedia.org/wiki/Dominican_Republic",
-  "ecuador": "https://en.wikipedia.org/wiki/Ecuador",
-  "egypt": "https://en.wikipedia.org/wiki/Egypt",
-  "el salvador": "https://en.wikipedia.org/wiki/El_Salvador",
-  "england": "https://en.wikipedia.org/wiki/England",
-  "equatorial guinea": "https://en.wikipedia.org/wiki/Equatorial_Guinea",
-  "eritrea": "https://en.wikipedia.org/wiki/Eritrea",
-  "estonia": "https://en.wikipedia.org/wiki/Estonia",
-  "eswatini": "https://en.wikipedia.org/wiki/Eswatini",
-  "ethiopia": "https://en.wikipedia.org/wiki/Ethiopia",
-  "falkland islands": "https://en.wikipedia.org/wiki/Falkland_Islands",
-  "fiji": "https://en.wikipedia.org/wiki/Fiji",
-  "finland": "https://en.wikipedia.org/wiki/Finland",
-  "france": "https://en.wikipedia.org/wiki/France",
-  "french guiana": "https://en.wikipedia.org/wiki/French_Guiana",
-  "french polynesia": "https://en.wikipedia.org/wiki/French_Polynesia",
-  "french southern territories": "https://en.wikipedia.org/wiki/French_Southern_and_Antarctic_Lands",
-  "gabon": "https://en.wikipedia.org/wiki/Gabon",
-  "gambia": "https://en.wikipedia.org/wiki/The_Gambia",
-  "georgia": "https://en.wikipedia.org/wiki/Georgia_(country)",
-  "germany": "https://en.wikipedia.org/wiki/Germany",
-  "ghana": "https://en.wikipedia.org/wiki/Ghana",
-  "gibraltar": "https://en.wikipedia.org/wiki/Gibraltar",
-  "greece": "https://en.wikipedia.org/wiki/Greece",
-  "greenland": "https://en.wikipedia.org/wiki/Greenland",
-  "grenada": "https://en.wikipedia.org/wiki/Grenada",
-  "guadeloupe": "https://en.wikipedia.org/wiki/Guadeloupe",
-  "guam": "https://en.wikipedia.org/wiki/Guam",
-  "guatemala": "https://en.wikipedia.org/wiki/Guatemala",
-  "guernsey": "https://en.wikipedia.org/wiki/Guernsey",
-  "guinea": "https://en.wikipedia.org/wiki/Guinea",
-  "guinea-bissau": "https://en.wikipedia.org/wiki/Guinea-Bissau",
-  "guyana": "https://en.wikipedia.org/wiki/Guyana",
-  "haiti": "https://en.wikipedia.org/wiki/Haiti",
-  "heard & mcdonald islands": "https://en.wikipedia.org/wiki/Heard_Island_and_McDonald_Islands",
-  "honduras": "https://en.wikipedia.org/wiki/Honduras",
-  "hong kong sar china": "https://en.wikipedia.org/wiki/Hong_Kong",
-  "hungary": "https://en.wikipedia.org/wiki/Hungary",
-  "iceland": "https://en.wikipedia.org/wiki/Iceland",
-  "india": "https://en.wikipedia.org/wiki/India",
-  "indonesia": "https://en.wikipedia.org/wiki/Indonesia",
-  "iran": "https://en.wikipedia.org/wiki/Iran",
-  "iraq": "https://en.wikipedia.org/wiki/Iraq",
-  "ireland": "https://en.wikipedia.org/wiki/Republic_of_Ireland",
-  "isle of man": "https://en.wikipedia.org/wiki/Isle_of_Man",
-  "israel": "https://en.wikipedia.org/wiki/Israel",
-  "italy": "https://en.wikipedia.org/wiki/Italy",
-  "jamaica": "https://en.wikipedia.org/wiki/Jamaica",
-  "japan": "https://en.wikipedia.org/wiki/Japan",
-  "jersey": "https://en.wikipedia.org/wiki/Jersey",
-  "jordan": "https://en.wikipedia.org/wiki/Jordan",
-  "kazakhstan": "https://en.wikipedia.org/wiki/Kazakhstan",
-  "kenya": "https://en.wikipedia.org/wiki/Kenya",
-  "kiribati": "https://en.wikipedia.org/wiki/Kiribati",
-  "kosovo": "https://en.wikipedia.org/wiki/Kosovo",
-  "kuwait": "https://en.wikipedia.org/wiki/Kuwait",
-  "kyrgyzstan": "https://en.wikipedia.org/wiki/Kyrgyzstan",
-  "laos": "https://en.wikipedia.org/wiki/Laos",
-  "latvia": "https://en.wikipedia.org/wiki/Latvia",
-  "lebanon": "https://en.wikipedia.org/wiki/Lebanon",
-  "lesotho": "https://en.wikipedia.org/wiki/Lesotho",
-  "liberia": "https://en.wikipedia.org/wiki/Liberia",
-  "libya": "https://en.wikipedia.org/wiki/Libya",
-  "liechtenstein": "https://en.wikipedia.org/wiki/Liechtenstein",
-  "lithuania": "https://en.wikipedia.org/wiki/Lithuania",
-  "luxembourg": "https://en.wikipedia.org/wiki/Luxembourg",
-  "macao sar china": "https://en.wikipedia.org/wiki/Macau",
-  "madagascar": "https://en.wikipedia.org/wiki/Madagascar",
-  "malawi": "https://en.wikipedia.org/wiki/Malawi",
-  "malaysia": "https://en.wikipedia.org/wiki/Malaysia",
-  "maldives": "https://en.wikipedia.org/wiki/Maldives",
-  "mali": "https://en.wikipedia.org/wiki/Mali",
-  "malta": "https://en.wikipedia.org/wiki/Malta",
-  "marshall islands": "https://en.wikipedia.org/wiki/Marshall_Islands",
-  "martinique": "https://en.wikipedia.org/wiki/Martinique",
-  "mauritania": "https://en.wikipedia.org/wiki/Mauritania",
-  "mauritius": "https://en.wikipedia.org/wiki/Mauritius",
-  "mayotte": "https://en.wikipedia.org/wiki/Mayotte",
-  "mexico": "https://en.wikipedia.org/wiki/Mexico",
-  "micronesia": "https://en.wikipedia.org/wiki/Federated_States_of_Micronesia",
-  "moldova": "https://en.wikipedia.org/wiki/Moldova",
-  "monaco": "https://en.wikipedia.org/wiki/Monaco",
-  "mongolia": "https://en.wikipedia.org/wiki/Mongolia",
-  "montenegro": "https://en.wikipedia.org/wiki/Montenegro",
-  "montserrat": "https://en.wikipedia.org/wiki/Montserrat",
-  "morocco": "https://en.wikipedia.org/wiki/Morocco",
-  "mozambique": "https://en.wikipedia.org/wiki/Mozambique",
-  "myanmar (burma)": "https://en.wikipedia.org/wiki/Myanmar",
-  "namibia": "https://en.wikipedia.org/wiki/Namibia",
-  "nauru": "https://en.wikipedia.org/wiki/Nauru",
-  "nepal": "https://en.wikipedia.org/wiki/Nepal",
-  "netherlands": "https://en.wikipedia.org/wiki/Netherlands",
-  "new caledonia": "https://en.wikipedia.org/wiki/New_Caledonia",
-  "new zealand": "https://en.wikipedia.org/wiki/New_Zealand",
-  "nicaragua": "https://en.wikipedia.org/wiki/Nicaragua",
-  "niger": "https://en.wikipedia.org/wiki/Niger",
-  "nigeria": "https://en.wikipedia.org/wiki/Nigeria",
-  "niue": "https://en.wikipedia.org/wiki/Niue",
-  "norfolk island": "https://en.wikipedia.org/wiki/Norfolk_Island",
-  "north korea": "https://en.wikipedia.org/wiki/North_Korea",
-  "north macedonia": "https://en.wikipedia.org/wiki/North_Macedonia",
-  "northern mariana islands": "https://en.wikipedia.org/wiki/Northern_Mariana_Islands",
-  "norway": "https://en.wikipedia.org/wiki/Norway",
-  "oman": "https://en.wikipedia.org/wiki/Oman",
-  "pakistan": "https://en.wikipedia.org/wiki/Pakistan",
-  "palau": "https://en.wikipedia.org/wiki/Palau",
-  "palestinian territories": "https://en.wikipedia.org/wiki/State_of_Palestine",
-  "panama": "https://en.wikipedia.org/wiki/Panama",
-  "papua new guinea": "https://en.wikipedia.org/wiki/Papua_New_Guinea",
-  "paraguay": "https://en.wikipedia.org/wiki/Paraguay",
-  "peru": "https://en.wikipedia.org/wiki/Peru",
-  "philippines": "https://en.wikipedia.org/wiki/Philippines",
-  "pitcairn islands": "https://en.wikipedia.org/wiki/Pitcairn_Islands",
-  "poland": "https://en.wikipedia.org/wiki/Poland",
-  "portugal": "https://en.wikipedia.org/wiki/Portugal",
-  "puerto rico": "https://en.wikipedia.org/wiki/Puerto_Rico",
-  "qatar": "https://en.wikipedia.org/wiki/Qatar",
-  "romania": "https://en.wikipedia.org/wiki/Romania",
-  "russia": "https://en.wikipedia.org/wiki/Russia",
-  "rwanda": "https://en.wikipedia.org/wiki/Rwanda",
-  "réunion": "https://en.wikipedia.org/wiki/R%C3%A9union",
-  "samoa": "https://en.wikipedia.org/wiki/Samoa",
-  "san marino": "https://en.wikipedia.org/wiki/San_Marino",
-  "saudi arabia": "https://en.wikipedia.org/wiki/Saudi_Arabia",
-  "scotland": "https://en.wikipedia.org/wiki/Scotland",
-  "senegal": "https://en.wikipedia.org/wiki/Senegal",
-  "serbia": "https://en.wikipedia.org/wiki/Serbia",
-  "seychelles": "https://en.wikipedia.org/wiki/Seychelles",
-  "sierra leone": "https://en.wikipedia.org/wiki/Sierra_Leone",
-  "singapore": "https://en.wikipedia.org/wiki/Singapore",
-  "sint maarten": "https://en.wikipedia.org/wiki/Sint_Maarten",
-  "slovakia": "https://en.wikipedia.org/wiki/Slovakia",
-  "slovenia": "https://en.wikipedia.org/wiki/Slovenia",
-  "solomon islands": "https://en.wikipedia.org/wiki/Solomon_Islands",
-  "somalia": "https://en.wikipedia.org/wiki/Somalia",
-  "south africa": "https://en.wikipedia.org/wiki/South_Africa",
-  "south georgia & south sandwich islands": "https://en.wikipedia.org/wiki/South_Georgia_and_the_South_Sandwich_Islands",
-  "south korea": "https://en.wikipedia.org/wiki/South_Korea",
-  "south sudan": "https://en.wikipedia.org/wiki/South_Sudan",
-  "spain": "https://en.wikipedia.org/wiki/Spain",
-  "sri lanka": "https://en.wikipedia.org/wiki/Sri_Lanka",
-  "st. barthélemy": "https://en.wikipedia.org/wiki/Saint_Barth%C3%A9lemy",
-  "st. helena": "https://en.wikipedia.org/wiki/Saint_Helena",
-  "st. kitts & nevis": "https://en.wikipedia.org/wiki/Saint_Kitts_and_Nevis",
-  "st. lucia": "https://en.wikipedia.org/wiki/Saint_Lucia",
-  "st. martin": "https://en.wikipedia.org/wiki/Saint_Martin",
-  "st. pierre & miquelon": "https://en.wikipedia.org/wiki/Saint_Pierre_and_Miquelon",
-  "st. vincent & grenadines": "https://en.wikipedia.org/wiki/Saint_Vincent_and_the_Grenadines",
-  "sudan": "https://en.wikipedia.org/wiki/Sudan",
-  "suriname": "https://en.wikipedia.org/wiki/Suriname",
-  "svalbard & jan mayen": "https://en.wikipedia.org/wiki/Svalbard_and_Jan_Mayen",
-  "sweden": "https://en.wikipedia.org/wiki/Sweden",
-  "switzerland": "https://en.wikipedia.org/wiki/Switzerland",
-  "syria": "https://en.wikipedia.org/wiki/Syria",
-  "são tomé & príncipe": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9_and_Pr%C3%ADncipe",
-  "taiwan": "https://en.wikipedia.org/wiki/Taiwan",
-  "tajikistan": "https://en.wikipedia.org/wiki/Tajikistan",
-  "tanzania": "https://en.wikipedia.org/wiki/Tanzania",
-  "thailand": "https://en.wikipedia.org/wiki/Thailand",
-  "timor-leste": "https://en.wikipedia.org/wiki/East_Timor",
-  "togo": "https://en.wikipedia.org/wiki/Togo",
-  "tokelau": "https://en.wikipedia.org/wiki/Tokelau",
-  "tonga": "https://en.wikipedia.org/wiki/Tonga",
-  "trinidad & tobago": "https://en.wikipedia.org/wiki/Trinidad_and_Tobago",
-  "tristan da cunha": "https://en.wikipedia.org/wiki/Tristan_da_Cunha",
-  "tunisia": "https://en.wikipedia.org/wiki/Tunisia",
-  "turkey": "https://en.wikipedia.org/wiki/Turkey",
-  "turkmenistan": "https://en.wikipedia.org/wiki/Turkmenistan",
-  "turks & caicos islands": "https://en.wikipedia.org/wiki/Turks_and_Caicos_Islands",
-  "tuvalu": "https://en.wikipedia.org/wiki/Tuvalu",
-  "u.s. outlying islands": "https://en.wikipedia.org/wiki/United_States_Minor_Outlying_Islands",
-  "u.s. virgin islands": "https://en.wikipedia.org/wiki/United_States_Virgin_Islands",
-  "uganda": "https://en.wikipedia.org/wiki/Uganda",
-  "ukraine": "https://en.wikipedia.org/wiki/Ukraine",
-  "united arab emirates": "https://en.wikipedia.org/wiki/United_Arab_Emirates",
-  "united kingdom": "https://en.wikipedia.org/wiki/United_Kingdom",
-  "united states": "https://en.wikipedia.org/wiki/United_States",
-  "uruguay": "https://en.wikipedia.org/wiki/Uruguay",
-  "uzbekistan": "https://en.wikipedia.org/wiki/Uzbekistan",
-  "vanuatu": "https://en.wikipedia.org/wiki/Vanuatu",
-  "vatican city": "https://en.wikipedia.org/wiki/Vatican_City",
-  "venezuela": "https://en.wikipedia.org/wiki/Venezuela",
-  "vietnam": "https://en.wikipedia.org/wiki/Vietnam",
-  "wales": "https://en.wikipedia.org/wiki/Wales",
-  "wallis & futuna": "https://en.wikipedia.org/wiki/Wallis_and_Futuna",
-  "western sahara": "https://en.wikipedia.org/wiki/Western_Sahara",
-  "yemen": "https://en.wikipedia.org/wiki/Yemen",
-  "zambia": "https://en.wikipedia.org/wiki/Zambia",
-  "zimbabwe": "https://en.wikipedia.org/wiki/Zimbabwe",
-  "åland islands": "https://en.wikipedia.org/wiki/%C3%85land"
+flags_wikis = {
+  "afghanistan": {
+    "flag": "🇦🇫",
+    "wiki": "https://en.wikipedia.org/wiki/Afghanistan"
+  },
+  "albania": {
+    "flag": "🇦🇱",
+    "wiki": "https://en.wikipedia.org/wiki/Albania"
+  },
+  "algeria": {
+    "flag": "🇩🇿",
+    "wiki": "https://en.wikipedia.org/wiki/Algeria"
+  },
+  "american samoa": {
+    "flag": "🇦🇸",
+    "wiki": "https://en.wikipedia.org/wiki/American_Samoa"
+  },
+  "andorra": {
+    "flag": "🇦🇩",
+    "wiki": "https://en.wikipedia.org/wiki/Andorra"
+  },
+  "angola": {
+    "flag": "🇦🇴",
+    "wiki": "https://en.wikipedia.org/wiki/Angola"
+  },
+  "anguilla": {
+    "flag": "🇦🇮",
+    "wiki": "https://en.wikipedia.org/wiki/Anguilla"
+  },
+  "antarctica": {
+    "flag": "🇦🇶",
+    "wiki": "https://en.wikipedia.org/wiki/Antarctica"
+  },
+  "antigua & barbuda": {
+    "flag": "🇦🇬",
+    "wiki": "https://en.wikipedia.org/wiki/Antigua_and_Barbuda"
+  },
+  "argentina": {
+    "flag": "🇦🇷",
+    "wiki": "https://en.wikipedia.org/wiki/Argentina"
+  },
+  "armenia": {
+    "flag": "🇦🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Armenia"
+  },
+  "aruba": {
+    "flag": "🇦🇼",
+    "wiki": "https://en.wikipedia.org/wiki/Aruba"
+  },
+  "ascension island": {
+    "flag": "🇦🇨",
+    "wiki": "https://en.wikipedia.org/wiki/Ascension_Island"
+  },
+  "australia": {
+    "flag": "🇦🇺",
+    "wiki": "https://en.wikipedia.org/wiki/Australia"
+  },
+  "austria": {
+    "flag": "🇦🇹",
+    "wiki": "https://en.wikipedia.org/wiki/Austria"
+  },
+  "azerbaijan": {
+    "flag": "🇦🇿",
+    "wiki": "https://en.wikipedia.org/wiki/Azerbaijan"
+  },
+  "bahamas": {
+    "flag": "🇧🇸",
+    "wiki": "https://en.wikipedia.org/wiki/The_Bahamas"
+  },
+  "bahrain": {
+    "flag": "🇧🇭",
+    "wiki": "https://en.wikipedia.org/wiki/Bahrain"
+  },
+  "bangladesh": {
+    "flag": "🇧🇩",
+    "wiki": "https://en.wikipedia.org/wiki/Bangladesh"
+  },
+  "barbados": {
+    "flag": "🇧🇧",
+    "wiki": "https://en.wikipedia.org/wiki/Barbados"
+  },
+  "belarus": {
+    "flag": "🇧🇾",
+    "wiki": "https://en.wikipedia.org/wiki/Belarus"
+  },
+  "belgium": {
+    "flag": "🇧🇪",
+    "wiki": "https://en.wikipedia.org/wiki/Belgium"
+  },
+  "belize": {
+    "flag": "🇧🇿",
+    "wiki": "https://en.wikipedia.org/wiki/Belize"
+  },
+  "benin": {
+    "flag": "🇧🇯",
+    "wiki": "https://en.wikipedia.org/wiki/Benin"
+  },
+  "bermuda": {
+    "flag": "🇧🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Bermuda"
+  },
+  "bhutan": {
+    "flag": "🇧🇹",
+    "wiki": "https://en.wikipedia.org/wiki/Bhutan"
+  },
+  "bolivia": {
+    "flag": "🇧🇴",
+    "wiki": "https://en.wikipedia.org/wiki/Bolivia"
+  },
+  "bosnia & herzegovina": {
+    "flag": "🇧🇦",
+    "wiki": "https://en.wikipedia.org/wiki/Bosnia_and_Herzegovina"
+  },
+  "botswana": {
+    "flag": "🇧🇼",
+    "wiki": "https://en.wikipedia.org/wiki/Botswana"
+  },
+  "bouvet island": {
+    "flag": "🇧🇻",
+    "wiki": "https://en.wikipedia.org/wiki/Bouvet_Island"
+  },
+  "brazil": {
+    "flag": "🇧🇷",
+    "wiki": "https://en.wikipedia.org/wiki/Brazil"
+  },
+  "british indian ocean territory": {
+    "flag": "🇮🇴",
+    "wiki": "https://en.wikipedia.org/wiki/British_Indian_Ocean_Territory"
+  },
+  "british virgin islands": {
+    "flag": "🇻🇬",
+    "wiki": "https://en.wikipedia.org/wiki/British_Virgin_Islands"
+  },
+  "brunei": {
+    "flag": "🇧🇳",
+    "wiki": "https://en.wikipedia.org/wiki/Brunei"
+  },
+  "bulgaria": {
+    "flag": "🇧🇬",
+    "wiki": "https://en.wikipedia.org/wiki/Bulgaria"
+  },
+  "burkina faso": {
+    "flag": "🇧🇫",
+    "wiki": "https://en.wikipedia.org/wiki/Burkina_Faso"
+  },
+  "burundi": {
+    "flag": "🇧🇮",
+    "wiki": "https://en.wikipedia.org/wiki/Burundi"
+  },
+  "cambodia": {
+    "flag": "🇰🇭",
+    "wiki": "https://en.wikipedia.org/wiki/Cambodia"
+  },
+  "cameroon": {
+    "flag": "🇨🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Cameroon"
+  },
+  "canada": {
+    "flag": "🇨🇦",
+    "wiki": "https://en.wikipedia.org/wiki/Canada"
+  },
+  "canary islands": {
+    "flag": "🇮🇨",
+    "wiki": "https://en.wikipedia.org/wiki/Canary_Islands"
+  },
+  "cape verde": {
+    "flag": "🇨🇻",
+    "wiki": "https://en.wikipedia.org/wiki/Cape_Verde"
+  },
+  "caribbean netherlands": {
+    "flag": "🇧🇶",
+    "wiki": "https://en.wikipedia.org/wiki/Caribbean_Netherlands"
+  },
+  "cayman islands": {
+    "flag": "🇰🇾",
+    "wiki": "https://en.wikipedia.org/wiki/Cayman_Islands"
+  },
+  "central african republic": {
+    "flag": "🇨🇫",
+    "wiki": "https://en.wikipedia.org/wiki/Central_African_Republic"
+  },
+  "ceuta & melilla": {
+    "flag": "🇪🇦",
+    "wiki": "https://en.wikipedia.org/wiki/Ceuta_and_Melilla"
+  },
+  "chad": {
+    "flag": "🇹🇩",
+    "wiki": "https://en.wikipedia.org/wiki/Chad"
+  },
+  "chile": {
+    "flag": "🇨🇱",
+    "wiki": "https://en.wikipedia.org/wiki/Chile"
+  },
+  "china": {
+    "flag": "🇨🇳",
+    "wiki": "https://en.wikipedia.org/wiki/China"
+  },
+  "christmas island": {
+    "flag": "🇨🇽",
+    "wiki": "https://en.wikipedia.org/wiki/Christmas_Island"
+  },
+  "clipperton island": {
+    "flag": "🇨🇵",
+    "wiki": "https://en.wikipedia.org/wiki/Clipperton_Island"
+  },
+  "cocos (keeling) islands": {
+    "flag": "🇨🇨",
+    "wiki": "https://en.wikipedia.org/wiki/Cocos_(Keeling)_Islands"
+  },
+  "colombia": {
+    "flag": "🇨🇴",
+    "wiki": "https://en.wikipedia.org/wiki/Colombia"
+  },
+  "comoros": {
+    "flag": "🇰🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Comoros"
+  },
+  "congo - brazzaville": {
+    "flag": "🇨🇬",
+    "wiki": "https://en.wikipedia.org/wiki/Republic_of_the_Congo"
+  },
+  "congo - kinshasa": {
+    "flag": "🇨🇩",
+    "wiki": "https://en.wikipedia.org/wiki/Democratic_Republic_of_the_Congo"
+  },
+  "cook islands": {
+    "flag": "🇨🇰",
+    "wiki": "https://en.wikipedia.org/wiki/Cook_Islands"
+  },
+  "costa rica": {
+    "flag": "🇨🇷",
+    "wiki": "https://en.wikipedia.org/wiki/Costa_Rica"
+  },
+  "croatia": {
+    "flag": "🇭🇷",
+    "wiki": "https://en.wikipedia.org/wiki/Croatia"
+  },
+  "cuba": {
+    "flag": "🇨🇺",
+    "wiki": "https://en.wikipedia.org/wiki/Cuba"
+  },
+  "curaçao": {
+    "flag": "🇨🇼",
+    "wiki": "https://en.wikipedia.org/wiki/Cura%C3%A7ao"
+  },
+  "cyprus": {
+    "flag": "🇨🇾",
+    "wiki": "https://en.wikipedia.org/wiki/Cyprus"
+  },
+  "czechia": {
+    "flag": "🇨🇿",
+    "wiki": "https://en.wikipedia.org/wiki/Czech_Republic"
+  },
+  "côte d’ivoire": {
+    "flag": "🇨🇮",
+    "wiki": "https://en.wikipedia.org/wiki/Ivory_Coast"
+  },
+  "denmark": {
+    "flag": "🇩🇰",
+    "wiki": "https://en.wikipedia.org/wiki/Denmark"
+  },
+  "diego garcia": {
+    "flag": "🇩🇬",
+    "wiki": "https://en.wikipedia.org/wiki/Diego_Garcia"
+  },
+  "djibouti": {
+    "flag": "🇩🇯",
+    "wiki": "https://en.wikipedia.org/wiki/Djibouti"
+  },
+  "dominica": {
+    "flag": "🇩🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Dominica"
+  },
+  "dominican republic": {
+    "flag": "🇩🇴",
+    "wiki": "https://en.wikipedia.org/wiki/Dominican_Republic"
+  },
+  "ecuador": {
+    "flag": "🇪🇨",
+    "wiki": "https://en.wikipedia.org/wiki/Ecuador"
+  },
+  "egypt": {
+    "flag": "🇪🇬",
+    "wiki": "https://en.wikipedia.org/wiki/Egypt"
+  },
+  "el salvador": {
+    "flag": "🇸🇻",
+    "wiki": "https://en.wikipedia.org/wiki/El_Salvador"
+  },
+  "england": {
+    "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    "wiki": "https://en.wikipedia.org/wiki/England"
+  },
+  "equatorial guinea": {
+    "flag": "🇬🇶",
+    "wiki": "https://en.wikipedia.org/wiki/Equatorial_Guinea"
+  },
+  "eritrea": {
+    "flag": "🇪🇷",
+    "wiki": "https://en.wikipedia.org/wiki/Eritrea"
+  },
+  "estonia": {
+    "flag": "🇪🇪",
+    "wiki": "https://en.wikipedia.org/wiki/Estonia"
+  },
+  "eswatini": {
+    "flag": "🇸🇿",
+    "wiki": "https://en.wikipedia.org/wiki/Eswatini"
+  },
+  "ethiopia": {
+    "flag": "🇪🇹",
+    "wiki": "https://en.wikipedia.org/wiki/Ethiopia"
+  },
+  "falkland islands": {
+    "flag": "🇫🇰",
+    "wiki": "https://en.wikipedia.org/wiki/Falkland_Islands"
+  },
+  "fiji": {
+    "flag": "🇫🇯",
+    "wiki": "https://en.wikipedia.org/wiki/Fiji"
+  },
+  "finland": {
+    "flag": "🇫🇮",
+    "wiki": "https://en.wikipedia.org/wiki/Finland"
+  },
+  "france": {
+    "flag": "🇫🇷",
+    "wiki": "https://en.wikipedia.org/wiki/France"
+  },
+  "french guiana": {
+    "flag": "🇬🇫",
+    "wiki": "https://en.wikipedia.org/wiki/French_Guiana"
+  },
+  "french polynesia": {
+    "flag": "🇵🇫",
+    "wiki": "https://en.wikipedia.org/wiki/French_Polynesia"
+  },
+  "french southern territories": {
+    "flag": "🇹🇫",
+    "wiki": "https://en.wikipedia.org/wiki/French_Southern_and_Antarctic_Lands"
+  },
+  "gabon": {
+    "flag": "🇬🇦",
+    "wiki": "https://en.wikipedia.org/wiki/Gabon"
+  },
+  "gambia": {
+    "flag": "🇬🇲",
+    "wiki": "https://en.wikipedia.org/wiki/The_Gambia"
+  },
+  "georgia": {
+    "flag": "🇬🇪",
+    "wiki": "https://en.wikipedia.org/wiki/Georgia_(country)"
+  },
+  "germany": {
+    "flag": "🇩🇪",
+    "wiki": "https://en.wikipedia.org/wiki/Germany"
+  },
+  "ghana": {
+    "flag": "🇬🇭",
+    "wiki": "https://en.wikipedia.org/wiki/Ghana"
+  },
+  "gibraltar": {
+    "flag": "🇬🇮",
+    "wiki": "https://en.wikipedia.org/wiki/Gibraltar"
+  },
+  "greece": {
+    "flag": "🇬🇷",
+    "wiki": "https://en.wikipedia.org/wiki/Greece"
+  },
+  "greenland": {
+    "flag": "🇬🇱",
+    "wiki": "https://en.wikipedia.org/wiki/Greenland"
+  },
+  "grenada": {
+    "flag": "🇬🇩",
+    "wiki": "https://en.wikipedia.org/wiki/Grenada"
+  },
+  "guadeloupe": {
+    "flag": "🇬🇵",
+    "wiki": "https://en.wikipedia.org/wiki/Guadeloupe"
+  },
+  "guam": {
+    "flag": "🇬🇺",
+    "wiki": "https://en.wikipedia.org/wiki/Guam"
+  },
+  "guatemala": {
+    "flag": "🇬🇹",
+    "wiki": "https://en.wikipedia.org/wiki/Guatemala"
+  },
+  "guernsey": {
+    "flag": "🇬🇬",
+    "wiki": "https://en.wikipedia.org/wiki/Guernsey"
+  },
+  "guinea": {
+    "flag": "🇬🇳",
+    "wiki": "https://en.wikipedia.org/wiki/Guinea"
+  },
+  "guinea-bissau": {
+    "flag": "🇬🇼",
+    "wiki": "https://en.wikipedia.org/wiki/Guinea-Bissau"
+  },
+  "guyana": {
+    "flag": "🇬🇾",
+    "wiki": "https://en.wikipedia.org/wiki/Guyana"
+  },
+  "haiti": {
+    "flag": "🇭🇹",
+    "wiki": "https://en.wikipedia.org/wiki/Haiti"
+  },
+  "heard & mcdonald islands": {
+    "flag": "🇭🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Heard_Island_and_McDonald_Islands"
+  },
+  "honduras": {
+    "flag": "🇭🇳",
+    "wiki": "https://en.wikipedia.org/wiki/Honduras"
+  },
+  "hong kong sar china": {
+    "flag": "🇭🇰",
+    "wiki": "https://en.wikipedia.org/wiki/Hong_Kong"
+  },
+  "hungary": {
+    "flag": "🇭🇺",
+    "wiki": "https://en.wikipedia.org/wiki/Hungary"
+  },
+  "iceland": {
+    "flag": "🇮🇸",
+    "wiki": "https://en.wikipedia.org/wiki/Iceland"
+  },
+  "india": {
+    "flag": "🇮🇳",
+    "wiki": "https://en.wikipedia.org/wiki/India"
+  },
+  "indonesia": {
+    "flag": "🇮🇩",
+    "wiki": "https://en.wikipedia.org/wiki/Indonesia"
+  },
+  "iran": {
+    "flag": "🇮🇷",
+    "wiki": "https://en.wikipedia.org/wiki/Iran"
+  },
+  "iraq": {
+    "flag": "🇮🇶",
+    "wiki": "https://en.wikipedia.org/wiki/Iraq"
+  },
+  "ireland": {
+    "flag": "🇮🇪",
+    "wiki": "https://en.wikipedia.org/wiki/Republic_of_Ireland"
+  },
+  "isle of man": {
+    "flag": "🇮🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Isle_of_Man"
+  },
+  "israel": {
+    "flag": "🇮🇱",
+    "wiki": "https://en.wikipedia.org/wiki/Israel"
+  },
+  "italy": {
+    "flag": "🇮🇹",
+    "wiki": "https://en.wikipedia.org/wiki/Italy"
+  },
+  "jamaica": {
+    "flag": "🇯🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Jamaica"
+  },
+  "japan": {
+    "flag": "🇯🇵",
+    "wiki": "https://en.wikipedia.org/wiki/Japan"
+  },
+  "jersey": {
+    "flag": "🇯🇪",
+    "wiki": "https://en.wikipedia.org/wiki/Jersey"
+  },
+  "jordan": {
+    "flag": "🇯🇴",
+    "wiki": "https://en.wikipedia.org/wiki/Jordan"
+  },
+  "kazakhstan": {
+    "flag": "🇰🇿",
+    "wiki": "https://en.wikipedia.org/wiki/Kazakhstan"
+  },
+  "kenya": {
+    "flag": "🇰🇪",
+    "wiki": "https://en.wikipedia.org/wiki/Kenya"
+  },
+  "kiribati": {
+    "flag": "🇰🇮",
+    "wiki": "https://en.wikipedia.org/wiki/Kiribati"
+  },
+  "kosovo": {
+    "flag": "🇽🇰",
+    "wiki": "https://en.wikipedia.org/wiki/Kosovo"
+  },
+  "kuwait": {
+    "flag": "🇰🇼",
+    "wiki": "https://en.wikipedia.org/wiki/Kuwait"
+  },
+  "kyrgyzstan": {
+    "flag": "🇰🇬",
+    "wiki": "https://en.wikipedia.org/wiki/Kyrgyzstan"
+  },
+  "laos": {
+    "flag": "🇱🇦",
+    "wiki": "https://en.wikipedia.org/wiki/Laos"
+  },
+  "latvia": {
+    "flag": "🇱🇻",
+    "wiki": "https://en.wikipedia.org/wiki/Latvia"
+  },
+  "lebanon": {
+    "flag": "🇱🇧",
+    "wiki": "https://en.wikipedia.org/wiki/Lebanon"
+  },
+  "lesotho": {
+    "flag": "🇱🇸",
+    "wiki": "https://en.wikipedia.org/wiki/Lesotho"
+  },
+  "liberia": {
+    "flag": "🇱🇷",
+    "wiki": "https://en.wikipedia.org/wiki/Liberia"
+  },
+  "libya": {
+    "flag": "🇱🇾",
+    "wiki": "https://en.wikipedia.org/wiki/Libya"
+  },
+  "liechtenstein": {
+    "flag": "🇱🇮",
+    "wiki": "https://en.wikipedia.org/wiki/Liechtenstein"
+  },
+  "lithuania": {
+    "flag": "🇱🇹",
+    "wiki": "https://en.wikipedia.org/wiki/Lithuania"
+  },
+  "luxembourg": {
+    "flag": "🇱🇺",
+    "wiki": "https://en.wikipedia.org/wiki/Luxembourg"
+  },
+  "macao sar china": {
+    "flag": "🇲🇴",
+    "wiki": "https://en.wikipedia.org/wiki/Macau"
+  },
+  "madagascar": {
+    "flag": "🇲🇬",
+    "wiki": "https://en.wikipedia.org/wiki/Madagascar"
+  },
+  "malawi": {
+    "flag": "🇲🇼",
+    "wiki": "https://en.wikipedia.org/wiki/Malawi"
+  },
+  "malaysia": {
+    "flag": "🇲🇾",
+    "wiki": "https://en.wikipedia.org/wiki/Malaysia"
+  },
+  "maldives": {
+    "flag": "🇲🇻",
+    "wiki": "https://en.wikipedia.org/wiki/Maldives"
+  },
+  "mali": {
+    "flag": "🇲🇱",
+    "wiki": "https://en.wikipedia.org/wiki/Mali"
+  },
+  "malta": {
+    "flag": "🇲🇹",
+    "wiki": "https://en.wikipedia.org/wiki/Malta"
+  },
+  "marshall islands": {
+    "flag": "🇲🇭",
+    "wiki": "https://en.wikipedia.org/wiki/Marshall_Islands"
+  },
+  "martinique": {
+    "flag": "🇲🇶",
+    "wiki": "https://en.wikipedia.org/wiki/Martinique"
+  },
+  "mauritania": {
+    "flag": "🇲🇷",
+    "wiki": "https://en.wikipedia.org/wiki/Mauritania"
+  },
+  "mauritius": {
+    "flag": "🇲🇺",
+    "wiki": "https://en.wikipedia.org/wiki/Mauritius"
+  },
+  "mayotte": {
+    "flag": "🇾🇹",
+    "wiki": "https://en.wikipedia.org/wiki/Mayotte"
+  },
+  "mexico": {
+    "flag": "🇲🇽",
+    "wiki": "https://en.wikipedia.org/wiki/Mexico"
+  },
+  "micronesia": {
+    "flag": "🇫🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Federated_States_of_Micronesia"
+  },
+  "moldova": {
+    "flag": "🇲🇩",
+    "wiki": "https://en.wikipedia.org/wiki/Moldova"
+  },
+  "monaco": {
+    "flag": "🇲🇨",
+    "wiki": "https://en.wikipedia.org/wiki/Monaco"
+  },
+  "mongolia": {
+    "flag": "🇲🇳",
+    "wiki": "https://en.wikipedia.org/wiki/Mongolia"
+  },
+  "montenegro": {
+    "flag": "🇲🇪",
+    "wiki": "https://en.wikipedia.org/wiki/Montenegro"
+  },
+  "montserrat": {
+    "flag": "🇲🇸",
+    "wiki": "https://en.wikipedia.org/wiki/Montserrat"
+  },
+  "morocco": {
+    "flag": "🇲🇦",
+    "wiki": "https://en.wikipedia.org/wiki/Morocco"
+  },
+  "mozambique": {
+    "flag": "🇲🇿",
+    "wiki": "https://en.wikipedia.org/wiki/Mozambique"
+  },
+  "myanmar (burma)": {
+    "flag": "🇲🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Myanmar"
+  },
+  "namibia": {
+    "flag": "🇳🇦",
+    "wiki": "https://en.wikipedia.org/wiki/Namibia"
+  },
+  "nauru": {
+    "flag": "🇳🇷",
+    "wiki": "https://en.wikipedia.org/wiki/Nauru"
+  },
+  "nepal": {
+    "flag": "🇳🇵",
+    "wiki": "https://en.wikipedia.org/wiki/Nepal"
+  },
+  "netherlands": {
+    "flag": "🇳🇱",
+    "wiki": "https://en.wikipedia.org/wiki/Netherlands"
+  },
+  "new caledonia": {
+    "flag": "🇳🇨",
+    "wiki": "https://en.wikipedia.org/wiki/New_Caledonia"
+  },
+  "new zealand": {
+    "flag": "🇳🇿",
+    "wiki": "https://en.wikipedia.org/wiki/New_Zealand"
+  },
+  "nicaragua": {
+    "flag": "🇳🇮",
+    "wiki": "https://en.wikipedia.org/wiki/Nicaragua"
+  },
+  "niger": {
+    "flag": "🇳🇪",
+    "wiki": "https://en.wikipedia.org/wiki/Niger"
+  },
+  "nigeria": {
+    "flag": "🇳🇬",
+    "wiki": "https://en.wikipedia.org/wiki/Nigeria"
+  },
+  "niue": {
+    "flag": "🇳🇺",
+    "wiki": "https://en.wikipedia.org/wiki/Niue"
+  },
+  "norfolk island": {
+    "flag": "🇳🇫",
+    "wiki": "https://en.wikipedia.org/wiki/Norfolk_Island"
+  },
+  "north korea": {
+    "flag": "🇰🇵",
+    "wiki": "https://en.wikipedia.org/wiki/North_Korea"
+  },
+  "north macedonia": {
+    "flag": "🇲🇰",
+    "wiki": "https://en.wikipedia.org/wiki/North_Macedonia"
+  },
+  "northern mariana islands": {
+    "flag": "🇲🇵",
+    "wiki": "https://en.wikipedia.org/wiki/Northern_Mariana_Islands"
+  },
+  "norway": {
+    "flag": "🇳🇴",
+    "wiki": "https://en.wikipedia.org/wiki/Norway"
+  },
+  "oman": {
+    "flag": "🇴🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Oman"
+  },
+  "pakistan": {
+    "flag": "🇵🇰",
+    "wiki": "https://en.wikipedia.org/wiki/Pakistan"
+  },
+  "palau": {
+    "flag": "🇵🇼",
+    "wiki": "https://en.wikipedia.org/wiki/Palau"
+  },
+  "palestinian territories": {
+    "flag": "🇵🇸",
+    "wiki": "https://en.wikipedia.org/wiki/State_of_Palestine"
+  },
+  "panama": {
+    "flag": "🇵🇦",
+    "wiki": "https://en.wikipedia.org/wiki/Panama"
+  },
+  "papua new guinea": {
+    "flag": "🇵🇬",
+    "wiki": "https://en.wikipedia.org/wiki/Papua_New_Guinea"
+  },
+  "paraguay": {
+    "flag": "🇵🇾",
+    "wiki": "https://en.wikipedia.org/wiki/Paraguay"
+  },
+  "peru": {
+    "flag": "🇵🇪",
+    "wiki": "https://en.wikipedia.org/wiki/Peru"
+  },
+  "philippines": {
+    "flag": "🇵🇭",
+    "wiki": "https://en.wikipedia.org/wiki/Philippines"
+  },
+  "pitcairn islands": {
+    "flag": "🇵🇳",
+    "wiki": "https://en.wikipedia.org/wiki/Pitcairn_Islands"
+  },
+  "poland": {
+    "flag": "🇵🇱",
+    "wiki": "https://en.wikipedia.org/wiki/Poland"
+  },
+  "portugal": {
+    "flag": "🇵🇹",
+    "wiki": "https://en.wikipedia.org/wiki/Portugal"
+  },
+  "puerto rico": {
+    "flag": "🇵🇷",
+    "wiki": "https://en.wikipedia.org/wiki/Puerto_Rico"
+  },
+  "qatar": {
+    "flag": "🇶🇦",
+    "wiki": "https://en.wikipedia.org/wiki/Qatar"
+  },
+  "romania": {
+    "flag": "🇷🇴",
+    "wiki": "https://en.wikipedia.org/wiki/Romania"
+  },
+  "russia": {
+    "flag": "🇷🇺",
+    "wiki": "https://en.wikipedia.org/wiki/Russia"
+  },
+  "rwanda": {
+    "flag": "🇷🇼",
+    "wiki": "https://en.wikipedia.org/wiki/Rwanda"
+  },
+  "réunion": {
+    "flag": "🇷🇪",
+    "wiki": "https://en.wikipedia.org/wiki/R%C3%A9union"
+  },
+  "samoa": {
+    "flag": "🇼🇸",
+    "wiki": "https://en.wikipedia.org/wiki/Samoa"
+  },
+  "san marino": {
+    "flag": "🇸🇲",
+    "wiki": "https://en.wikipedia.org/wiki/San_Marino"
+  },
+  "saudi arabia": {
+    "flag": "🇸🇦",
+    "wiki": "https://en.wikipedia.org/wiki/Saudi_Arabia"
+  },
+  "scotland": {
+    "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+    "wiki": "https://en.wikipedia.org/wiki/Scotland"
+  },
+  "senegal": {
+    "flag": "🇸🇳",
+    "wiki": "https://en.wikipedia.org/wiki/Senegal"
+  },
+  "serbia": {
+    "flag": "🇷🇸",
+    "wiki": "https://en.wikipedia.org/wiki/Serbia"
+  },
+  "seychelles": {
+    "flag": "🇸🇨",
+    "wiki": "https://en.wikipedia.org/wiki/Seychelles"
+  },
+  "sierra leone": {
+    "flag": "🇸🇱",
+    "wiki": "https://en.wikipedia.org/wiki/Sierra_Leone"
+  },
+  "singapore": {
+    "flag": "🇸🇬",
+    "wiki": "https://en.wikipedia.org/wiki/Singapore"
+  },
+  "sint maarten": {
+    "flag": "🇸🇽",
+    "wiki": "https://en.wikipedia.org/wiki/Sint_Maarten"
+  },
+  "slovakia": {
+    "flag": "🇸🇰",
+    "wiki": "https://en.wikipedia.org/wiki/Slovakia"
+  },
+  "slovenia": {
+    "flag": "🇸🇮",
+    "wiki": "https://en.wikipedia.org/wiki/Slovenia"
+  },
+  "solomon islands": {
+    "flag": "🇸🇧",
+    "wiki": "https://en.wikipedia.org/wiki/Solomon_Islands"
+  },
+  "somalia": {
+    "flag": "🇸🇴",
+    "wiki": "https://en.wikipedia.org/wiki/Somalia"
+  },
+  "south africa": {
+    "flag": "🇿🇦",
+    "wiki": "https://en.wikipedia.org/wiki/South_Africa"
+  },
+  "south georgia & south sandwich islands": {
+    "flag": "🇬🇸",
+    "wiki": "https://en.wikipedia.org/wiki/South_Georgia_and_the_South_Sandwich_Islands"
+  },
+  "south korea": {
+    "flag": "🇰🇷",
+    "wiki": "https://en.wikipedia.org/wiki/South_Korea"
+  },
+  "south sudan": {
+    "flag": "🇸🇸",
+    "wiki": "https://en.wikipedia.org/wiki/South_Sudan"
+  },
+  "spain": {
+    "flag": "🇪🇸",
+    "wiki": "https://en.wikipedia.org/wiki/Spain"
+  },
+  "sri lanka": {
+    "flag": "🇱🇰",
+    "wiki": "https://en.wikipedia.org/wiki/Sri_Lanka"
+  },
+  "st. barthélemy": {
+    "flag": "🇧🇱",
+    "wiki": "https://en.wikipedia.org/wiki/Saint_Barth%C3%A9lemy"
+  },
+  "st. helena": {
+    "flag": "🇸🇭",
+    "wiki": "https://en.wikipedia.org/wiki/Saint_Helena"
+  },
+  "st. kitts & nevis": {
+    "flag": "🇰🇳",
+    "wiki": "https://en.wikipedia.org/wiki/Saint_Kitts_and_Nevis"
+  },
+  "st. lucia": {
+    "flag": "🇱🇨",
+    "wiki": "https://en.wikipedia.org/wiki/Saint_Lucia"
+  },
+  "st. martin": {
+    "flag": "🇲🇫",
+    "wiki": "https://en.wikipedia.org/wiki/Saint_Martin"
+  },
+  "st. pierre & miquelon": {
+    "flag": "🇵🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Saint_Pierre_and_Miquelon"
+  },
+  "st. vincent & grenadines": {
+    "flag": "🇻🇨",
+    "wiki": "https://en.wikipedia.org/wiki/Saint_Vincent_and_the_Grenadines"
+  },
+  "sudan": {
+    "flag": "🇸🇩",
+    "wiki": "https://en.wikipedia.org/wiki/Sudan"
+  },
+  "suriname": {
+    "flag": "🇸🇷",
+    "wiki": "https://en.wikipedia.org/wiki/Suriname"
+  },
+  "svalbard & jan mayen": {
+    "flag": "🇸🇯",
+    "wiki": "https://en.wikipedia.org/wiki/Svalbard_and_Jan_Mayen"
+  },
+  "sweden": {
+    "flag": "🇸🇪",
+    "wiki": "https://en.wikipedia.org/wiki/Sweden"
+  },
+  "switzerland": {
+    "flag": "🇨🇭",
+    "wiki": "https://en.wikipedia.org/wiki/Switzerland"
+  },
+  "syria": {
+    "flag": "🇸🇾",
+    "wiki": "https://en.wikipedia.org/wiki/Syria"
+  },
+  "são tomé & príncipe": {
+    "flag": "🇸🇹",
+    "wiki": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9_and_Pr%C3%ADncipe"
+  },
+  "taiwan": {
+    "flag": "🇹🇼",
+    "wiki": "https://en.wikipedia.org/wiki/Taiwan"
+  },
+  "tajikistan": {
+    "flag": "🇹🇯",
+    "wiki": "https://en.wikipedia.org/wiki/Tajikistan"
+  },
+  "tanzania": {
+    "flag": "🇹🇿",
+    "wiki": "https://en.wikipedia.org/wiki/Tanzania"
+  },
+  "thailand": {
+    "flag": "🇹🇭",
+    "wiki": "https://en.wikipedia.org/wiki/Thailand"
+  },
+  "timor-leste": {
+    "flag": "🇹🇱",
+    "wiki": "https://en.wikipedia.org/wiki/East_Timor"
+  },
+  "togo": {
+    "flag": "🇹🇬",
+    "wiki": "https://en.wikipedia.org/wiki/Togo"
+  },
+  "tokelau": {
+    "flag": "🇹🇰",
+    "wiki": "https://en.wikipedia.org/wiki/Tokelau"
+  },
+  "tonga": {
+    "flag": "🇹🇴",
+    "wiki": "https://en.wikipedia.org/wiki/Tonga"
+  },
+  "trinidad & tobago": {
+    "flag": "🇹🇹",
+    "wiki": "https://en.wikipedia.org/wiki/Trinidad_and_Tobago"
+  },
+  "tristan da cunha": {
+    "flag": "🇹🇦",
+    "wiki": "https://en.wikipedia.org/wiki/Tristan_da_Cunha"
+  },
+  "tunisia": {
+    "flag": "🇹🇳",
+    "wiki": "https://en.wikipedia.org/wiki/Tunisia"
+  },
+  "turkey": {
+    "flag": "🇹🇷",
+    "wiki": "https://en.wikipedia.org/wiki/Turkey"
+  },
+  "turkmenistan": {
+    "flag": "🇹🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Turkmenistan"
+  },
+  "turks & caicos islands": {
+    "flag": "🇹🇨",
+    "wiki": "https://en.wikipedia.org/wiki/Turks_and_Caicos_Islands"
+  },
+  "tuvalu": {
+    "flag": "🇹🇻",
+    "wiki": "https://en.wikipedia.org/wiki/Tuvalu"
+  },
+  "u.s. outlying islands": {
+    "flag": "🇺🇲",
+    "wiki": "https://en.wikipedia.org/wiki/United_States_Minor_Outlying_Islands"
+  },
+  "u.s. virgin islands": {
+    "flag": "🇻🇮",
+    "wiki": "https://en.wikipedia.org/wiki/United_States_Virgin_Islands"
+  },
+  "uganda": {
+    "flag": "🇺🇬",
+    "wiki": "https://en.wikipedia.org/wiki/Uganda"
+  },
+  "ukraine": {
+    "flag": "🇺🇦",
+    "wiki": "https://en.wikipedia.org/wiki/Ukraine"
+  },
+  "united arab emirates": {
+    "flag": "🇦🇪",
+    "wiki": "https://en.wikipedia.org/wiki/United_Arab_Emirates"
+  },
+  "united kingdom": {
+    "flag": "🇬🇧",
+    "wiki": "https://en.wikipedia.org/wiki/United_Kingdom"
+  },
+  "united states": {
+    "flag": "🇺🇸",
+    "wiki": "https://en.wikipedia.org/wiki/United_States"
+  },
+  "uruguay": {
+    "flag": "🇺🇾",
+    "wiki": "https://en.wikipedia.org/wiki/Uruguay"
+  },
+  "uzbekistan": {
+    "flag": "🇺🇿",
+    "wiki": "https://en.wikipedia.org/wiki/Uzbekistan"
+  },
+  "vanuatu": {
+    "flag": "🇻🇺",
+    "wiki": "https://en.wikipedia.org/wiki/Vanuatu"
+  },
+  "vatican city": {
+    "flag": "🇻🇦",
+    "wiki": "https://en.wikipedia.org/wiki/Vatican_City"
+  },
+  "venezuela": {
+    "flag": "🇻🇪",
+    "wiki": "https://en.wikipedia.org/wiki/Venezuela"
+  },
+  "vietnam": {
+    "flag": "🇻🇳",
+    "wiki": "https://en.wikipedia.org/wiki/Vietnam"
+  },
+  "wales": {
+    "flag": "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
+    "wiki": "https://en.wikipedia.org/wiki/Wales"
+  },
+  "wallis & futuna": {
+    "flag": "🇼🇫",
+    "wiki": "https://en.wikipedia.org/wiki/Wallis_and_Futuna"
+  },
+  "western sahara": {
+    "flag": "🇪🇭",
+    "wiki": "https://en.wikipedia.org/wiki/Western_Sahara"
+  },
+  "yemen": {
+    "flag": "🇾🇪",
+    "wiki": "https://en.wikipedia.org/wiki/Yemen"
+  },
+  "zambia": {
+    "flag": "🇿🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Zambia"
+  },
+  "zimbabwe": {
+    "flag": "🇿🇼",
+    "wiki": "https://en.wikipedia.org/wiki/Zimbabwe"
+  },
+  "åland islands": {
+    "flag": "🇦🇽",
+    "wiki": "https://en.wikipedia.org/wiki/%C3%85land"
+  }
 }
-
+alert(flags_wikis.length)
    let percentage = Math.max(100 - Math.round(distance*100 / 13238),0);
    if(sessionStorage.getItem("percent"+String(i)+"-"+String(days)) == null) {
        sessionStorage.setItem("percent"+String(i)+"-"+String(days),String(percentage))
@@ -1190,7 +1703,7 @@ function fake_load(distance,angle,value,i) {
    document.getElementById('load'+String(i)).style.display = 'flex';
    document.getElementById('percentage-display'+String(i)).style.display = 'block'
    updateScoreAnimation(percentage,i);
-   let text = location_emojis[value]+value;
+   let text = flags_wikis[value]["flag"]+value;
    if(window.screen.availWidth < 700) {
        document.getElementById("county-name"+String(i)).textContent = text.length > 12 ? text.slice(0, 12) + "..." : text
    } else {
