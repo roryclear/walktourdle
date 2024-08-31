@@ -616,7 +616,7 @@ function showPopup(scoreArray, correctAnswer) {
        const correctAnswerElement = document.getElementById('correct-answer');
        scoreElement.innerHTML = scoreArray.map(score => {
            let greenSquares = Math.floor(score / 20);
-           let yellowSquare = score % 20 > 0 ? 1 : 0;
+           let yellowSquare = score % 20 > 9 ? 1 : 0;
            let greySquares = 5 - greenSquares - yellowSquare;
            return '🟩'.repeat(greenSquares) + '🟨'.repeat(yellowSquare) + '⬜'.repeat(greySquares);
        }).join('<br>');
@@ -1671,8 +1671,7 @@ function calcCrow(lat1, lon1, lat2, lon2)
                    emojis[x].style.opacity = 1; // Make the emoji appear
                }
 
-               // Handle the yellow emoji only at the end of the animation
-               if (currentPercentage === score && filledEmojis < 5) {
+               if (currentPercentage === score && score % 20 > 9) {
                    emojis[filledEmojis].textContent = "🟨";
                    emojis[filledEmojis].style.opacity = 1;
                }
