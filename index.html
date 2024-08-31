@@ -620,7 +620,7 @@ function showPopup(scoreArray, correctAnswer) {
            let greySquares = 5 - greenSquares - yellowSquare;
            return '🟩'.repeat(greenSquares) + '🟨'.repeat(yellowSquare) + '⬜'.repeat(greySquares);
        }).join('<br>');
-       correctAnswerElement.innerHTML = "Correct Answer: "+ flags_wikis[correctAnswer]["flag"] + correctAnswer;
+       correctAnswerElement.innerHTML = "Correct Answer: "+ loc_data[correctAnswer]["flag"] + correctAnswer;
        document.getElementById('popup').style.display = 'block';
        document.getElementById('submit-btn').innerHTML = 'Share';
        document.getElementById('submit-btn').onclick = function() { shareScore(); }
@@ -628,8 +628,8 @@ function showPopup(scoreArray, correctAnswer) {
        document.getElementById('locations').style.display = 'none';
        document.getElementById('learn-btn').style.display = 'block';
        document.getElementById('learn-btn').style.height = 'block';
-       document.getElementById('learn-btn').innerHTML = "<a href=\""+flags_wikis[correctAnswer]["wiki"]+"\" target=\"_blank\">"+flags_wikis[correctAnswer]["flag"]+"wiki</a>\
-         &nbsp&nbsp<a href=\"https://www.youtube.com/watch?v="+videos[correctAnswer]+"\" target=\"_blank\">"+flags_wikis[correctAnswer]["flag"]+"video</a>";
+       document.getElementById('learn-btn').innerHTML = "<a href=\""+loc_data[correctAnswer]["wiki"]+"\" target=\"_blank\">"+loc_data[correctAnswer]["flag"]+"wiki</a>\
+         &nbsp&nbsp<a href=\"https://www.youtube.com/watch?v="+videos[correctAnswer]+"\" target=\"_blank\">"+loc_data[correctAnswer]["flag"]+"video</a>";
    }
 
    function hidePopup() {
@@ -658,1041 +658,6 @@ function make_guess(){
    document.getElementById("guess"+String(i)).textContent=guess;
 }
 function fake_load(distance,angle,value,i) {
-flags_wikis = {
-  "afghanistan": {
-    "flag": "🇦🇫",
-    "wiki": "https://en.wikipedia.org/wiki/Afghanistan"
-  },
-  "albania": {
-    "flag": "🇦🇱",
-    "wiki": "https://en.wikipedia.org/wiki/Albania"
-  },
-  "algeria": {
-    "flag": "🇩🇿",
-    "wiki": "https://en.wikipedia.org/wiki/Algeria"
-  },
-  "american samoa": {
-    "flag": "🇦🇸",
-    "wiki": "https://en.wikipedia.org/wiki/American_Samoa"
-  },
-  "andorra": {
-    "flag": "🇦🇩",
-    "wiki": "https://en.wikipedia.org/wiki/Andorra"
-  },
-  "angola": {
-    "flag": "🇦🇴",
-    "wiki": "https://en.wikipedia.org/wiki/Angola"
-  },
-  "anguilla": {
-    "flag": "🇦🇮",
-    "wiki": "https://en.wikipedia.org/wiki/Anguilla"
-  },
-  "antarctica": {
-    "flag": "🇦🇶",
-    "wiki": "https://en.wikipedia.org/wiki/Antarctica"
-  },
-  "antigua & barbuda": {
-    "flag": "🇦🇬",
-    "wiki": "https://en.wikipedia.org/wiki/Antigua_and_Barbuda"
-  },
-  "argentina": {
-    "flag": "🇦🇷",
-    "wiki": "https://en.wikipedia.org/wiki/Argentina"
-  },
-  "armenia": {
-    "flag": "🇦🇲",
-    "wiki": "https://en.wikipedia.org/wiki/Armenia"
-  },
-  "aruba": {
-    "flag": "🇦🇼",
-    "wiki": "https://en.wikipedia.org/wiki/Aruba"
-  },
-  "ascension island": {
-    "flag": "🇦🇨",
-    "wiki": "https://en.wikipedia.org/wiki/Ascension_Island"
-  },
-  "australia": {
-    "flag": "🇦🇺",
-    "wiki": "https://en.wikipedia.org/wiki/Australia"
-  },
-  "austria": {
-    "flag": "🇦🇹",
-    "wiki": "https://en.wikipedia.org/wiki/Austria"
-  },
-  "azerbaijan": {
-    "flag": "🇦🇿",
-    "wiki": "https://en.wikipedia.org/wiki/Azerbaijan"
-  },
-  "bahamas": {
-    "flag": "🇧🇸",
-    "wiki": "https://en.wikipedia.org/wiki/The_Bahamas"
-  },
-  "bahrain": {
-    "flag": "🇧🇭",
-    "wiki": "https://en.wikipedia.org/wiki/Bahrain"
-  },
-  "bangladesh": {
-    "flag": "🇧🇩",
-    "wiki": "https://en.wikipedia.org/wiki/Bangladesh"
-  },
-  "barbados": {
-    "flag": "🇧🇧",
-    "wiki": "https://en.wikipedia.org/wiki/Barbados"
-  },
-  "belarus": {
-    "flag": "🇧🇾",
-    "wiki": "https://en.wikipedia.org/wiki/Belarus"
-  },
-  "belgium": {
-    "flag": "🇧🇪",
-    "wiki": "https://en.wikipedia.org/wiki/Belgium"
-  },
-  "belize": {
-    "flag": "🇧🇿",
-    "wiki": "https://en.wikipedia.org/wiki/Belize"
-  },
-  "benin": {
-    "flag": "🇧🇯",
-    "wiki": "https://en.wikipedia.org/wiki/Benin"
-  },
-  "bermuda": {
-    "flag": "🇧🇲",
-    "wiki": "https://en.wikipedia.org/wiki/Bermuda"
-  },
-  "bhutan": {
-    "flag": "🇧🇹",
-    "wiki": "https://en.wikipedia.org/wiki/Bhutan"
-  },
-  "bolivia": {
-    "flag": "🇧🇴",
-    "wiki": "https://en.wikipedia.org/wiki/Bolivia"
-  },
-  "bosnia & herzegovina": {
-    "flag": "🇧🇦",
-    "wiki": "https://en.wikipedia.org/wiki/Bosnia_and_Herzegovina"
-  },
-  "botswana": {
-    "flag": "🇧🇼",
-    "wiki": "https://en.wikipedia.org/wiki/Botswana"
-  },
-  "bouvet island": {
-    "flag": "🇧🇻",
-    "wiki": "https://en.wikipedia.org/wiki/Bouvet_Island"
-  },
-  "brazil": {
-    "flag": "🇧🇷",
-    "wiki": "https://en.wikipedia.org/wiki/Brazil"
-  },
-  "british indian ocean territory": {
-    "flag": "🇮🇴",
-    "wiki": "https://en.wikipedia.org/wiki/British_Indian_Ocean_Territory"
-  },
-  "british virgin islands": {
-    "flag": "🇻🇬",
-    "wiki": "https://en.wikipedia.org/wiki/British_Virgin_Islands"
-  },
-  "brunei": {
-    "flag": "🇧🇳",
-    "wiki": "https://en.wikipedia.org/wiki/Brunei"
-  },
-  "bulgaria": {
-    "flag": "🇧🇬",
-    "wiki": "https://en.wikipedia.org/wiki/Bulgaria"
-  },
-  "burkina faso": {
-    "flag": "🇧🇫",
-    "wiki": "https://en.wikipedia.org/wiki/Burkina_Faso"
-  },
-  "burundi": {
-    "flag": "🇧🇮",
-    "wiki": "https://en.wikipedia.org/wiki/Burundi"
-  },
-  "cambodia": {
-    "flag": "🇰🇭",
-    "wiki": "https://en.wikipedia.org/wiki/Cambodia"
-  },
-  "cameroon": {
-    "flag": "🇨🇲",
-    "wiki": "https://en.wikipedia.org/wiki/Cameroon"
-  },
-  "canada": {
-    "flag": "🇨🇦",
-    "wiki": "https://en.wikipedia.org/wiki/Canada"
-  },
-  "canary islands": {
-    "flag": "🇮🇨",
-    "wiki": "https://en.wikipedia.org/wiki/Canary_Islands"
-  },
-  "cape verde": {
-    "flag": "🇨🇻",
-    "wiki": "https://en.wikipedia.org/wiki/Cape_Verde"
-  },
-  "caribbean netherlands": {
-    "flag": "🇧🇶",
-    "wiki": "https://en.wikipedia.org/wiki/Caribbean_Netherlands"
-  },
-  "cayman islands": {
-    "flag": "🇰🇾",
-    "wiki": "https://en.wikipedia.org/wiki/Cayman_Islands"
-  },
-  "central african republic": {
-    "flag": "🇨🇫",
-    "wiki": "https://en.wikipedia.org/wiki/Central_African_Republic"
-  },
-  "ceuta & melilla": {
-    "flag": "🇪🇦",
-    "wiki": "https://en.wikipedia.org/wiki/Ceuta_and_Melilla"
-  },
-  "chad": {
-    "flag": "🇹🇩",
-    "wiki": "https://en.wikipedia.org/wiki/Chad"
-  },
-  "chile": {
-    "flag": "🇨🇱",
-    "wiki": "https://en.wikipedia.org/wiki/Chile"
-  },
-  "china": {
-    "flag": "🇨🇳",
-    "wiki": "https://en.wikipedia.org/wiki/China"
-  },
-  "christmas island": {
-    "flag": "🇨🇽",
-    "wiki": "https://en.wikipedia.org/wiki/Christmas_Island"
-  },
-  "clipperton island": {
-    "flag": "🇨🇵",
-    "wiki": "https://en.wikipedia.org/wiki/Clipperton_Island"
-  },
-  "cocos (keeling) islands": {
-    "flag": "🇨🇨",
-    "wiki": "https://en.wikipedia.org/wiki/Cocos_(Keeling)_Islands"
-  },
-  "colombia": {
-    "flag": "🇨🇴",
-    "wiki": "https://en.wikipedia.org/wiki/Colombia"
-  },
-  "comoros": {
-    "flag": "🇰🇲",
-    "wiki": "https://en.wikipedia.org/wiki/Comoros"
-  },
-  "congo - brazzaville": {
-    "flag": "🇨🇬",
-    "wiki": "https://en.wikipedia.org/wiki/Republic_of_the_Congo"
-  },
-  "congo - kinshasa": {
-    "flag": "🇨🇩",
-    "wiki": "https://en.wikipedia.org/wiki/Democratic_Republic_of_the_Congo"
-  },
-  "cook islands": {
-    "flag": "🇨🇰",
-    "wiki": "https://en.wikipedia.org/wiki/Cook_Islands"
-  },
-  "costa rica": {
-    "flag": "🇨🇷",
-    "wiki": "https://en.wikipedia.org/wiki/Costa_Rica"
-  },
-  "croatia": {
-    "flag": "🇭🇷",
-    "wiki": "https://en.wikipedia.org/wiki/Croatia"
-  },
-  "cuba": {
-    "flag": "🇨🇺",
-    "wiki": "https://en.wikipedia.org/wiki/Cuba"
-  },
-  "curaçao": {
-    "flag": "🇨🇼",
-    "wiki": "https://en.wikipedia.org/wiki/Cura%C3%A7ao"
-  },
-  "cyprus": {
-    "flag": "🇨🇾",
-    "wiki": "https://en.wikipedia.org/wiki/Cyprus"
-  },
-  "czechia": {
-    "flag": "🇨🇿",
-    "wiki": "https://en.wikipedia.org/wiki/Czech_Republic"
-  },
-  "côte d’ivoire": {
-    "flag": "🇨🇮",
-    "wiki": "https://en.wikipedia.org/wiki/Ivory_Coast"
-  },
-  "denmark": {
-    "flag": "🇩🇰",
-    "wiki": "https://en.wikipedia.org/wiki/Denmark"
-  },
-  "diego garcia": {
-    "flag": "🇩🇬",
-    "wiki": "https://en.wikipedia.org/wiki/Diego_Garcia"
-  },
-  "djibouti": {
-    "flag": "🇩🇯",
-    "wiki": "https://en.wikipedia.org/wiki/Djibouti"
-  },
-  "dominica": {
-    "flag": "🇩🇲",
-    "wiki": "https://en.wikipedia.org/wiki/Dominica"
-  },
-  "dominican republic": {
-    "flag": "🇩🇴",
-    "wiki": "https://en.wikipedia.org/wiki/Dominican_Republic"
-  },
-  "ecuador": {
-    "flag": "🇪🇨",
-    "wiki": "https://en.wikipedia.org/wiki/Ecuador"
-  },
-  "egypt": {
-    "flag": "🇪🇬",
-    "wiki": "https://en.wikipedia.org/wiki/Egypt"
-  },
-  "el salvador": {
-    "flag": "🇸🇻",
-    "wiki": "https://en.wikipedia.org/wiki/El_Salvador"
-  },
-  "england": {
-    "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-    "wiki": "https://en.wikipedia.org/wiki/England"
-  },
-  "equatorial guinea": {
-    "flag": "🇬🇶",
-    "wiki": "https://en.wikipedia.org/wiki/Equatorial_Guinea"
-  },
-  "eritrea": {
-    "flag": "🇪🇷",
-    "wiki": "https://en.wikipedia.org/wiki/Eritrea"
-  },
-  "estonia": {
-    "flag": "🇪🇪",
-    "wiki": "https://en.wikipedia.org/wiki/Estonia"
-  },
-  "eswatini": {
-    "flag": "🇸🇿",
-    "wiki": "https://en.wikipedia.org/wiki/Eswatini"
-  },
-  "ethiopia": {
-    "flag": "🇪🇹",
-    "wiki": "https://en.wikipedia.org/wiki/Ethiopia"
-  },
-  "falkland islands": {
-    "flag": "🇫🇰",
-    "wiki": "https://en.wikipedia.org/wiki/Falkland_Islands"
-  },
-  "fiji": {
-    "flag": "🇫🇯",
-    "wiki": "https://en.wikipedia.org/wiki/Fiji"
-  },
-  "finland": {
-    "flag": "🇫🇮",
-    "wiki": "https://en.wikipedia.org/wiki/Finland"
-  },
-  "france": {
-    "flag": "🇫🇷",
-    "wiki": "https://en.wikipedia.org/wiki/France"
-  },
-  "french guiana": {
-    "flag": "🇬🇫",
-    "wiki": "https://en.wikipedia.org/wiki/French_Guiana"
-  },
-  "french polynesia": {
-    "flag": "🇵🇫",
-    "wiki": "https://en.wikipedia.org/wiki/French_Polynesia"
-  },
-  "french southern territories": {
-    "flag": "🇹🇫",
-    "wiki": "https://en.wikipedia.org/wiki/French_Southern_and_Antarctic_Lands"
-  },
-  "gabon": {
-    "flag": "🇬🇦",
-    "wiki": "https://en.wikipedia.org/wiki/Gabon"
-  },
-  "gambia": {
-    "flag": "🇬🇲",
-    "wiki": "https://en.wikipedia.org/wiki/The_Gambia"
-  },
-  "georgia": {
-    "flag": "🇬🇪",
-    "wiki": "https://en.wikipedia.org/wiki/Georgia_(country)"
-  },
-  "germany": {
-    "flag": "🇩🇪",
-    "wiki": "https://en.wikipedia.org/wiki/Germany"
-  },
-  "ghana": {
-    "flag": "🇬🇭",
-    "wiki": "https://en.wikipedia.org/wiki/Ghana"
-  },
-  "gibraltar": {
-    "flag": "🇬🇮",
-    "wiki": "https://en.wikipedia.org/wiki/Gibraltar"
-  },
-  "greece": {
-    "flag": "🇬🇷",
-    "wiki": "https://en.wikipedia.org/wiki/Greece"
-  },
-  "greenland": {
-    "flag": "🇬🇱",
-    "wiki": "https://en.wikipedia.org/wiki/Greenland"
-  },
-  "grenada": {
-    "flag": "🇬🇩",
-    "wiki": "https://en.wikipedia.org/wiki/Grenada"
-  },
-  "guadeloupe": {
-    "flag": "🇬🇵",
-    "wiki": "https://en.wikipedia.org/wiki/Guadeloupe"
-  },
-  "guam": {
-    "flag": "🇬🇺",
-    "wiki": "https://en.wikipedia.org/wiki/Guam"
-  },
-  "guatemala": {
-    "flag": "🇬🇹",
-    "wiki": "https://en.wikipedia.org/wiki/Guatemala"
-  },
-  "guernsey": {
-    "flag": "🇬🇬",
-    "wiki": "https://en.wikipedia.org/wiki/Guernsey"
-  },
-  "guinea": {
-    "flag": "🇬🇳",
-    "wiki": "https://en.wikipedia.org/wiki/Guinea"
-  },
-  "guinea-bissau": {
-    "flag": "🇬🇼",
-    "wiki": "https://en.wikipedia.org/wiki/Guinea-Bissau"
-  },
-  "guyana": {
-    "flag": "🇬🇾",
-    "wiki": "https://en.wikipedia.org/wiki/Guyana"
-  },
-  "haiti": {
-    "flag": "🇭🇹",
-    "wiki": "https://en.wikipedia.org/wiki/Haiti"
-  },
-  "heard & mcdonald islands": {
-    "flag": "🇭🇲",
-    "wiki": "https://en.wikipedia.org/wiki/Heard_Island_and_McDonald_Islands"
-  },
-  "honduras": {
-    "flag": "🇭🇳",
-    "wiki": "https://en.wikipedia.org/wiki/Honduras"
-  },
-  "hong kong sar china": {
-    "flag": "🇭🇰",
-    "wiki": "https://en.wikipedia.org/wiki/Hong_Kong"
-  },
-  "hungary": {
-    "flag": "🇭🇺",
-    "wiki": "https://en.wikipedia.org/wiki/Hungary"
-  },
-  "iceland": {
-    "flag": "🇮🇸",
-    "wiki": "https://en.wikipedia.org/wiki/Iceland"
-  },
-  "india": {
-    "flag": "🇮🇳",
-    "wiki": "https://en.wikipedia.org/wiki/India"
-  },
-  "indonesia": {
-    "flag": "🇮🇩",
-    "wiki": "https://en.wikipedia.org/wiki/Indonesia"
-  },
-  "iran": {
-    "flag": "🇮🇷",
-    "wiki": "https://en.wikipedia.org/wiki/Iran"
-  },
-  "iraq": {
-    "flag": "🇮🇶",
-    "wiki": "https://en.wikipedia.org/wiki/Iraq"
-  },
-  "ireland": {
-    "flag": "🇮🇪",
-    "wiki": "https://en.wikipedia.org/wiki/Republic_of_Ireland"
-  },
-  "isle of man": {
-    "flag": "🇮🇲",
-    "wiki": "https://en.wikipedia.org/wiki/Isle_of_Man"
-  },
-  "israel": {
-    "flag": "🇮🇱",
-    "wiki": "https://en.wikipedia.org/wiki/Israel"
-  },
-  "italy": {
-    "flag": "🇮🇹",
-    "wiki": "https://en.wikipedia.org/wiki/Italy"
-  },
-  "jamaica": {
-    "flag": "🇯🇲",
-    "wiki": "https://en.wikipedia.org/wiki/Jamaica"
-  },
-  "japan": {
-    "flag": "🇯🇵",
-    "wiki": "https://en.wikipedia.org/wiki/Japan"
-  },
-  "jersey": {
-    "flag": "🇯🇪",
-    "wiki": "https://en.wikipedia.org/wiki/Jersey"
-  },
-  "jordan": {
-    "flag": "🇯🇴",
-    "wiki": "https://en.wikipedia.org/wiki/Jordan"
-  },
-  "kazakhstan": {
-    "flag": "🇰🇿",
-    "wiki": "https://en.wikipedia.org/wiki/Kazakhstan"
-  },
-  "kenya": {
-    "flag": "🇰🇪",
-    "wiki": "https://en.wikipedia.org/wiki/Kenya"
-  },
-  "kiribati": {
-    "flag": "🇰🇮",
-    "wiki": "https://en.wikipedia.org/wiki/Kiribati"
-  },
-  "kosovo": {
-    "flag": "🇽🇰",
-    "wiki": "https://en.wikipedia.org/wiki/Kosovo"
-  },
-  "kuwait": {
-    "flag": "🇰🇼",
-    "wiki": "https://en.wikipedia.org/wiki/Kuwait"
-  },
-  "kyrgyzstan": {
-    "flag": "🇰🇬",
-    "wiki": "https://en.wikipedia.org/wiki/Kyrgyzstan"
-  },
-  "laos": {
-    "flag": "🇱🇦",
-    "wiki": "https://en.wikipedia.org/wiki/Laos"
-  },
-  "latvia": {
-    "flag": "🇱🇻",
-    "wiki": "https://en.wikipedia.org/wiki/Latvia"
-  },
-  "lebanon": {
-    "flag": "🇱🇧",
-    "wiki": "https://en.wikipedia.org/wiki/Lebanon"
-  },
-  "lesotho": {
-    "flag": "🇱🇸",
-    "wiki": "https://en.wikipedia.org/wiki/Lesotho"
-  },
-  "liberia": {
-    "flag": "🇱🇷",
-    "wiki": "https://en.wikipedia.org/wiki/Liberia"
-  },
-  "libya": {
-    "flag": "🇱🇾",
-    "wiki": "https://en.wikipedia.org/wiki/Libya"
-  },
-  "liechtenstein": {
-    "flag": "🇱🇮",
-    "wiki": "https://en.wikipedia.org/wiki/Liechtenstein"
-  },
-  "lithuania": {
-    "flag": "🇱🇹",
-    "wiki": "https://en.wikipedia.org/wiki/Lithuania"
-  },
-  "luxembourg": {
-    "flag": "🇱🇺",
-    "wiki": "https://en.wikipedia.org/wiki/Luxembourg"
-  },
-  "macao sar china": {
-    "flag": "🇲🇴",
-    "wiki": "https://en.wikipedia.org/wiki/Macau"
-  },
-  "madagascar": {
-    "flag": "🇲🇬",
-    "wiki": "https://en.wikipedia.org/wiki/Madagascar"
-  },
-  "malawi": {
-    "flag": "🇲🇼",
-    "wiki": "https://en.wikipedia.org/wiki/Malawi"
-  },
-  "malaysia": {
-    "flag": "🇲🇾",
-    "wiki": "https://en.wikipedia.org/wiki/Malaysia"
-  },
-  "maldives": {
-    "flag": "🇲🇻",
-    "wiki": "https://en.wikipedia.org/wiki/Maldives"
-  },
-  "mali": {
-    "flag": "🇲🇱",
-    "wiki": "https://en.wikipedia.org/wiki/Mali"
-  },
-  "malta": {
-    "flag": "🇲🇹",
-    "wiki": "https://en.wikipedia.org/wiki/Malta"
-  },
-  "marshall islands": {
-    "flag": "🇲🇭",
-    "wiki": "https://en.wikipedia.org/wiki/Marshall_Islands"
-  },
-  "martinique": {
-    "flag": "🇲🇶",
-    "wiki": "https://en.wikipedia.org/wiki/Martinique"
-  },
-  "mauritania": {
-    "flag": "🇲🇷",
-    "wiki": "https://en.wikipedia.org/wiki/Mauritania"
-  },
-  "mauritius": {
-    "flag": "🇲🇺",
-    "wiki": "https://en.wikipedia.org/wiki/Mauritius"
-  },
-  "mayotte": {
-    "flag": "🇾🇹",
-    "wiki": "https://en.wikipedia.org/wiki/Mayotte"
-  },
-  "mexico": {
-    "flag": "🇲🇽",
-    "wiki": "https://en.wikipedia.org/wiki/Mexico"
-  },
-  "micronesia": {
-    "flag": "🇫🇲",
-    "wiki": "https://en.wikipedia.org/wiki/Federated_States_of_Micronesia"
-  },
-  "moldova": {
-    "flag": "🇲🇩",
-    "wiki": "https://en.wikipedia.org/wiki/Moldova"
-  },
-  "monaco": {
-    "flag": "🇲🇨",
-    "wiki": "https://en.wikipedia.org/wiki/Monaco"
-  },
-  "mongolia": {
-    "flag": "🇲🇳",
-    "wiki": "https://en.wikipedia.org/wiki/Mongolia"
-  },
-  "montenegro": {
-    "flag": "🇲🇪",
-    "wiki": "https://en.wikipedia.org/wiki/Montenegro"
-  },
-  "montserrat": {
-    "flag": "🇲🇸",
-    "wiki": "https://en.wikipedia.org/wiki/Montserrat"
-  },
-  "morocco": {
-    "flag": "🇲🇦",
-    "wiki": "https://en.wikipedia.org/wiki/Morocco"
-  },
-  "mozambique": {
-    "flag": "🇲🇿",
-    "wiki": "https://en.wikipedia.org/wiki/Mozambique"
-  },
-  "myanmar (burma)": {
-    "flag": "🇲🇲",
-    "wiki": "https://en.wikipedia.org/wiki/Myanmar"
-  },
-  "namibia": {
-    "flag": "🇳🇦",
-    "wiki": "https://en.wikipedia.org/wiki/Namibia"
-  },
-  "nauru": {
-    "flag": "🇳🇷",
-    "wiki": "https://en.wikipedia.org/wiki/Nauru"
-  },
-  "nepal": {
-    "flag": "🇳🇵",
-    "wiki": "https://en.wikipedia.org/wiki/Nepal"
-  },
-  "netherlands": {
-    "flag": "🇳🇱",
-    "wiki": "https://en.wikipedia.org/wiki/Netherlands"
-  },
-  "new caledonia": {
-    "flag": "🇳🇨",
-    "wiki": "https://en.wikipedia.org/wiki/New_Caledonia"
-  },
-  "new zealand": {
-    "flag": "🇳🇿",
-    "wiki": "https://en.wikipedia.org/wiki/New_Zealand"
-  },
-  "nicaragua": {
-    "flag": "🇳🇮",
-    "wiki": "https://en.wikipedia.org/wiki/Nicaragua"
-  },
-  "niger": {
-    "flag": "🇳🇪",
-    "wiki": "https://en.wikipedia.org/wiki/Niger"
-  },
-  "nigeria": {
-    "flag": "🇳🇬",
-    "wiki": "https://en.wikipedia.org/wiki/Nigeria"
-  },
-  "niue": {
-    "flag": "🇳🇺",
-    "wiki": "https://en.wikipedia.org/wiki/Niue"
-  },
-  "norfolk island": {
-    "flag": "🇳🇫",
-    "wiki": "https://en.wikipedia.org/wiki/Norfolk_Island"
-  },
-  "north korea": {
-    "flag": "🇰🇵",
-    "wiki": "https://en.wikipedia.org/wiki/North_Korea"
-  },
-  "north macedonia": {
-    "flag": "🇲🇰",
-    "wiki": "https://en.wikipedia.org/wiki/North_Macedonia"
-  },
-  "northern mariana islands": {
-    "flag": "🇲🇵",
-    "wiki": "https://en.wikipedia.org/wiki/Northern_Mariana_Islands"
-  },
-  "norway": {
-    "flag": "🇳🇴",
-    "wiki": "https://en.wikipedia.org/wiki/Norway"
-  },
-  "oman": {
-    "flag": "🇴🇲",
-    "wiki": "https://en.wikipedia.org/wiki/Oman"
-  },
-  "pakistan": {
-    "flag": "🇵🇰",
-    "wiki": "https://en.wikipedia.org/wiki/Pakistan"
-  },
-  "palau": {
-    "flag": "🇵🇼",
-    "wiki": "https://en.wikipedia.org/wiki/Palau"
-  },
-  "palestinian territories": {
-    "flag": "🇵🇸",
-    "wiki": "https://en.wikipedia.org/wiki/State_of_Palestine"
-  },
-  "panama": {
-    "flag": "🇵🇦",
-    "wiki": "https://en.wikipedia.org/wiki/Panama"
-  },
-  "papua new guinea": {
-    "flag": "🇵🇬",
-    "wiki": "https://en.wikipedia.org/wiki/Papua_New_Guinea"
-  },
-  "paraguay": {
-    "flag": "🇵🇾",
-    "wiki": "https://en.wikipedia.org/wiki/Paraguay"
-  },
-  "peru": {
-    "flag": "🇵🇪",
-    "wiki": "https://en.wikipedia.org/wiki/Peru"
-  },
-  "philippines": {
-    "flag": "🇵🇭",
-    "wiki": "https://en.wikipedia.org/wiki/Philippines"
-  },
-  "pitcairn islands": {
-    "flag": "🇵🇳",
-    "wiki": "https://en.wikipedia.org/wiki/Pitcairn_Islands"
-  },
-  "poland": {
-    "flag": "🇵🇱",
-    "wiki": "https://en.wikipedia.org/wiki/Poland"
-  },
-  "portugal": {
-    "flag": "🇵🇹",
-    "wiki": "https://en.wikipedia.org/wiki/Portugal"
-  },
-  "puerto rico": {
-    "flag": "🇵🇷",
-    "wiki": "https://en.wikipedia.org/wiki/Puerto_Rico"
-  },
-  "qatar": {
-    "flag": "🇶🇦",
-    "wiki": "https://en.wikipedia.org/wiki/Qatar"
-  },
-  "romania": {
-    "flag": "🇷🇴",
-    "wiki": "https://en.wikipedia.org/wiki/Romania"
-  },
-  "russia": {
-    "flag": "🇷🇺",
-    "wiki": "https://en.wikipedia.org/wiki/Russia"
-  },
-  "rwanda": {
-    "flag": "🇷🇼",
-    "wiki": "https://en.wikipedia.org/wiki/Rwanda"
-  },
-  "réunion": {
-    "flag": "🇷🇪",
-    "wiki": "https://en.wikipedia.org/wiki/R%C3%A9union"
-  },
-  "samoa": {
-    "flag": "🇼🇸",
-    "wiki": "https://en.wikipedia.org/wiki/Samoa"
-  },
-  "san marino": {
-    "flag": "🇸🇲",
-    "wiki": "https://en.wikipedia.org/wiki/San_Marino"
-  },
-  "saudi arabia": {
-    "flag": "🇸🇦",
-    "wiki": "https://en.wikipedia.org/wiki/Saudi_Arabia"
-  },
-  "scotland": {
-    "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
-    "wiki": "https://en.wikipedia.org/wiki/Scotland"
-  },
-  "senegal": {
-    "flag": "🇸🇳",
-    "wiki": "https://en.wikipedia.org/wiki/Senegal"
-  },
-  "serbia": {
-    "flag": "🇷🇸",
-    "wiki": "https://en.wikipedia.org/wiki/Serbia"
-  },
-  "seychelles": {
-    "flag": "🇸🇨",
-    "wiki": "https://en.wikipedia.org/wiki/Seychelles"
-  },
-  "sierra leone": {
-    "flag": "🇸🇱",
-    "wiki": "https://en.wikipedia.org/wiki/Sierra_Leone"
-  },
-  "singapore": {
-    "flag": "🇸🇬",
-    "wiki": "https://en.wikipedia.org/wiki/Singapore"
-  },
-  "sint maarten": {
-    "flag": "🇸🇽",
-    "wiki": "https://en.wikipedia.org/wiki/Sint_Maarten"
-  },
-  "slovakia": {
-    "flag": "🇸🇰",
-    "wiki": "https://en.wikipedia.org/wiki/Slovakia"
-  },
-  "slovenia": {
-    "flag": "🇸🇮",
-    "wiki": "https://en.wikipedia.org/wiki/Slovenia"
-  },
-  "solomon islands": {
-    "flag": "🇸🇧",
-    "wiki": "https://en.wikipedia.org/wiki/Solomon_Islands"
-  },
-  "somalia": {
-    "flag": "🇸🇴",
-    "wiki": "https://en.wikipedia.org/wiki/Somalia"
-  },
-  "south africa": {
-    "flag": "🇿🇦",
-    "wiki": "https://en.wikipedia.org/wiki/South_Africa"
-  },
-  "south georgia & south sandwich islands": {
-    "flag": "🇬🇸",
-    "wiki": "https://en.wikipedia.org/wiki/South_Georgia_and_the_South_Sandwich_Islands"
-  },
-  "south korea": {
-    "flag": "🇰🇷",
-    "wiki": "https://en.wikipedia.org/wiki/South_Korea"
-  },
-  "south sudan": {
-    "flag": "🇸🇸",
-    "wiki": "https://en.wikipedia.org/wiki/South_Sudan"
-  },
-  "spain": {
-    "flag": "🇪🇸",
-    "wiki": "https://en.wikipedia.org/wiki/Spain"
-  },
-  "sri lanka": {
-    "flag": "🇱🇰",
-    "wiki": "https://en.wikipedia.org/wiki/Sri_Lanka"
-  },
-  "st. barthélemy": {
-    "flag": "🇧🇱",
-    "wiki": "https://en.wikipedia.org/wiki/Saint_Barth%C3%A9lemy"
-  },
-  "st. helena": {
-    "flag": "🇸🇭",
-    "wiki": "https://en.wikipedia.org/wiki/Saint_Helena"
-  },
-  "st. kitts & nevis": {
-    "flag": "🇰🇳",
-    "wiki": "https://en.wikipedia.org/wiki/Saint_Kitts_and_Nevis"
-  },
-  "st. lucia": {
-    "flag": "🇱🇨",
-    "wiki": "https://en.wikipedia.org/wiki/Saint_Lucia"
-  },
-  "st. martin": {
-    "flag": "🇲🇫",
-    "wiki": "https://en.wikipedia.org/wiki/Saint_Martin"
-  },
-  "st. pierre & miquelon": {
-    "flag": "🇵🇲",
-    "wiki": "https://en.wikipedia.org/wiki/Saint_Pierre_and_Miquelon"
-  },
-  "st. vincent & grenadines": {
-    "flag": "🇻🇨",
-    "wiki": "https://en.wikipedia.org/wiki/Saint_Vincent_and_the_Grenadines"
-  },
-  "sudan": {
-    "flag": "🇸🇩",
-    "wiki": "https://en.wikipedia.org/wiki/Sudan"
-  },
-  "suriname": {
-    "flag": "🇸🇷",
-    "wiki": "https://en.wikipedia.org/wiki/Suriname"
-  },
-  "svalbard & jan mayen": {
-    "flag": "🇸🇯",
-    "wiki": "https://en.wikipedia.org/wiki/Svalbard_and_Jan_Mayen"
-  },
-  "sweden": {
-    "flag": "🇸🇪",
-    "wiki": "https://en.wikipedia.org/wiki/Sweden"
-  },
-  "switzerland": {
-    "flag": "🇨🇭",
-    "wiki": "https://en.wikipedia.org/wiki/Switzerland"
-  },
-  "syria": {
-    "flag": "🇸🇾",
-    "wiki": "https://en.wikipedia.org/wiki/Syria"
-  },
-  "são tomé & príncipe": {
-    "flag": "🇸🇹",
-    "wiki": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9_and_Pr%C3%ADncipe"
-  },
-  "taiwan": {
-    "flag": "🇹🇼",
-    "wiki": "https://en.wikipedia.org/wiki/Taiwan"
-  },
-  "tajikistan": {
-    "flag": "🇹🇯",
-    "wiki": "https://en.wikipedia.org/wiki/Tajikistan"
-  },
-  "tanzania": {
-    "flag": "🇹🇿",
-    "wiki": "https://en.wikipedia.org/wiki/Tanzania"
-  },
-  "thailand": {
-    "flag": "🇹🇭",
-    "wiki": "https://en.wikipedia.org/wiki/Thailand"
-  },
-  "timor-leste": {
-    "flag": "🇹🇱",
-    "wiki": "https://en.wikipedia.org/wiki/East_Timor"
-  },
-  "togo": {
-    "flag": "🇹🇬",
-    "wiki": "https://en.wikipedia.org/wiki/Togo"
-  },
-  "tokelau": {
-    "flag": "🇹🇰",
-    "wiki": "https://en.wikipedia.org/wiki/Tokelau"
-  },
-  "tonga": {
-    "flag": "🇹🇴",
-    "wiki": "https://en.wikipedia.org/wiki/Tonga"
-  },
-  "trinidad & tobago": {
-    "flag": "🇹🇹",
-    "wiki": "https://en.wikipedia.org/wiki/Trinidad_and_Tobago"
-  },
-  "tristan da cunha": {
-    "flag": "🇹🇦",
-    "wiki": "https://en.wikipedia.org/wiki/Tristan_da_Cunha"
-  },
-  "tunisia": {
-    "flag": "🇹🇳",
-    "wiki": "https://en.wikipedia.org/wiki/Tunisia"
-  },
-  "turkey": {
-    "flag": "🇹🇷",
-    "wiki": "https://en.wikipedia.org/wiki/Turkey"
-  },
-  "turkmenistan": {
-    "flag": "🇹🇲",
-    "wiki": "https://en.wikipedia.org/wiki/Turkmenistan"
-  },
-  "turks & caicos islands": {
-    "flag": "🇹🇨",
-    "wiki": "https://en.wikipedia.org/wiki/Turks_and_Caicos_Islands"
-  },
-  "tuvalu": {
-    "flag": "🇹🇻",
-    "wiki": "https://en.wikipedia.org/wiki/Tuvalu"
-  },
-  "u.s. outlying islands": {
-    "flag": "🇺🇲",
-    "wiki": "https://en.wikipedia.org/wiki/United_States_Minor_Outlying_Islands"
-  },
-  "u.s. virgin islands": {
-    "flag": "🇻🇮",
-    "wiki": "https://en.wikipedia.org/wiki/United_States_Virgin_Islands"
-  },
-  "uganda": {
-    "flag": "🇺🇬",
-    "wiki": "https://en.wikipedia.org/wiki/Uganda"
-  },
-  "ukraine": {
-    "flag": "🇺🇦",
-    "wiki": "https://en.wikipedia.org/wiki/Ukraine"
-  },
-  "united arab emirates": {
-    "flag": "🇦🇪",
-    "wiki": "https://en.wikipedia.org/wiki/United_Arab_Emirates"
-  },
-  "united kingdom": {
-    "flag": "🇬🇧",
-    "wiki": "https://en.wikipedia.org/wiki/United_Kingdom"
-  },
-  "united states": {
-    "flag": "🇺🇸",
-    "wiki": "https://en.wikipedia.org/wiki/United_States"
-  },
-  "uruguay": {
-    "flag": "🇺🇾",
-    "wiki": "https://en.wikipedia.org/wiki/Uruguay"
-  },
-  "uzbekistan": {
-    "flag": "🇺🇿",
-    "wiki": "https://en.wikipedia.org/wiki/Uzbekistan"
-  },
-  "vanuatu": {
-    "flag": "🇻🇺",
-    "wiki": "https://en.wikipedia.org/wiki/Vanuatu"
-  },
-  "vatican city": {
-    "flag": "🇻🇦",
-    "wiki": "https://en.wikipedia.org/wiki/Vatican_City"
-  },
-  "venezuela": {
-    "flag": "🇻🇪",
-    "wiki": "https://en.wikipedia.org/wiki/Venezuela"
-  },
-  "vietnam": {
-    "flag": "🇻🇳",
-    "wiki": "https://en.wikipedia.org/wiki/Vietnam"
-  },
-  "wales": {
-    "flag": "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
-    "wiki": "https://en.wikipedia.org/wiki/Wales"
-  },
-  "wallis & futuna": {
-    "flag": "🇼🇫",
-    "wiki": "https://en.wikipedia.org/wiki/Wallis_and_Futuna"
-  },
-  "western sahara": {
-    "flag": "🇪🇭",
-    "wiki": "https://en.wikipedia.org/wiki/Western_Sahara"
-  },
-  "yemen": {
-    "flag": "🇾🇪",
-    "wiki": "https://en.wikipedia.org/wiki/Yemen"
-  },
-  "zambia": {
-    "flag": "🇿🇲",
-    "wiki": "https://en.wikipedia.org/wiki/Zambia"
-  },
-  "zimbabwe": {
-    "flag": "🇿🇼",
-    "wiki": "https://en.wikipedia.org/wiki/Zimbabwe"
-  },
-  "åland islands": {
-    "flag": "🇦🇽",
-    "wiki": "https://en.wikipedia.org/wiki/%C3%85land"
-  }
-}
-alert(flags_wikis.length)
    let percentage = Math.max(100 - Math.round(distance*100 / 13238),0);
    if(sessionStorage.getItem("percent"+String(i)+"-"+String(days)) == null) {
        sessionStorage.setItem("percent"+String(i)+"-"+String(days),String(percentage))
@@ -1703,7 +668,7 @@ alert(flags_wikis.length)
    document.getElementById('load'+String(i)).style.display = 'flex';
    document.getElementById('percentage-display'+String(i)).style.display = 'block'
    updateScoreAnimation(percentage,i);
-   let text = flags_wikis[value]["flag"]+value;
+   let text = loc_data[value]["flag"]+value;
    if(window.screen.availWidth < 700) {
        document.getElementById("county-name"+String(i)).textContent = text.length > 12 ? text.slice(0, 12) + "..." : text
    } else {
@@ -1740,6 +705,2074 @@ alert(flags_wikis.length)
 }
 
 function populate(){
+    loc_data = {
+  "afghanistan": {
+    "flag": "🇦🇫",
+    "wiki": "https://en.wikipedia.org/wiki/Afghanistan",
+    "coords": {
+      "latitude": 33.93911,
+      "longitude": 67.709953
+    }
+  },
+  "albania": {
+    "flag": "🇦🇱",
+    "wiki": "https://en.wikipedia.org/wiki/Albania",
+    "coords": {
+      "latitude": 41.153332,
+      "longitude": 20.168331
+    }
+  },
+  "algeria": {
+    "flag": "🇩🇿",
+    "wiki": "https://en.wikipedia.org/wiki/Algeria",
+    "coords": {
+      "latitude": 28.033886,
+      "longitude": 1.659626
+    }
+  },
+  "american samoa": {
+    "flag": "🇦🇸",
+    "wiki": "https://en.wikipedia.org/wiki/American_Samoa",
+    "coords": {
+      "latitude": -14.270972,
+      "longitude": -170.132217
+    }
+  },
+  "andorra": {
+    "flag": "🇦🇩",
+    "wiki": "https://en.wikipedia.org/wiki/Andorra",
+    "coords": {
+      "latitude": 42.546245,
+      "longitude": 1.601554
+    }
+  },
+  "angola": {
+    "flag": "🇦🇴",
+    "wiki": "https://en.wikipedia.org/wiki/Angola",
+    "coords": {
+      "latitude": -11.202692,
+      "longitude": 17.873887
+    }
+  },
+  "anguilla": {
+    "flag": "🇦🇮",
+    "wiki": "https://en.wikipedia.org/wiki/Anguilla",
+    "coords": {
+      "latitude": 18.220554,
+      "longitude": -63.068615
+    }
+  },
+  "antarctica": {
+    "flag": "🇦🇶",
+    "wiki": "https://en.wikipedia.org/wiki/Antarctica",
+    "coords": {
+      "latitude": -82.862752,
+      "longitude": 135
+    }
+  },
+  "antigua & barbuda": {
+    "flag": "🇦🇬",
+    "wiki": "https://en.wikipedia.org/wiki/Antigua_and_Barbuda",
+    "coords": {
+      "latitude": 17.060816,
+      "longitude": -61.796428
+    }
+  },
+  "argentina": {
+    "flag": "🇦🇷",
+    "wiki": "https://en.wikipedia.org/wiki/Argentina",
+    "coords": {
+      "latitude": -38.416097,
+      "longitude": -63.616672
+    }
+  },
+  "armenia": {
+    "flag": "🇦🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Armenia",
+    "coords": {
+      "latitude": 40.069099,
+      "longitude": 45.038189
+    }
+  },
+  "aruba": {
+    "flag": "🇦🇼",
+    "wiki": "https://en.wikipedia.org/wiki/Aruba",
+    "coords": {
+      "latitude": 12.52111,
+      "longitude": -69.968338
+    }
+  },
+  "ascension island": {
+    "flag": "🇦🇨",
+    "wiki": "https://en.wikipedia.org/wiki/Ascension_Island",
+    "coords": {
+      "latitude": -7.9467,
+      "longitude": -14.3559
+    }
+  },
+  "australia": {
+    "flag": "🇦🇺",
+    "wiki": "https://en.wikipedia.org/wiki/Australia",
+    "coords": {
+      "latitude": -25.274398,
+      "longitude": 133.775136
+    }
+  },
+  "austria": {
+    "flag": "🇦🇹",
+    "wiki": "https://en.wikipedia.org/wiki/Austria",
+    "coords": {
+      "latitude": 47.516231,
+      "longitude": 14.550072
+    }
+  },
+  "azerbaijan": {
+    "flag": "🇦🇿",
+    "wiki": "https://en.wikipedia.org/wiki/Azerbaijan",
+    "coords": {
+      "latitude": 40.143105,
+      "longitude": 47.576927
+    }
+  },
+  "bahamas": {
+    "flag": "🇧🇸",
+    "wiki": "https://en.wikipedia.org/wiki/The_Bahamas",
+    "coords": {
+      "latitude": 25.03428,
+      "longitude": -77.39628
+    }
+  },
+  "bahrain": {
+    "flag": "🇧🇭",
+    "wiki": "https://en.wikipedia.org/wiki/Bahrain",
+    "coords": {
+      "latitude": 26.0667,
+      "longitude": 50.5577
+    }
+  },
+  "bangladesh": {
+    "flag": "🇧🇩",
+    "wiki": "https://en.wikipedia.org/wiki/Bangladesh",
+    "coords": {
+      "latitude": 23.684994,
+      "longitude": 90.356331
+    }
+  },
+  "barbados": {
+    "flag": "🇧🇧",
+    "wiki": "https://en.wikipedia.org/wiki/Barbados",
+    "coords": {
+      "latitude": 13.193887,
+      "longitude": -59.543198
+    }
+  },
+  "belarus": {
+    "flag": "🇧🇾",
+    "wiki": "https://en.wikipedia.org/wiki/Belarus",
+    "coords": {
+      "latitude": 53.709807,
+      "longitude": 27.953389
+    }
+  },
+  "belgium": {
+    "flag": "🇧🇪",
+    "wiki": "https://en.wikipedia.org/wiki/Belgium",
+    "coords": {
+      "latitude": 50.503887,
+      "longitude": 4.469936
+    }
+  },
+  "belize": {
+    "flag": "🇧🇿",
+    "wiki": "https://en.wikipedia.org/wiki/Belize",
+    "coords": {
+      "latitude": 17.189877,
+      "longitude": -88.49765
+    }
+  },
+  "benin": {
+    "flag": "🇧🇯",
+    "wiki": "https://en.wikipedia.org/wiki/Benin",
+    "coords": {
+      "latitude": 9.30769,
+      "longitude": 2.315834
+    }
+  },
+  "bermuda": {
+    "flag": "🇧🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Bermuda",
+    "coords": {
+      "latitude": 32.321384,
+      "longitude": -64.75737
+    }
+  },
+  "bhutan": {
+    "flag": "🇧🇹",
+    "wiki": "https://en.wikipedia.org/wiki/Bhutan",
+    "coords": {
+      "latitude": 27.514162,
+      "longitude": 90.433601
+    }
+  },
+  "bolivia": {
+    "flag": "🇧🇴",
+    "wiki": "https://en.wikipedia.org/wiki/Bolivia",
+    "coords": {
+      "latitude": -16.290154,
+      "longitude": -63.588653
+    }
+  },
+  "bosnia & herzegovina": {
+    "flag": "🇧🇦",
+    "wiki": "https://en.wikipedia.org/wiki/Bosnia_and_Herzegovina",
+    "coords": {
+      "latitude": 43.915886,
+      "longitude": 17.679076
+    }
+  },
+  "botswana": {
+    "flag": "🇧🇼",
+    "wiki": "https://en.wikipedia.org/wiki/Botswana",
+    "coords": {
+      "latitude": -22.328474,
+      "longitude": 24.684866
+    }
+  },
+  "bouvet island": {
+    "flag": "🇧🇻",
+    "wiki": "https://en.wikipedia.org/wiki/Bouvet_Island",
+    "coords": {
+      "latitude": -54.4208,
+      "longitude": 3.3464
+    }
+  },
+  "brazil": {
+    "flag": "🇧🇷",
+    "wiki": "https://en.wikipedia.org/wiki/Brazil",
+    "coords": {
+      "latitude": -14.235004,
+      "longitude": -51.92528
+    }
+  },
+  "british indian ocean territory": {
+    "flag": "🇮🇴",
+    "wiki": "https://en.wikipedia.org/wiki/British_Indian_Ocean_Territory",
+    "coords": {
+      "latitude": -6.343194,
+      "longitude": 71.876519
+    }
+  },
+  "british virgin islands": {
+    "flag": "🇻🇬",
+    "wiki": "https://en.wikipedia.org/wiki/British_Virgin_Islands",
+    "coords": {
+      "latitude": 18.420695,
+      "longitude": -64.639968
+    }
+  },
+  "brunei": {
+    "flag": "🇧🇳",
+    "wiki": "https://en.wikipedia.org/wiki/Brunei",
+    "coords": {
+      "latitude": 4.535277,
+      "longitude": 114.727669
+    }
+  },
+  "bulgaria": {
+    "flag": "🇧🇬",
+    "wiki": "https://en.wikipedia.org/wiki/Bulgaria",
+    "coords": {
+      "latitude": 42.733883,
+      "longitude": 25.48583
+    }
+  },
+  "burkina faso": {
+    "flag": "🇧🇫",
+    "wiki": "https://en.wikipedia.org/wiki/Burkina_Faso",
+    "coords": {
+      "latitude": 12.238333,
+      "longitude": -1.561593
+    }
+  },
+  "burundi": {
+    "flag": "🇧🇮",
+    "wiki": "https://en.wikipedia.org/wiki/Burundi",
+    "coords": {
+      "latitude": -3.373056,
+      "longitude": 29.918886
+    }
+  },
+  "cambodia": {
+    "flag": "🇰🇭",
+    "wiki": "https://en.wikipedia.org/wiki/Cambodia",
+    "coords": {
+      "latitude": 12.565679,
+      "longitude": 104.990963
+    }
+  },
+  "cameroon": {
+    "flag": "🇨🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Cameroon",
+    "coords": {
+      "latitude": 7.369722,
+      "longitude": 12.354722
+    }
+  },
+  "canada": {
+    "flag": "🇨🇦",
+    "wiki": "https://en.wikipedia.org/wiki/Canada",
+    "coords": {
+      "latitude": 56.130366,
+      "longitude": -106.346771
+    }
+  },
+  "canary islands": {
+    "flag": "🇮🇨",
+    "wiki": "https://en.wikipedia.org/wiki/Canary_Islands",
+    "coords": {
+      "latitude": 28.291565,
+      "longitude": -16.629129
+    }
+  },
+  "cape verde": {
+    "flag": "🇨🇻",
+    "wiki": "https://en.wikipedia.org/wiki/Cape_Verde",
+    "coords": {
+      "latitude": 16.002082,
+      "longitude": -24.013197
+    }
+  },
+  "caribbean netherlands": {
+    "flag": "🇧🇶",
+    "wiki": "https://en.wikipedia.org/wiki/Caribbean_Netherlands",
+    "coords": {
+      "latitude": 12.1784,
+      "longitude": -68.2385
+    }
+  },
+  "cayman islands": {
+    "flag": "🇰🇾",
+    "wiki": "https://en.wikipedia.org/wiki/Cayman_Islands",
+    "coords": {
+      "latitude": 19.3133,
+      "longitude": -81.2546
+    }
+  },
+  "central african republic": {
+    "flag": "🇨🇫",
+    "wiki": "https://en.wikipedia.org/wiki/Central_African_Republic",
+    "coords": {
+      "latitude": 6.611111,
+      "longitude": 20.939444
+    }
+  },
+  "ceuta & melilla": {
+    "flag": "🇪🇦",
+    "wiki": "https://en.wikipedia.org/wiki/Ceuta_and_Melilla",
+    "coords": {
+      "latitude": 35.8894,
+      "longitude": -5.3198
+    }
+  },
+  "chad": {
+    "flag": "🇹🇩",
+    "wiki": "https://en.wikipedia.org/wiki/Chad",
+    "coords": {
+      "latitude": 15.454166,
+      "longitude": 18.732207
+    }
+  },
+  "chile": {
+    "flag": "🇨🇱",
+    "wiki": "https://en.wikipedia.org/wiki/Chile",
+    "coords": {
+      "latitude": -35.675147,
+      "longitude": -71.542969
+    }
+  },
+  "china": {
+    "flag": "🇨🇳",
+    "wiki": "https://en.wikipedia.org/wiki/China",
+    "coords": {
+      "latitude": 35.86166,
+      "longitude": 104.195397
+    }
+  },
+  "christmas island": {
+    "flag": "🇨🇽",
+    "wiki": "https://en.wikipedia.org/wiki/Christmas_Island",
+    "coords": {
+      "latitude": -10.4475,
+      "longitude": 105.6904
+    }
+  },
+  "clipperton island": {
+    "flag": "🇨🇵",
+    "wiki": "https://en.wikipedia.org/wiki/Clipperton_Island",
+    "coords": {
+      "latitude": 10.3,
+      "longitude": -109.2167
+    }
+  },
+  "cocos (keeling) islands": {
+    "flag": "🇨🇨",
+    "wiki": "https://en.wikipedia.org/wiki/Cocos_(Keeling)_Islands",
+    "coords": {
+      "latitude": -12.1642,
+      "longitude": 96.8709
+    }
+  },
+  "colombia": {
+    "flag": "🇨🇴",
+    "wiki": "https://en.wikipedia.org/wiki/Colombia",
+    "coords": {
+      "latitude": 4.570868,
+      "longitude": -74.297333
+    }
+  },
+  "comoros": {
+    "flag": "🇰🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Comoros",
+    "coords": {
+      "latitude": -11.875001,
+      "longitude": 43.872219
+    }
+  },
+  "congo - brazzaville": {
+    "flag": "🇨🇬",
+    "wiki": "https://en.wikipedia.org/wiki/Republic_of_the_Congo",
+    "coords": {
+      "latitude": -0.228021,
+      "longitude": 15.827659
+    }
+  },
+  "congo - kinshasa": {
+    "flag": "🇨🇩",
+    "wiki": "https://en.wikipedia.org/wiki/Democratic_Republic_of_the_Congo",
+    "coords": {
+      "latitude": -4.038333,
+      "longitude": 21.758664
+    }
+  },
+  "cook islands": {
+    "flag": "🇨🇰",
+    "wiki": "https://en.wikipedia.org/wiki/Cook_Islands",
+    "coords": {
+      "latitude": -21.236736,
+      "longitude": -159.777671
+    }
+  },
+  "costa rica": {
+    "flag": "🇨🇷",
+    "wiki": "https://en.wikipedia.org/wiki/Costa_Rica",
+    "coords": {
+      "latitude": 9.748917,
+      "longitude": -83.753428
+    }
+  },
+  "croatia": {
+    "flag": "🇭🇷",
+    "wiki": "https://en.wikipedia.org/wiki/Croatia",
+    "coords": {
+      "latitude": 45.1,
+      "longitude": 15.2
+    }
+  },
+  "cuba": {
+    "flag": "🇨🇺",
+    "wiki": "https://en.wikipedia.org/wiki/Cuba",
+    "coords": {
+      "latitude": 21.521757,
+      "longitude": -77.781167
+    }
+  },
+  "curaçao": {
+    "flag": "🇨🇼",
+    "wiki": "https://en.wikipedia.org/wiki/Cura%C3%A7ao",
+    "coords": {
+      "latitude": 12.1696,
+      "longitude": -68.99
+    }
+  },
+  "cyprus": {
+    "flag": "🇨🇾",
+    "wiki": "https://en.wikipedia.org/wiki/Cyprus",
+    "coords": {
+      "latitude": 35.126413,
+      "longitude": 33.429859
+    }
+  },
+  "czechia": {
+    "flag": "🇨🇿",
+    "wiki": "https://en.wikipedia.org/wiki/Czech_Republic",
+    "coords": {
+      "latitude": 49.817492,
+      "longitude": 15.472962
+    }
+  },
+  "côte d’ivoire": {
+    "flag": "🇨🇮",
+    "wiki": "https://en.wikipedia.org/wiki/Ivory_Coast",
+    "coords": {
+      "latitude": 7.539989,
+      "longitude": -5.54708
+    }
+  },
+  "denmark": {
+    "flag": "🇩🇰",
+    "wiki": "https://en.wikipedia.org/wiki/Denmark",
+    "coords": {
+      "latitude": 56.26392,
+      "longitude": 9.501785
+    }
+  },
+  "diego garcia": {
+    "flag": "🇩🇬",
+    "wiki": "https://en.wikipedia.org/wiki/Diego_Garcia",
+    "coords": {
+      "latitude": -7.3133,
+      "longitude": 72.4112
+    }
+  },
+  "djibouti": {
+    "flag": "🇩🇯",
+    "wiki": "https://en.wikipedia.org/wiki/Djibouti",
+    "coords": {
+      "latitude": 11.825138,
+      "longitude": 42.590275
+    }
+  },
+  "dominica": {
+    "flag": "🇩🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Dominica",
+    "coords": {
+      "latitude": 15.414999,
+      "longitude": -61.370976
+    }
+  },
+  "dominican republic": {
+    "flag": "🇩🇴",
+    "wiki": "https://en.wikipedia.org/wiki/Dominican_Republic",
+    "coords": {
+      "latitude": 18.735693,
+      "longitude": -70.162651
+    }
+  },
+  "ecuador": {
+    "flag": "🇪🇨",
+    "wiki": "https://en.wikipedia.org/wiki/Ecuador",
+    "coords": {
+      "latitude": -1.831239,
+      "longitude": -78.183406
+    }
+  },
+  "egypt": {
+    "flag": "🇪🇬",
+    "wiki": "https://en.wikipedia.org/wiki/Egypt",
+    "coords": {
+      "latitude": 26.820553,
+      "longitude": 30.802498
+    }
+  },
+  "el salvador": {
+    "flag": "🇸🇻",
+    "wiki": "https://en.wikipedia.org/wiki/El_Salvador",
+    "coords": {
+      "latitude": 13.794185,
+      "longitude": -88.89653
+    }
+  },
+  "england": {
+    "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    "wiki": "https://en.wikipedia.org/wiki/England",
+    "coords": {
+      "latitude": 52.355518,
+      "longitude": -1.17432
+    }
+  },
+  "equatorial guinea": {
+    "flag": "🇬🇶",
+    "wiki": "https://en.wikipedia.org/wiki/Equatorial_Guinea",
+    "coords": {
+      "latitude": 1.650801,
+      "longitude": 10.267895
+    }
+  },
+  "eritrea": {
+    "flag": "🇪🇷",
+    "wiki": "https://en.wikipedia.org/wiki/Eritrea",
+    "coords": {
+      "latitude": 15.179384,
+      "longitude": 39.782334
+    }
+  },
+  "estonia": {
+    "flag": "🇪🇪",
+    "wiki": "https://en.wikipedia.org/wiki/Estonia",
+    "coords": {
+      "latitude": 58.595272,
+      "longitude": 25.013607
+    }
+  },
+  "eswatini": {
+    "flag": "🇸🇿",
+    "wiki": "https://en.wikipedia.org/wiki/Eswatini",
+    "coords": {
+      "latitude": -26.522503,
+      "longitude": 31.465866
+    }
+  },
+  "ethiopia": {
+    "flag": "🇪🇹",
+    "wiki": "https://en.wikipedia.org/wiki/Ethiopia",
+    "coords": {
+      "latitude": 9.145,
+      "longitude": 40.489673
+    }
+  },
+  "falkland islands": {
+    "flag": "🇫🇰",
+    "wiki": "https://en.wikipedia.org/wiki/Falkland_Islands",
+    "coords": {
+      "latitude": -51.796253,
+      "longitude": -59.523613
+    }
+  },
+  "fiji": {
+    "flag": "🇫🇯",
+    "wiki": "https://en.wikipedia.org/wiki/Fiji",
+    "coords": {
+      "latitude": -17.713371,
+      "longitude": 178.065032
+    }
+  },
+  "finland": {
+    "flag": "🇫🇮",
+    "wiki": "https://en.wikipedia.org/wiki/Finland",
+    "coords": {
+      "latitude": 61.92411,
+      "longitude": 25.748151
+    }
+  },
+  "france": {
+    "flag": "🇫🇷",
+    "wiki": "https://en.wikipedia.org/wiki/France",
+    "coords": {
+      "latitude": 46.603354,
+      "longitude": 1.888334
+    }
+  },
+  "french guiana": {
+    "flag": "🇬🇫",
+    "wiki": "https://en.wikipedia.org/wiki/French_Guiana",
+    "coords": {
+      "latitude": 3.933889,
+      "longitude": -53.125782
+    }
+  },
+  "french polynesia": {
+    "flag": "🇵🇫",
+    "wiki": "https://en.wikipedia.org/wiki/French_Polynesia",
+    "coords": {
+      "latitude": -17.679742,
+      "longitude": -149.406843
+    }
+  },
+  "french southern territories": {
+    "flag": "🇹🇫",
+    "wiki": "https://en.wikipedia.org/wiki/French_Southern_and_Antarctic_Lands",
+    "coords": {
+      "latitude": -49.280366,
+      "longitude": 69.348557
+    }
+  },
+  "gabon": {
+    "flag": "🇬🇦",
+    "wiki": "https://en.wikipedia.org/wiki/Gabon",
+    "coords": {
+      "latitude": -0.803689,
+      "longitude": 11.609444
+    }
+  },
+  "gambia": {
+    "flag": "🇬🇲",
+    "wiki": "https://en.wikipedia.org/wiki/The_Gambia",
+    "coords": {
+      "latitude": 13.443182,
+      "longitude": -15.310139
+    }
+  },
+  "georgia": {
+    "flag": "🇬🇪",
+    "wiki": "https://en.wikipedia.org/wiki/Georgia_(country)",
+    "coords": {
+      "latitude": 42.315407,
+      "longitude": 43.356892
+    }
+  },
+  "germany": {
+    "flag": "🇩🇪",
+    "wiki": "https://en.wikipedia.org/wiki/Germany",
+    "coords": {
+      "latitude": 51.165691,
+      "longitude": 10.451526
+    }
+  },
+  "ghana": {
+    "flag": "🇬🇭",
+    "wiki": "https://en.wikipedia.org/wiki/Ghana",
+    "coords": {
+      "latitude": 7.946527,
+      "longitude": -1.023194
+    }
+  },
+  "gibraltar": {
+    "flag": "🇬🇮",
+    "wiki": "https://en.wikipedia.org/wiki/Gibraltar",
+    "coords": {
+      "latitude": 36.140751,
+      "longitude": -5.353585
+    }
+  },
+  "greece": {
+    "flag": "🇬🇷",
+    "wiki": "https://en.wikipedia.org/wiki/Greece",
+    "coords": {
+      "latitude": 39.074208,
+      "longitude": 21.824312
+    }
+  },
+  "greenland": {
+    "flag": "🇬🇱",
+    "wiki": "https://en.wikipedia.org/wiki/Greenland",
+    "coords": {
+      "latitude": 71.706936,
+      "longitude": -42.604303
+    }
+  },
+  "grenada": {
+    "flag": "🇬🇩",
+    "wiki": "https://en.wikipedia.org/wiki/Grenada",
+    "coords": {
+      "latitude": 12.262776,
+      "longitude": -61.604171
+    }
+  },
+  "guadeloupe": {
+    "flag": "🇬🇵",
+    "wiki": "https://en.wikipedia.org/wiki/Guadeloupe",
+    "coords": {
+      "latitude": 16.265,
+      "longitude": -61.551
+    }
+  },
+  "guam": {
+    "flag": "🇬🇺",
+    "wiki": "https://en.wikipedia.org/wiki/Guam",
+    "coords": {
+      "latitude": 13.444304,
+      "longitude": 144.793731
+    }
+  },
+  "guatemala": {
+    "flag": "🇬🇹",
+    "wiki": "https://en.wikipedia.org/wiki/Guatemala",
+    "coords": {
+      "latitude": 15.783471,
+      "longitude": -90.230759
+    }
+  },
+  "guernsey": {
+    "flag": "🇬🇬",
+    "wiki": "https://en.wikipedia.org/wiki/Guernsey",
+    "coords": {
+      "latitude": 49.448196,
+      "longitude": -2.58949
+    }
+  },
+  "guinea": {
+    "flag": "🇬🇳",
+    "wiki": "https://en.wikipedia.org/wiki/Guinea",
+    "coords": {
+      "latitude": 9.945587,
+      "longitude": -9.696645
+    }
+  },
+  "guinea-bissau": {
+    "flag": "🇬🇼",
+    "wiki": "https://en.wikipedia.org/wiki/Guinea-Bissau",
+    "coords": {
+      "latitude": 11.803749,
+      "longitude": -15.180413
+    }
+  },
+  "guyana": {
+    "flag": "🇬🇾",
+    "wiki": "https://en.wikipedia.org/wiki/Guyana",
+    "coords": {
+      "latitude": 4.860416,
+      "longitude": -58.93018
+    }
+  },
+  "haiti": {
+    "flag": "🇭🇹",
+    "wiki": "https://en.wikipedia.org/wiki/Haiti",
+    "coords": {
+      "latitude": 18.971187,
+      "longitude": -72.285215
+    }
+  },
+  "heard & mcdonald islands": {
+    "flag": "🇭🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Heard_Island_and_McDonald_Islands",
+    "coords": {
+      "latitude": -53.08181,
+      "longitude": 73.504158
+    }
+  },
+  "honduras": {
+    "flag": "🇭🇳",
+    "wiki": "https://en.wikipedia.org/wiki/Honduras",
+    "coords": {
+      "latitude": 15.199999,
+      "longitude": -86.241905
+    }
+  },
+  "hong kong sar china": {
+    "flag": "🇭🇰",
+    "wiki": "https://en.wikipedia.org/wiki/Hong_Kong",
+    "coords": {
+      "latitude": 22.319303,
+      "longitude": 114.169361
+    }
+  },
+  "hungary": {
+    "flag": "🇭🇺",
+    "wiki": "https://en.wikipedia.org/wiki/Hungary",
+    "coords": {
+      "latitude": 47.162494,
+      "longitude": 19.503304
+    }
+  },
+  "iceland": {
+    "flag": "🇮🇸",
+    "wiki": "https://en.wikipedia.org/wiki/Iceland",
+    "coords": {
+      "latitude": 64.963051,
+      "longitude": -19.020835
+    }
+  },
+  "india": {
+    "flag": "🇮🇳",
+    "wiki": "https://en.wikipedia.org/wiki/India",
+    "coords": {
+      "latitude": 20.593684,
+      "longitude": 78.96288
+    }
+  },
+  "indonesia": {
+    "flag": "🇮🇩",
+    "wiki": "https://en.wikipedia.org/wiki/Indonesia",
+    "coords": {
+      "latitude": -0.789275,
+      "longitude": 113.921327
+    }
+  },
+  "iran": {
+    "flag": "🇮🇷",
+    "wiki": "https://en.wikipedia.org/wiki/Iran",
+    "coords": {
+      "latitude": 32.427908,
+      "longitude": 53.688046
+    }
+  },
+  "iraq": {
+    "flag": "🇮🇶",
+    "wiki": "https://en.wikipedia.org/wiki/Iraq",
+    "coords": {
+      "latitude": 33.223191,
+      "longitude": 43.679291
+    }
+  },
+  "ireland": {
+    "flag": "🇮🇪",
+    "wiki": "https://en.wikipedia.org/wiki/Republic_of_Ireland",
+    "coords": {
+      "latitude": 53.41291,
+      "longitude": -8.24389
+    }
+  },
+  "isle of man": {
+    "flag": "🇮🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Isle_of_Man",
+    "coords": {
+      "latitude": 54.236107,
+      "longitude": -4.548056
+    }
+  },
+  "israel": {
+    "flag": "🇮🇱",
+    "wiki": "https://en.wikipedia.org/wiki/Israel",
+    "coords": {
+      "latitude": 31.046051,
+      "longitude": 34.851612
+    }
+  },
+  "italy": {
+    "flag": "🇮🇹",
+    "wiki": "https://en.wikipedia.org/wiki/Italy",
+    "coords": {
+      "latitude": 41.87194,
+      "longitude": 12.56738
+    }
+  },
+  "jamaica": {
+    "flag": "🇯🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Jamaica",
+    "coords": {
+      "latitude": 18.109581,
+      "longitude": -77.297508
+    }
+  },
+  "japan": {
+    "flag": "🇯🇵",
+    "wiki": "https://en.wikipedia.org/wiki/Japan",
+    "coords": {
+      "latitude": 36.204824,
+      "longitude": 138.252924
+    }
+  },
+  "jersey": {
+    "flag": "🇯🇪",
+    "wiki": "https://en.wikipedia.org/wiki/Jersey",
+    "coords": {
+      "latitude": 49.214439,
+      "longitude": -2.13125
+    }
+  },
+  "jordan": {
+    "flag": "🇯🇴",
+    "wiki": "https://en.wikipedia.org/wiki/Jordan",
+    "coords": {
+      "latitude": 30.585164,
+      "longitude": 36.238414
+    }
+  },
+  "kazakhstan": {
+    "flag": "🇰🇿",
+    "wiki": "https://en.wikipedia.org/wiki/Kazakhstan",
+    "coords": {
+      "latitude": 48.019573,
+      "longitude": 66.923684
+    }
+  },
+  "kenya": {
+    "flag": "🇰🇪",
+    "wiki": "https://en.wikipedia.org/wiki/Kenya",
+    "coords": {
+      "latitude": -0.023559,
+      "longitude": 37.906193
+    }
+  },
+  "kiribati": {
+    "flag": "🇰🇮",
+    "wiki": "https://en.wikipedia.org/wiki/Kiribati",
+    "coords": {
+      "latitude": -3.370417,
+      "longitude": -168.734039
+    }
+  },
+  "kosovo": {
+    "flag": "🇽🇰",
+    "wiki": "https://en.wikipedia.org/wiki/Kosovo",
+    "coords": {
+      "latitude": 42.602636,
+      "longitude": 20.902977
+    }
+  },
+  "kuwait": {
+    "flag": "🇰🇼",
+    "wiki": "https://en.wikipedia.org/wiki/Kuwait",
+    "coords": {
+      "latitude": 29.31166,
+      "longitude": 47.481766
+    }
+  },
+  "kyrgyzstan": {
+    "flag": "🇰🇬",
+    "wiki": "https://en.wikipedia.org/wiki/Kyrgyzstan",
+    "coords": {
+      "latitude": 41.20438,
+      "longitude": 74.766098
+    }
+  },
+  "laos": {
+    "flag": "🇱🇦",
+    "wiki": "https://en.wikipedia.org/wiki/Laos",
+    "coords": {
+      "latitude": 19.85627,
+      "longitude": 102.495496
+    }
+  },
+  "latvia": {
+    "flag": "🇱🇻",
+    "wiki": "https://en.wikipedia.org/wiki/Latvia",
+    "coords": {
+      "latitude": 56.879635,
+      "longitude": 24.603189
+    }
+  },
+  "lebanon": {
+    "flag": "🇱🇧",
+    "wiki": "https://en.wikipedia.org/wiki/Lebanon",
+    "coords": {
+      "latitude": 33.854721,
+      "longitude": 35.862285
+    }
+  },
+  "lesotho": {
+    "flag": "🇱🇸",
+    "wiki": "https://en.wikipedia.org/wiki/Lesotho",
+    "coords": {
+      "latitude": -29.609988,
+      "longitude": 28.233608
+    }
+  },
+  "liberia": {
+    "flag": "🇱🇷",
+    "wiki": "https://en.wikipedia.org/wiki/Liberia",
+    "coords": {
+      "latitude": 6.428055,
+      "longitude": -9.429499
+    }
+  },
+  "libya": {
+    "flag": "🇱🇾",
+    "wiki": "https://en.wikipedia.org/wiki/Libya",
+    "coords": {
+      "latitude": 26.3351,
+      "longitude": 17.228331
+    }
+  },
+  "liechtenstein": {
+    "flag": "🇱🇮",
+    "wiki": "https://en.wikipedia.org/wiki/Liechtenstein",
+    "coords": {
+      "latitude": 47.166,
+      "longitude": 9.555373
+    }
+  },
+  "lithuania": {
+    "flag": "🇱🇹",
+    "wiki": "https://en.wikipedia.org/wiki/Lithuania",
+    "coords": {
+      "latitude": 55.169438,
+      "longitude": 23.881275
+    }
+  },
+  "luxembourg": {
+    "flag": "🇱🇺",
+    "wiki": "https://en.wikipedia.org/wiki/Luxembourg",
+    "coords": {
+      "latitude": 49.815273,
+      "longitude": 6.129583
+    }
+  },
+  "macao sar china": {
+    "flag": "🇲🇴",
+    "wiki": "https://en.wikipedia.org/wiki/Macau",
+    "coords": {
+      "latitude": 22.198745,
+      "longitude": 113.543873
+    }
+  },
+  "madagascar": {
+    "flag": "🇲🇬",
+    "wiki": "https://en.wikipedia.org/wiki/Madagascar",
+    "coords": {
+      "latitude": -18.766947,
+      "longitude": 46.869107
+    }
+  },
+  "malawi": {
+    "flag": "🇲🇼",
+    "wiki": "https://en.wikipedia.org/wiki/Malawi",
+    "coords": {
+      "latitude": -13.254308,
+      "longitude": 34.301525
+    }
+  },
+  "malaysia": {
+    "flag": "🇲🇾",
+    "wiki": "https://en.wikipedia.org/wiki/Malaysia",
+    "coords": {
+      "latitude": 4.210484,
+      "longitude": 101.975766
+    }
+  },
+  "maldives": {
+    "flag": "🇲🇻",
+    "wiki": "https://en.wikipedia.org/wiki/Maldives",
+    "coords": {
+      "latitude": 3.202778,
+      "longitude": 73.22068
+    }
+  },
+  "mali": {
+    "flag": "🇲🇱",
+    "wiki": "https://en.wikipedia.org/wiki/Mali",
+    "coords": {
+      "latitude": 17.570692,
+      "longitude": -3.996166
+    }
+  },
+  "malta": {
+    "flag": "🇲🇹",
+    "wiki": "https://en.wikipedia.org/wiki/Malta",
+    "coords": {
+      "latitude": 35.937496,
+      "longitude": 14.375416
+    }
+  },
+  "marshall islands": {
+    "flag": "🇲🇭",
+    "wiki": "https://en.wikipedia.org/wiki/Marshall_Islands",
+    "coords": {
+      "latitude": 7.131474,
+      "longitude": 171.184478
+    }
+  },
+  "martinique": {
+    "flag": "🇲🇶",
+    "wiki": "https://en.wikipedia.org/wiki/Martinique",
+    "coords": {
+      "latitude": 14.641528,
+      "longitude": -61.024174
+    }
+  },
+  "mauritania": {
+    "flag": "🇲🇷",
+    "wiki": "https://en.wikipedia.org/wiki/Mauritania",
+    "coords": {
+      "latitude": 21.00789,
+      "longitude": -10.940835
+    }
+  },
+  "mauritius": {
+    "flag": "🇲🇺",
+    "wiki": "https://en.wikipedia.org/wiki/Mauritius",
+    "coords": {
+      "latitude": -20.348404,
+      "longitude": 57.552152
+    }
+  },
+  "mayotte": {
+    "flag": "🇾🇹",
+    "wiki": "https://en.wikipedia.org/wiki/Mayotte",
+    "coords": {
+      "latitude": -12.8275,
+      "longitude": 45.166244
+    }
+  },
+  "mexico": {
+    "flag": "🇲🇽",
+    "wiki": "https://en.wikipedia.org/wiki/Mexico",
+    "coords": {
+      "latitude": 23.634501,
+      "longitude": -102.552784
+    }
+  },
+  "micronesia": {
+    "flag": "🇫🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Federated_States_of_Micronesia",
+    "coords": {
+      "latitude": 7.425554,
+      "longitude": 150.550812
+    }
+  },
+  "moldova": {
+    "flag": "🇲🇩",
+    "wiki": "https://en.wikipedia.org/wiki/Moldova",
+    "coords": {
+      "latitude": 47.411631,
+      "longitude": 28.369885
+    }
+  },
+  "monaco": {
+    "flag": "🇲🇨",
+    "wiki": "https://en.wikipedia.org/wiki/Monaco",
+    "coords": {
+      "latitude": 43.750298,
+      "longitude": 7.412841
+    }
+  },
+  "mongolia": {
+    "flag": "🇲🇳",
+    "wiki": "https://en.wikipedia.org/wiki/Mongolia",
+    "coords": {
+      "latitude": 46.862496,
+      "longitude": 103.846656
+    }
+  },
+  "montenegro": {
+    "flag": "🇲🇪",
+    "wiki": "https://en.wikipedia.org/wiki/Montenegro",
+    "coords": {
+      "latitude": 42.708678,
+      "longitude": 19.37439
+    }
+  },
+  "montserrat": {
+    "flag": "🇲🇸",
+    "wiki": "https://en.wikipedia.org/wiki/Montserrat",
+    "coords": {
+      "latitude": 16.742498,
+      "longitude": -62.187366
+    }
+  },
+  "morocco": {
+    "flag": "🇲🇦",
+    "wiki": "https://en.wikipedia.org/wiki/Morocco",
+    "coords": {
+      "latitude": 31.791702,
+      "longitude": -7.09262
+    }
+  },
+  "mozambique": {
+    "flag": "🇲🇿",
+    "wiki": "https://en.wikipedia.org/wiki/Mozambique",
+    "coords": {
+      "latitude": -18.665695,
+      "longitude": 35.529562
+    }
+  },
+  "myanmar (burma)": {
+    "flag": "🇲🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Myanmar",
+    "coords": {
+      "latitude": 21.916221,
+      "longitude": 95.955974
+    }
+  },
+  "namibia": {
+    "flag": "🇳🇦",
+    "wiki": "https://en.wikipedia.org/wiki/Namibia",
+    "coords": {
+      "latitude": -22.95764,
+      "longitude": 18.49041
+    }
+  },
+  "nauru": {
+    "flag": "🇳🇷",
+    "wiki": "https://en.wikipedia.org/wiki/Nauru",
+    "coords": {
+      "latitude": -0.522778,
+      "longitude": 166.931503
+    }
+  },
+  "nepal": {
+    "flag": "🇳🇵",
+    "wiki": "https://en.wikipedia.org/wiki/Nepal",
+    "coords": {
+      "latitude": 28.394857,
+      "longitude": 84.124008
+    }
+  },
+  "netherlands": {
+    "flag": "🇳🇱",
+    "wiki": "https://en.wikipedia.org/wiki/Netherlands",
+    "coords": {
+      "latitude": 52.132633,
+      "longitude": 5.291266
+    }
+  },
+  "new caledonia": {
+    "flag": "🇳🇨",
+    "wiki": "https://en.wikipedia.org/wiki/New_Caledonia",
+    "coords": {
+      "latitude": -20.904305,
+      "longitude": 165.618042
+    }
+  },
+  "new zealand": {
+    "flag": "🇳🇿",
+    "wiki": "https://en.wikipedia.org/wiki/New_Zealand",
+    "coords": {
+      "latitude": -40.900557,
+      "longitude": 174.885971
+    }
+  },
+  "nicaragua": {
+    "flag": "🇳🇮",
+    "wiki": "https://en.wikipedia.org/wiki/Nicaragua",
+    "coords": {
+      "latitude": 12.865416,
+      "longitude": -85.207229
+    }
+  },
+  "niger": {
+    "flag": "🇳🇪",
+    "wiki": "https://en.wikipedia.org/wiki/Niger",
+    "coords": {
+      "latitude": 17.607789,
+      "longitude": 8.081666
+    }
+  },
+  "nigeria": {
+    "flag": "🇳🇬",
+    "wiki": "https://en.wikipedia.org/wiki/Nigeria",
+    "coords": {
+      "latitude": 9.081999,
+      "longitude": 8.675277
+    }
+  },
+  "niue": {
+    "flag": "🇳🇺",
+    "wiki": "https://en.wikipedia.org/wiki/Niue",
+    "coords": {
+      "latitude": -19.054445,
+      "longitude": -169.867233
+    }
+  },
+  "norfolk island": {
+    "flag": "🇳🇫",
+    "wiki": "https://en.wikipedia.org/wiki/Norfolk_Island",
+    "coords": {
+      "latitude": -29.040835,
+      "longitude": 167.954712
+    }
+  },
+  "north korea": {
+    "flag": "🇰🇵",
+    "wiki": "https://en.wikipedia.org/wiki/North_Korea",
+    "coords": {
+      "latitude": 40.339852,
+      "longitude": 127.510093
+    }
+  },
+  "north macedonia": {
+    "flag": "🇲🇰",
+    "wiki": "https://en.wikipedia.org/wiki/North_Macedonia",
+    "coords": {
+      "latitude": 41.608635,
+      "longitude": 21.745275
+    }
+  },
+  "northern mariana islands": {
+    "flag": "🇲🇵",
+    "wiki": "https://en.wikipedia.org/wiki/Northern_Mariana_Islands",
+    "coords": {
+      "latitude": 15.0979,
+      "longitude": 145.6739
+    }
+  },
+  "norway": {
+    "flag": "🇳🇴",
+    "wiki": "https://en.wikipedia.org/wiki/Norway",
+    "coords": {
+      "latitude": 60.472024,
+      "longitude": 8.468946
+    }
+  },
+  "oman": {
+    "flag": "🇴🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Oman",
+    "coords": {
+      "latitude": 21.512583,
+      "longitude": 55.923255
+    }
+  },
+  "pakistan": {
+    "flag": "🇵🇰",
+    "wiki": "https://en.wikipedia.org/wiki/Pakistan",
+    "coords": {
+      "latitude": 30.375321,
+      "longitude": 69.345116
+    }
+  },
+  "palau": {
+    "flag": "🇵🇼",
+    "wiki": "https://en.wikipedia.org/wiki/Palau",
+    "coords": {
+      "latitude": 7.51498,
+      "longitude": 134.58252
+    }
+  },
+  "palestinian territories": {
+    "flag": "🇵🇸",
+    "wiki": "https://en.wikipedia.org/wiki/State_of_Palestine",
+    "coords": {
+      "latitude": 31.9474,
+      "longitude": 35.2272
+    }
+  },
+  "panama": {
+    "flag": "🇵🇦",
+    "wiki": "https://en.wikipedia.org/wiki/Panama",
+    "coords": {
+      "latitude": 8.537981,
+      "longitude": -80.782127
+    }
+  },
+  "papua new guinea": {
+    "flag": "🇵🇬",
+    "wiki": "https://en.wikipedia.org/wiki/Papua_New_Guinea",
+    "coords": {
+      "latitude": -6.314993,
+      "longitude": 143.95555
+    }
+  },
+  "paraguay": {
+    "flag": "🇵🇾",
+    "wiki": "https://en.wikipedia.org/wiki/Paraguay",
+    "coords": {
+      "latitude": -23.442503,
+      "longitude": -58.443832
+    }
+  },
+  "peru": {
+    "flag": "🇵🇪",
+    "wiki": "https://en.wikipedia.org/wiki/Peru",
+    "coords": {
+      "latitude": -9.189967,
+      "longitude": -75.015152
+    }
+  },
+  "philippines": {
+    "flag": "🇵🇭",
+    "wiki": "https://en.wikipedia.org/wiki/Philippines",
+    "coords": {
+      "latitude": 12.879721,
+      "longitude": 121.774017
+    }
+  },
+  "pitcairn islands": {
+    "flag": "🇵🇳",
+    "wiki": "https://en.wikipedia.org/wiki/Pitcairn_Islands",
+    "coords": {
+      "latitude": -24.7036,
+      "longitude": -127.4393
+    }
+  },
+  "poland": {
+    "flag": "🇵🇱",
+    "wiki": "https://en.wikipedia.org/wiki/Poland",
+    "coords": {
+      "latitude": 51.919438,
+      "longitude": 19.145136
+    }
+  },
+  "portugal": {
+    "flag": "🇵🇹",
+    "wiki": "https://en.wikipedia.org/wiki/Portugal",
+    "coords": {
+      "latitude": 39.399872,
+      "longitude": -8.224454
+    }
+  },
+  "puerto rico": {
+    "flag": "🇵🇷",
+    "wiki": "https://en.wikipedia.org/wiki/Puerto_Rico",
+    "coords": {
+      "latitude": 18.220833,
+      "longitude": -66.590149
+    }
+  },
+  "qatar": {
+    "flag": "🇶🇦",
+    "wiki": "https://en.wikipedia.org/wiki/Qatar",
+    "coords": {
+      "latitude": 25.354826,
+      "longitude": 51.183884
+    }
+  },
+  "romania": {
+    "flag": "🇷🇴",
+    "wiki": "https://en.wikipedia.org/wiki/Romania",
+    "coords": {
+      "latitude": 45.943161,
+      "longitude": 24.96676
+    }
+  },
+  "russia": {
+    "flag": "🇷🇺",
+    "wiki": "https://en.wikipedia.org/wiki/Russia",
+    "coords": {
+      "latitude": 61.52401,
+      "longitude": 105.318756
+    }
+  },
+  "rwanda": {
+    "flag": "🇷🇼",
+    "wiki": "https://en.wikipedia.org/wiki/Rwanda",
+    "coords": {
+      "latitude": -1.940278,
+      "longitude": 29.873888
+    }
+  },
+  "réunion": {
+    "flag": "🇷🇪",
+    "wiki": "https://en.wikipedia.org/wiki/R%C3%A9union",
+    "coords": {
+      "latitude": -21.115141,
+      "longitude": 55.536384
+    }
+  },
+  "samoa": {
+    "flag": "🇼🇸",
+    "wiki": "https://en.wikipedia.org/wiki/Samoa",
+    "coords": {
+      "latitude": -13.759029,
+      "longitude": -172.104629
+    }
+  },
+  "san marino": {
+    "flag": "🇸🇲",
+    "wiki": "https://en.wikipedia.org/wiki/San_Marino",
+    "coords": {
+      "latitude": 43.94236,
+      "longitude": 12.457777
+    }
+  },
+  "saudi arabia": {
+    "flag": "🇸🇦",
+    "wiki": "https://en.wikipedia.org/wiki/Saudi_Arabia",
+    "coords": {
+      "latitude": 23.885942,
+      "longitude": 45.079162
+    }
+  },
+  "scotland": {
+    "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+    "wiki": "https://en.wikipedia.org/wiki/Scotland",
+    "coords": {
+      "latitude": 56.490671,
+      "longitude": -4.202646
+    }
+  },
+  "senegal": {
+    "flag": "🇸🇳",
+    "wiki": "https://en.wikipedia.org/wiki/Senegal",
+    "coords": {
+      "latitude": 14.497401,
+      "longitude": -14.452362
+    }
+  },
+  "serbia": {
+    "flag": "🇷🇸",
+    "wiki": "https://en.wikipedia.org/wiki/Serbia",
+    "coords": {
+      "latitude": 44.016521,
+      "longitude": 21.005859
+    }
+  },
+  "seychelles": {
+    "flag": "🇸🇨",
+    "wiki": "https://en.wikipedia.org/wiki/Seychelles",
+    "coords": {
+      "latitude": -4.679574,
+      "longitude": 55.491977
+    }
+  },
+  "sierra leone": {
+    "flag": "🇸🇱",
+    "wiki": "https://en.wikipedia.org/wiki/Sierra_Leone",
+    "coords": {
+      "latitude": 8.460555,
+      "longitude": -11.779889
+    }
+  },
+  "singapore": {
+    "flag": "🇸🇬",
+    "wiki": "https://en.wikipedia.org/wiki/Singapore",
+    "coords": {
+      "latitude": 1.352083,
+      "longitude": 103.819836
+    }
+  },
+  "sint maarten": {
+    "flag": "🇸🇽",
+    "wiki": "https://en.wikipedia.org/wiki/Sint_Maarten",
+    "coords": {
+      "latitude": 18.0425,
+      "longitude": -63.0548
+    }
+  },
+  "slovakia": {
+    "flag": "🇸🇰",
+    "wiki": "https://en.wikipedia.org/wiki/Slovakia",
+    "coords": {
+      "latitude": 48.669026,
+      "longitude": 19.699024
+    }
+  },
+  "slovenia": {
+    "flag": "🇸🇮",
+    "wiki": "https://en.wikipedia.org/wiki/Slovenia",
+    "coords": {
+      "latitude": 46.151241,
+      "longitude": 14.995463
+    }
+  },
+  "solomon islands": {
+    "flag": "🇸🇧",
+    "wiki": "https://en.wikipedia.org/wiki/Solomon_Islands",
+    "coords": {
+      "latitude": -9.64571,
+      "longitude": 160.156194
+    }
+  },
+  "somalia": {
+    "flag": "🇸🇴",
+    "wiki": "https://en.wikipedia.org/wiki/Somalia",
+    "coords": {
+      "latitude": 5.152149,
+      "longitude": 46.199616
+    }
+  },
+  "south africa": {
+    "flag": "🇿🇦",
+    "wiki": "https://en.wikipedia.org/wiki/South_Africa",
+    "coords": {
+      "latitude": -30.559482,
+      "longitude": 22.937506
+    }
+  },
+  "south georgia & south sandwich islands": {
+    "flag": "🇬🇸",
+    "wiki": "https://en.wikipedia.org/wiki/South_Georgia_and_the_South_Sandwich_Islands",
+    "coords": {
+      "latitude": -54.429579,
+      "longitude": -36.587909
+    }
+  },
+  "south korea": {
+    "flag": "🇰🇷",
+    "wiki": "https://en.wikipedia.org/wiki/South_Korea",
+    "coords": {
+      "latitude": 35.907757,
+      "longitude": 127.766922
+    }
+  },
+  "south sudan": {
+    "flag": "🇸🇸",
+    "wiki": "https://en.wikipedia.org/wiki/South_Sudan",
+    "coords": {
+      "latitude": 6.877,
+      "longitude": 31.307
+    }
+  },
+  "spain": {
+    "flag": "🇪🇸",
+    "wiki": "https://en.wikipedia.org/wiki/Spain",
+    "coords": {
+      "latitude": 40.463667,
+      "longitude": -3.74922
+    }
+  },
+  "sri lanka": {
+    "flag": "🇱🇰",
+    "wiki": "https://en.wikipedia.org/wiki/Sri_Lanka",
+    "coords": {
+      "latitude": 7.873054,
+      "longitude": 80.771797
+    }
+  },
+  "st. barthélemy": {
+    "flag": "🇧🇱",
+    "wiki": "https://en.wikipedia.org/wiki/Saint_Barth%C3%A9lemy",
+    "coords": {
+      "latitude": 17.9,
+      "longitude": -62.8333
+    }
+  },
+  "st. helena": {
+    "flag": "🇸🇭",
+    "wiki": "https://en.wikipedia.org/wiki/Saint_Helena",
+    "coords": {
+      "latitude": -15.965,
+      "longitude": -5.7089
+    }
+  },
+  "st. kitts & nevis": {
+    "flag": "🇰🇳",
+    "wiki": "https://en.wikipedia.org/wiki/Saint_Kitts_and_Nevis",
+    "coords": {
+      "latitude": 17.357822,
+      "longitude": -62.782998
+    }
+  },
+  "st. lucia": {
+    "flag": "🇱🇨",
+    "wiki": "https://en.wikipedia.org/wiki/Saint_Lucia",
+    "coords": {
+      "latitude": 13.909444,
+      "longitude": -60.978893
+    }
+  },
+  "st. martin": {
+    "flag": "🇲🇫",
+    "wiki": "https://en.wikipedia.org/wiki/Saint_Martin",
+    "coords": {
+      "latitude": 18.0708,
+      "longitude": -63.0501
+    }
+  },
+  "st. pierre & miquelon": {
+    "flag": "🇵🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Saint_Pierre_and_Miquelon",
+    "coords": {
+      "latitude": 46.8852,
+      "longitude": -56.3159
+    }
+  },
+  "st. vincent & grenadines": {
+    "flag": "🇻🇨",
+    "wiki": "https://en.wikipedia.org/wiki/Saint_Vincent_and_the_Grenadines",
+    "coords": {
+      "latitude": 12.984305,
+      "longitude": -61.287228
+    }
+  },
+  "sudan": {
+    "flag": "🇸🇩",
+    "wiki": "https://en.wikipedia.org/wiki/Sudan",
+    "coords": {
+      "latitude": 12.862807,
+      "longitude": 30.217636
+    }
+  },
+  "suriname": {
+    "flag": "🇸🇷",
+    "wiki": "https://en.wikipedia.org/wiki/Suriname",
+    "coords": {
+      "latitude": 3.919305,
+      "longitude": -56.027783
+    }
+  },
+  "svalbard & jan mayen": {
+    "flag": "🇸🇯",
+    "wiki": "https://en.wikipedia.org/wiki/Svalbard_and_Jan_Mayen",
+    "coords": {
+      "latitude": 77.553604,
+      "longitude": 23.670272
+    }
+  },
+  "sweden": {
+    "flag": "🇸🇪",
+    "wiki": "https://en.wikipedia.org/wiki/Sweden",
+    "coords": {
+      "latitude": 60.128161,
+      "longitude": 18.643501
+    }
+  },
+  "switzerland": {
+    "flag": "🇨🇭",
+    "wiki": "https://en.wikipedia.org/wiki/Switzerland",
+    "coords": {
+      "latitude": 46.818188,
+      "longitude": 8.227512
+    }
+  },
+  "syria": {
+    "flag": "🇸🇾",
+    "wiki": "https://en.wikipedia.org/wiki/Syria",
+    "coords": {
+      "latitude": 34.802075,
+      "longitude": 38.996815
+    }
+  },
+  "são tomé & príncipe": {
+    "flag": "🇸🇹",
+    "wiki": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9_and_Pr%C3%ADncipe",
+    "coords": {
+      "latitude": 0.18636,
+      "longitude": 6.613081
+    }
+  },
+  "taiwan": {
+    "flag": "🇹🇼",
+    "wiki": "https://en.wikipedia.org/wiki/Taiwan",
+    "coords": {
+      "latitude": 23.69781,
+      "longitude": 120.960515
+    }
+  },
+  "tajikistan": {
+    "flag": "🇹🇯",
+    "wiki": "https://en.wikipedia.org/wiki/Tajikistan",
+    "coords": {
+      "latitude": 38.861034,
+      "longitude": 71.276093
+    }
+  },
+  "tanzania": {
+    "flag": "🇹🇿",
+    "wiki": "https://en.wikipedia.org/wiki/Tanzania",
+    "coords": {
+      "latitude": -6.369028,
+      "longitude": 34.888822
+    }
+  },
+  "thailand": {
+    "flag": "🇹🇭",
+    "wiki": "https://en.wikipedia.org/wiki/Thailand",
+    "coords": {
+      "latitude": 15.870032,
+      "longitude": 100.992541
+    }
+  },
+  "timor-leste": {
+    "flag": "🇹🇱",
+    "wiki": "https://en.wikipedia.org/wiki/East_Timor",
+    "coords": {
+      "latitude": -8.874217,
+      "longitude": 125.727539
+    }
+  },
+  "togo": {
+    "flag": "🇹🇬",
+    "wiki": "https://en.wikipedia.org/wiki/Togo",
+    "coords": {
+      "latitude": 8.619543,
+      "longitude": 0.824782
+    }
+  },
+  "tokelau": {
+    "flag": "🇹🇰",
+    "wiki": "https://en.wikipedia.org/wiki/Tokelau",
+    "coords": {
+      "latitude": -9.2005,
+      "longitude": -171.8484
+    }
+  },
+  "tonga": {
+    "flag": "🇹🇴",
+    "wiki": "https://en.wikipedia.org/wiki/Tonga",
+    "coords": {
+      "latitude": -21.178986,
+      "longitude": -175.198242
+    }
+  },
+  "trinidad & tobago": {
+    "flag": "🇹🇹",
+    "wiki": "https://en.wikipedia.org/wiki/Trinidad_and_Tobago",
+    "coords": {
+      "latitude": 10.691803,
+      "longitude": -61.222503
+    }
+  },
+  "tristan da cunha": {
+    "flag": "🇹🇦",
+    "wiki": "https://en.wikipedia.org/wiki/Tristan_da_Cunha",
+    "coords": {
+      "latitude": -37.1052,
+      "longitude": -12.2777
+    }
+  },
+  "tunisia": {
+    "flag": "🇹🇳",
+    "wiki": "https://en.wikipedia.org/wiki/Tunisia",
+    "coords": {
+      "latitude": 33.886917,
+      "longitude": 9.537499
+    }
+  },
+  "turkey": {
+    "flag": "🇹🇷",
+    "wiki": "https://en.wikipedia.org/wiki/Turkey",
+    "coords": {
+      "latitude": 38.963745,
+      "longitude": 35.243322
+    }
+  },
+  "turkmenistan": {
+    "flag": "🇹🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Turkmenistan",
+    "coords": {
+      "latitude": 38.969719,
+      "longitude": 59.556278
+    }
+  },
+  "turks & caicos islands": {
+    "flag": "🇹🇨",
+    "wiki": "https://en.wikipedia.org/wiki/Turks_and_Caicos_Islands",
+    "coords": {
+      "latitude": 21.694025,
+      "longitude": -71.797928
+    }
+  },
+  "tuvalu": {
+    "flag": "🇹🇻",
+    "wiki": "https://en.wikipedia.org/wiki/Tuvalu",
+    "coords": {
+      "latitude": -7.109535,
+      "longitude": 177.64933
+    }
+  },
+  "u.s. outlying islands": {
+    "flag": "🇺🇲",
+    "wiki": "https://en.wikipedia.org/wiki/United_States_Minor_Outlying_Islands",
+    "coords": {
+      "latitude": 19.2823,
+      "longitude": 166.647
+    }
+  },
+  "u.s. virgin islands": {
+    "flag": "🇻🇮",
+    "wiki": "https://en.wikipedia.org/wiki/United_States_Virgin_Islands",
+    "coords": {
+      "latitude": 18.335765,
+      "longitude": -64.896335
+    }
+  },
+  "uganda": {
+    "flag": "🇺🇬",
+    "wiki": "https://en.wikipedia.org/wiki/Uganda",
+    "coords": {
+      "latitude": 1.373333,
+      "longitude": 32.290275
+    }
+  },
+  "ukraine": {
+    "flag": "🇺🇦",
+    "wiki": "https://en.wikipedia.org/wiki/Ukraine",
+    "coords": {
+      "latitude": 48.379433,
+      "longitude": 31.16558
+    }
+  },
+  "united arab emirates": {
+    "flag": "🇦🇪",
+    "wiki": "https://en.wikipedia.org/wiki/United_Arab_Emirates",
+    "coords": {
+      "latitude": 23.424076,
+      "longitude": 53.847818
+    }
+  },
+  "united kingdom": {
+    "flag": "🇬🇧",
+    "wiki": "https://en.wikipedia.org/wiki/United_Kingdom",
+    "coords": {
+      "latitude": 55.378051,
+      "longitude": -3.435973
+    }
+  },
+  "united states": {
+    "flag": "🇺🇸",
+    "wiki": "https://en.wikipedia.org/wiki/United_States",
+    "coords": {
+      "latitude": 37.09024,
+      "longitude": -95.712891
+    }
+  },
+  "uruguay": {
+    "flag": "🇺🇾",
+    "wiki": "https://en.wikipedia.org/wiki/Uruguay",
+    "coords": {
+      "latitude": -32.522779,
+      "longitude": -55.765835
+    }
+  },
+  "uzbekistan": {
+    "flag": "🇺🇿",
+    "wiki": "https://en.wikipedia.org/wiki/Uzbekistan",
+    "coords": {
+      "latitude": 41.377491,
+      "longitude": 64.585262
+    }
+  },
+  "vanuatu": {
+    "flag": "🇻🇺",
+    "wiki": "https://en.wikipedia.org/wiki/Vanuatu",
+    "coords": {
+      "latitude": -15.376706,
+      "longitude": 166.959158
+    }
+  },
+  "vatican city": {
+    "flag": "🇻🇦",
+    "wiki": "https://en.wikipedia.org/wiki/Vatican_City",
+    "coords": {
+      "latitude": 41.902916,
+      "longitude": 12.453389
+    }
+  },
+  "venezuela": {
+    "flag": "🇻🇪",
+    "wiki": "https://en.wikipedia.org/wiki/Venezuela",
+    "coords": {
+      "latitude": 6.42375,
+      "longitude": -66.58973
+    }
+  },
+  "vietnam": {
+    "flag": "🇻🇳",
+    "wiki": "https://en.wikipedia.org/wiki/Vietnam",
+    "coords": {
+      "latitude": 14.058324,
+      "longitude": 108.277199
+    }
+  },
+  "wales": {
+    "flag": "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
+    "wiki": "https://en.wikipedia.org/wiki/Wales",
+    "coords": {
+      "latitude": 52.130661,
+      "longitude": -3.783712
+    }
+  },
+  "wallis & futuna": {
+    "flag": "🇼🇫",
+    "wiki": "https://en.wikipedia.org/wiki/Wallis_and_Futuna",
+    "coords": {
+      "latitude": -13.768752,
+      "longitude": -177.156097
+    }
+  },
+  "western sahara": {
+    "flag": "🇪🇭",
+    "wiki": "https://en.wikipedia.org/wiki/Western_Sahara",
+    "coords": {
+      "latitude": 24.215527,
+      "longitude": -12.885834
+    }
+  },
+  "yemen": {
+    "flag": "🇾🇪",
+    "wiki": "https://en.wikipedia.org/wiki/Yemen",
+    "coords": {
+      "latitude": 15.552727,
+      "longitude": 48.516388
+    }
+  },
+  "zambia": {
+    "flag": "🇿🇲",
+    "wiki": "https://en.wikipedia.org/wiki/Zambia",
+    "coords": {
+      "latitude": -13.133897,
+      "longitude": 27.849332
+    }
+  },
+  "zimbabwe": {
+    "flag": "🇿🇼",
+    "wiki": "https://en.wikipedia.org/wiki/Zimbabwe",
+    "coords": {
+      "latitude": -19.015438,
+      "longitude": 29.154857
+    }
+  },
+  "åland islands": {
+    "flag": "🇦🇽",
+    "wiki": "https://en.wikipedia.org/wiki/%C3%85land",
+    "coords": {
+      "latitude": 60.178524,
+      "longitude": 19.91561
+    }
+  }
+}
+
+
    if(window.screen.availWidth > 1100 && window.screen.availWidth < 1440) {
        document.getElementById("load5").style.bottom = '50px';
        document.getElementById("load4").style.bottom = 'calc(50px + 1*50px)';
@@ -1840,270 +2873,10 @@ function share() {
 }
 
 function calculate_distance(guess){
-   centres = {
- "afghanistan": {"latitude": 33.93911, "longitude": 67.709953},
- "albania": {"latitude": 41.153332, "longitude": 20.168331},
- "algeria": {"latitude": 28.033886, "longitude": 1.659626},
- "american samoa": {"latitude": -14.270972, "longitude": -170.132217},
- "andorra": {"latitude": 42.546245, "longitude": 1.601554},
- "angola": {"latitude": -11.202692, "longitude": 17.873887},
- "anguilla": {"latitude": 18.220554, "longitude": -63.068615},
- "antarctica": {"latitude": -82.862752, "longitude": 135.0},
- "antigua & barbuda": {"latitude": 17.060816, "longitude": -61.796428},
- "argentina": {"latitude": -38.416097, "longitude": -63.616672},
- "armenia": {"latitude": 40.069099, "longitude": 45.038189},
- "aruba": {"latitude": 12.52111, "longitude": -69.968338},
- "ascension island": {"latitude": -7.9467, "longitude": -14.3559},
- "australia": {"latitude": -25.274398, "longitude": 133.775136},
- "austria": {"latitude": 47.516231, "longitude": 14.550072},
- "azerbaijan": {"latitude": 40.143105, "longitude": 47.576927},
- "bahamas": {"latitude": 25.03428, "longitude": -77.39628},
- "bahrain": {"latitude": 26.0667, "longitude": 50.5577},
- "bangladesh": {"latitude": 23.684994, "longitude": 90.356331},
- "barbados": {"latitude": 13.193887, "longitude": -59.543198},
- "belarus": {"latitude": 53.709807, "longitude": 27.953389},
- "belgium": {"latitude": 50.503887, "longitude": 4.469936},
- "belize": {"latitude": 17.189877, "longitude": -88.49765},
- "benin": {"latitude": 9.30769, "longitude": 2.315834},
- "bermuda": {"latitude": 32.321384, "longitude": -64.75737},
- "bhutan": {"latitude": 27.514162, "longitude": 90.433601},
- "bolivia": {"latitude": -16.290154, "longitude": -63.588653},
- "bosnia & herzegovina": {"latitude": 43.915886, "longitude": 17.679076},
- "botswana": {"latitude": -22.328474, "longitude": 24.684866},
- "bouvet island": {"latitude": -54.4208, "longitude": 3.3464},
- "brazil": {"latitude": -14.235004, "longitude": -51.92528},
- "british indian ocean territory": {"latitude": -6.343194, "longitude": 71.876519},
- "british virgin islands": {"latitude": 18.420695, "longitude": -64.639968},
- "brunei": {"latitude": 4.535277, "longitude": 114.727669},
- "bulgaria": {"latitude": 42.733883, "longitude": 25.48583},
- "burkina faso": {"latitude": 12.238333, "longitude": -1.561593},
- "burundi": {"latitude": -3.373056, "longitude": 29.918886},
- "cambodia": {"latitude": 12.565679, "longitude": 104.990963},
- "cameroon": {"latitude": 7.369722, "longitude": 12.354722},
- "canada": {"latitude": 56.130366, "longitude": -106.346771},
- "canary islands": {"latitude": 28.291565, "longitude": -16.629129},
- "cape verde": {"latitude": 16.002082, "longitude": -24.013197},
- "caribbean netherlands": {"latitude": 12.1784, "longitude": -68.2385},
- "cayman islands": {"latitude": 19.3133, "longitude": -81.2546},
- "central african republic": {"latitude": 6.611111, "longitude": 20.939444},
- "ceuta & melilla": {"latitude": 35.8894, "longitude": -5.3198},
- "chad": {"latitude": 15.454166, "longitude": 18.732207},
- "chile": {"latitude": -35.675147, "longitude": -71.542969},
- "china": {"latitude": 35.86166, "longitude": 104.195397},
- "christmas island": {"latitude": -10.4475, "longitude": 105.6904},
- "clipperton island": {"latitude": 10.3, "longitude": -109.2167},
- "cocos (keeling) islands": {"latitude": -12.1642, "longitude": 96.8709},
- "colombia": {"latitude": 4.570868, "longitude": -74.297333},
- "comoros": {"latitude": -11.875001, "longitude": 43.872219},
- "congo - brazzaville": {"latitude": -0.228021, "longitude": 15.827659},
- "congo - kinshasa": {"latitude": -4.038333, "longitude": 21.758664},
- "cook islands": {"latitude": -21.236736, "longitude": -159.777671},
- "costa rica": {"latitude": 9.748917, "longitude": -83.753428},
- "croatia": {"latitude": 45.1, "longitude": 15.2},
- "cuba": {"latitude": 21.521757, "longitude": -77.781167},
- "curaçao": {"latitude": 12.1696, "longitude": -68.99},
- "cyprus": {"latitude": 35.126413, "longitude": 33.429859},
- "czechia": {"latitude": 49.817492, "longitude": 15.472962},
- "côte d’ivoire": {"latitude": 7.539989, "longitude": -5.54708},
- "denmark": {"latitude": 56.26392, "longitude": 9.501785},
- "diego garcia": {"latitude": -7.3133, "longitude": 72.4112},
- "djibouti": {"latitude": 11.825138, "longitude": 42.590275},
- "dominica": {"latitude": 15.414999, "longitude": -61.370976},
- "dominican republic": {"latitude": 18.735693, "longitude": -70.162651},
- "ecuador": {"latitude": -1.831239, "longitude": -78.183406},
- "egypt": {"latitude": 26.820553, "longitude": 30.802498},
- "el salvador": {"latitude": 13.794185, "longitude": -88.89653},
- "england": {"latitude": 52.355518, "longitude": -1.17432},
- "equatorial guinea": {"latitude": 1.650801, "longitude": 10.267895},
- "eritrea": {"latitude": 15.179384, "longitude": 39.782334},
- "estonia": {"latitude": 58.595272, "longitude": 25.013607},
- "eswatini": {"latitude": -26.522503, "longitude": 31.465866},
- "ethiopia": {"latitude": 9.145, "longitude": 40.489673},
- "falkland islands": {"latitude": -51.796253, "longitude": -59.523613},
- "fiji": {"latitude": -17.713371, "longitude": 178.065032},
- "finland": {"latitude": 61.92411, "longitude": 25.748151},
- "france": {"latitude": 46.603354, "longitude": 1.888334},
- "french guiana": {"latitude": 3.933889, "longitude": -53.125782},
- "french polynesia": {"latitude": -17.679742, "longitude": -149.406843},
- "french southern territories": {"latitude": -49.280366, "longitude": 69.348557},
- "gabon": {"latitude": -0.803689, "longitude": 11.609444},
- "gambia": {"latitude": 13.443182, "longitude": -15.310139},
- "georgia": {"latitude": 42.315407, "longitude": 43.356892},
- "germany": {"latitude": 51.165691, "longitude": 10.451526},
- "ghana": {"latitude": 7.946527, "longitude": -1.023194},
- "gibraltar": {"latitude": 36.140751, "longitude": -5.353585},
- "greece": {"latitude": 39.074208, "longitude": 21.824312},
- "greenland": {"latitude": 71.706936, "longitude": -42.604303},
- "grenada": {"latitude": 12.262776, "longitude": -61.604171},
- "guadeloupe": {"latitude": 16.265, "longitude": -61.551},
- "guam": {"latitude": 13.444304, "longitude": 144.793731},
- "guatemala": {"latitude": 15.783471, "longitude": -90.230759},
- "guernsey": {"latitude": 49.448196, "longitude": -2.58949},
- "guinea": {"latitude": 9.945587, "longitude": -9.696645},
- "guinea-bissau": {"latitude": 11.803749, "longitude": -15.180413},
- "guyana": {"latitude": 4.860416, "longitude": -58.93018},
- "haiti": {"latitude": 18.971187, "longitude": -72.285215},
- "heard & mcdonald islands": {"latitude": -53.08181, "longitude": 73.504158},
- "honduras": {"latitude": 15.199999, "longitude": -86.241905},
- "hong kong sar china": {"latitude": 22.319303, "longitude": 114.169361},
- "hungary": {"latitude": 47.162494, "longitude": 19.503304},
- "iceland": {"latitude": 64.963051, "longitude": -19.020835},
- "india": {"latitude": 20.593684, "longitude": 78.96288},
- "indonesia": {"latitude": -0.789275, "longitude": 113.921327},
- "iran": {"latitude": 32.427908, "longitude": 53.688046},
- "iraq": {"latitude": 33.223191, "longitude": 43.679291},
- "ireland": {"latitude": 53.41291, "longitude": -8.24389},
- "isle of man": {"latitude": 54.236107, "longitude": -4.548056},
- "israel": {"latitude": 31.046051, "longitude": 34.851612},
- "italy": {"latitude": 41.87194, "longitude": 12.56738},
- "jamaica": {"latitude": 18.109581, "longitude": -77.297508},
- "japan": {"latitude": 36.204824, "longitude": 138.252924},
- "jersey": {"latitude": 49.214439, "longitude": -2.13125},
- "jordan": {"latitude": 30.585164, "longitude": 36.238414},
- "kazakhstan": {"latitude": 48.019573, "longitude": 66.923684},
- "kenya": {"latitude": -0.023559, "longitude": 37.906193},
- "kiribati": {"latitude": -3.370417, "longitude": -168.734039},
- "kosovo": {"latitude": 42.602636, "longitude": 20.902977},
- "kuwait": {"latitude": 29.31166, "longitude": 47.481766},
- "kyrgyzstan": {"latitude": 41.20438, "longitude": 74.766098},
- "laos": {"latitude": 19.85627, "longitude": 102.495496},
- "latvia": {"latitude": 56.879635, "longitude": 24.603189},
- "lebanon": {"latitude": 33.854721, "longitude": 35.862285},
- "lesotho": {"latitude": -29.609988, "longitude": 28.233608},
- "liberia": {"latitude": 6.428055, "longitude": -9.429499},
- "libya": {"latitude": 26.3351, "longitude": 17.228331},
- "liechtenstein": {"latitude": 47.166, "longitude": 9.555373},
- "lithuania": {"latitude": 55.169438, "longitude": 23.881275},
- "luxembourg": {"latitude": 49.815273, "longitude": 6.129583},
- "macao sar china": {"latitude": 22.198745, "longitude": 113.543873},
- "madagascar": {"latitude": -18.766947, "longitude": 46.869107},
- "malawi": {"latitude": -13.254308, "longitude": 34.301525},
- "malaysia": {"latitude": 4.210484, "longitude": 101.975766},
- "maldives": {"latitude": 3.202778, "longitude": 73.22068},
- "mali": {"latitude": 17.570692, "longitude": -3.996166},
- "malta": {"latitude": 35.937496, "longitude": 14.375416},
- "marshall islands": {"latitude": 7.131474, "longitude": 171.184478},
- "martinique": {"latitude": 14.641528, "longitude": -61.024174},
- "mauritania": {"latitude": 21.00789, "longitude": -10.940835},
- "mauritius": {"latitude": -20.348404, "longitude": 57.552152},
- "mayotte": {"latitude": -12.8275, "longitude": 45.166244},
- "mexico": {"latitude": 23.634501, "longitude": -102.552784},
- "micronesia": {"latitude": 7.425554, "longitude": 150.550812},
- "moldova": {"latitude": 47.411631, "longitude": 28.369885},
- "monaco": {"latitude": 43.750298, "longitude": 7.412841},
- "mongolia": {"latitude": 46.862496, "longitude": 103.846656},
- "montenegro": {"latitude": 42.708678, "longitude": 19.37439},
- "montserrat": {"latitude": 16.742498, "longitude": -62.187366},
- "morocco": {"latitude": 31.791702, "longitude": -7.09262},
- "mozambique": {"latitude": -18.665695, "longitude": 35.529562},
- "myanmar (burma)": {"latitude": 21.916221, "longitude": 95.955974},
- "namibia": {"latitude": -22.95764, "longitude": 18.49041},
- "nauru": {"latitude": -0.522778, "longitude": 166.931503},
- "nepal": {"latitude": 28.394857, "longitude": 84.124008},
- "netherlands": {"latitude": 52.132633, "longitude": 5.291266},
- "new caledonia": {"latitude": -20.904305, "longitude": 165.618042},
- "new zealand": {"latitude": -40.900557, "longitude": 174.885971},
- "nicaragua": {"latitude": 12.865416, "longitude": -85.207229},
- "niger": {"latitude": 17.607789, "longitude": 8.081666},
- "nigeria": {"latitude": 9.081999, "longitude": 8.675277},
- "niue": {"latitude": -19.054445, "longitude": -169.867233},
- "norfolk island": {"latitude": -29.040835, "longitude": 167.954712},
- "north korea": {"latitude": 40.339852, "longitude": 127.510093},
- "north macedonia": {"latitude": 41.608635, "longitude": 21.745275},
- "northern mariana islands": {"latitude": 15.0979, "longitude": 145.6739},
- "norway": {"latitude": 60.472024, "longitude": 8.468946},
- "oman": {"latitude": 21.512583, "longitude": 55.923255},
- "pakistan": {"latitude": 30.375321, "longitude": 69.345116},
- "palau": {"latitude": 7.51498, "longitude": 134.58252},
- "palestinian territories": {"latitude": 31.9474, "longitude": 35.2272},
- "panama": {"latitude": 8.537981, "longitude": -80.782127},
- "papua new guinea": {"latitude": -6.314993, "longitude": 143.95555},
- "paraguay": {"latitude": -23.442503, "longitude": -58.443832},
- "peru": {"latitude": -9.189967, "longitude": -75.015152},
- "philippines": {"latitude": 12.879721, "longitude": 121.774017},
- "pitcairn islands": {"latitude": -24.7036, "longitude": -127.4393},
- "poland": {"latitude": 51.919438, "longitude": 19.145136},
- "portugal": {"latitude": 39.399872, "longitude": -8.224454},
- "puerto rico": {"latitude": 18.220833, "longitude": -66.590149},
- "qatar": {"latitude": 25.354826, "longitude": 51.183884},
- "romania": {"latitude": 45.943161, "longitude": 24.96676},
- "russia": {"latitude": 61.52401, "longitude": 105.318756},
- "rwanda": {"latitude": -1.940278, "longitude": 29.873888},
- "réunion": {"latitude": -21.115141, "longitude": 55.536384},
- "samoa": {"latitude": -13.759029, "longitude": -172.104629},
- "san marino": {"latitude": 43.94236, "longitude": 12.457777},
- "saudi arabia": {"latitude": 23.885942, "longitude": 45.079162},
- "scotland": {"latitude": 56.490671, "longitude": -4.202646},
- "senegal": {"latitude": 14.497401, "longitude": -14.452362},
- "serbia": {"latitude": 44.016521, "longitude": 21.005859},
- "seychelles": {"latitude": -4.679574, "longitude": 55.491977},
- "sierra leone": {"latitude": 8.460555, "longitude": -11.779889},
- "singapore": {"latitude": 1.352083, "longitude": 103.819836},
- "sint maarten": {"latitude": 18.0425, "longitude": -63.0548},
- "slovakia": {"latitude": 48.669026, "longitude": 19.699024},
- "slovenia": {"latitude": 46.151241, "longitude": 14.995463},
- "solomon islands": {"latitude": -9.64571, "longitude": 160.156194},
- "somalia": {"latitude": 5.152149, "longitude": 46.199616},
- "south africa": {"latitude": -30.559482, "longitude": 22.937506},
- "south georgia & south sandwich islands": {"latitude": -54.429579, "longitude": -36.587909},
- "south korea": {"latitude": 35.907757, "longitude": 127.766922},
- "south sudan": {"latitude": 6.877, "longitude": 31.307},
- "spain": {"latitude": 40.463667, "longitude": -3.74922},
- "sri lanka": {"latitude": 7.873054, "longitude": 80.771797},
- "st. barthélemy": {"latitude": 17.9, "longitude": -62.8333},
- "st. helena": {"latitude": -15.965, "longitude": -5.7089},
- "st. kitts & nevis": {"latitude": 17.357822, "longitude": -62.782998},
- "st. lucia": {"latitude": 13.909444, "longitude": -60.978893},
- "st. martin": {"latitude": 18.0708, "longitude": -63.0501},
- "st. pierre & miquelon": {"latitude": 46.8852, "longitude": -56.3159},
- "st. vincent & grenadines": {"latitude": 12.984305, "longitude": -61.287228},
- "sudan": {"latitude": 12.862807, "longitude": 30.217636},
- "suriname": {"latitude": 3.919305, "longitude": -56.027783},
- "svalbard & jan mayen": {"latitude": 77.553604, "longitude": 23.670272},
- "sweden": {"latitude": 60.128161, "longitude": 18.643501},
- "switzerland": {"latitude": 46.818188, "longitude": 8.227512},
- "syria": {"latitude": 34.802075, "longitude": 38.996815},
- "são tomé & príncipe": {"latitude": 0.18636, "longitude": 6.613081},
- "taiwan": {"latitude": 23.69781, "longitude": 120.960515},
- "tajikistan": {"latitude": 38.861034, "longitude": 71.276093},
- "tanzania": {"latitude": -6.369028, "longitude": 34.888822},
- "thailand": {"latitude": 15.870032, "longitude": 100.992541},
- "timor-leste": {"latitude": -8.874217, "longitude": 125.727539},
- "togo": {"latitude": 8.619543, "longitude": 0.824782},
- "tokelau": {"latitude": -9.2005, "longitude": -171.8484},
- "tonga": {"latitude": -21.178986, "longitude": -175.198242},
- "trinidad & tobago": {"latitude": 10.691803, "longitude": -61.222503},
- "tristan da cunha": {"latitude": -37.1052, "longitude": -12.2777},
- "tunisia": {"latitude": 33.886917, "longitude": 9.537499},
- "turkey": {"latitude": 38.963745, "longitude": 35.243322},
- "turkmenistan": {"latitude": 38.969719, "longitude": 59.556278},
- "turks & caicos islands": {"latitude": 21.694025, "longitude": -71.797928},
- "tuvalu": {"latitude": -7.109535, "longitude": 177.64933},
- "u.s. outlying islands": {"latitude": 19.2823, "longitude": 166.647},
- "u.s. virgin islands": {"latitude": 18.335765, "longitude": -64.896335},
- "uganda": {"latitude": 1.373333, "longitude": 32.290275},
- "ukraine": {"latitude": 48.379433, "longitude": 31.16558},
- "united arab emirates": {"latitude": 23.424076, "longitude": 53.847818},
- "united kingdom": {"latitude": 55.378051, "longitude": -3.435973},
- "united states": {"latitude": 37.09024, "longitude": -95.712891},
- "uruguay": {"latitude": -32.522779, "longitude": -55.765835},
- "uzbekistan": {"latitude": 41.377491, "longitude": 64.585262},
- "vanuatu": {"latitude": -15.376706, "longitude": 166.959158},
- "vatican city": {"latitude": 41.902916, "longitude": 12.453389},
- "venezuela": {"latitude": 6.42375, "longitude": -66.58973},
- "vietnam": {"latitude": 14.058324, "longitude": 108.277199},
- "wales": {"latitude": 52.130661, "longitude": -3.783712},
- "wallis & futuna": {"latitude": -13.768752, "longitude": -177.156097},
- "western sahara": {"latitude": 24.215527, "longitude": -12.885834},
- "yemen": {"latitude": 15.552727, "longitude": 48.516388},
- "zambia": {"latitude": -13.133897, "longitude": 27.849332},
- "zimbabwe": {"latitude": -19.015438, "longitude": 29.154857},
- "åland islands": {"latitude": 60.178524, "longitude": 19.91561}
-   }
-   distance = calcCrow(centres[guess]["latitude"],centres[guess]["longitude"],centres[correctAnswer]["latitude"],centres[correctAnswer]["longitude"]);
+   distance = calcCrow(loc_data[guess]["coords"]["latitude"],loc_data[guess]["coords"]["longitude"],loc_data[correctAnswer]["coords"]["latitude"],loc_data[correctAnswer]["coords"]["longitude"]);
    latDir = null;
    lonDir = null;
-   angle = bearing(centres[guess]["latitude"],centres[guess]["longitude"],centres[correctAnswer]["latitude"],centres[correctAnswer]["longitude"]);
+   angle = bearing(loc_data[guess]["coords"]["latitude"],loc_data[guess]["coords"]["longitude"],loc_data[correctAnswer]["coords"]["latitude"],loc_data[correctAnswer]["coords"]["longitude"]);
    return [Math.round(distance),angle];
 }
 
