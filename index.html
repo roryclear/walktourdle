@@ -15,7 +15,7 @@ gtag('config', 'G-VNE6R8FFTG');
 </script>
 <body onload="populate()" onresize="resize()" id="body">
 <div class="yt-embed-holder">
- <iframe width="560" id="ytvid" height="315" src="" 
+ <iframe width="720" id="ytvid" height="315" src="" 
  title="YouTube video player" frameborder="0" 
  allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
  gyroscope; picture-in-picture; web-share" 
@@ -113,7 +113,7 @@ gtag('config', 'G-VNE6R8FFTG');
  </select>
 </div>
 <div class="guess" id="guess" style="bottom:calc(10px);">
-     <select id="locations" name="locations" style="width: 50%; height: 100%; border-radius: 12px;">
+     <select id="locations" name="locations" style="width: 50%; height: 100%; border-radius: 12px; padding-left: 10px;">
          <option value="none">Pick a location 🗺️</option>
          <option value="afghanistan">🇦🇫Afghanistan</option>
          <option value="albania">🇦🇱Albania</option>
@@ -455,7 +455,6 @@ body{
 
 .submit-btn {
  width: 48%;
- height: 80px;
  background-color: #007BFF;
  color: white;
  cursor: pointer;
@@ -488,7 +487,7 @@ body{
      padding: 20px;
      background-color: white;
      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-     border-radius: 10px;
+     border-radius: 12px;
      text-align: center;
      z-index: 1000000;
      }
@@ -2908,6 +2907,8 @@ if(window.screen.availWidth >= 700) {
     document.getElementById("locations").style.fontSize = '24';
     document.getElementById("submit-btn").style.fontSize = '24';
     document.getElementById("learn-btn").style.fontSize = '24';
+    document.getElementById("submit-btn").style.height = '40px';
+    document.getElementById("learn-btn").style.height = '40px';
     document.getElementById("guess").style.height = '40px';
     document.getElementById("load5").style.bottom = 'calc(50px + 10px)';
     document.getElementById("load4").style.bottom = 'calc(50px + 1*50px + 10px)';
@@ -2926,6 +2927,8 @@ if(window.screen.availWidth >= 700) {
   document.getElementById("locations").style.fontSize = '48';
   document.getElementById("submit-btn").style.fontSize = '48';
   document.getElementById("learn-btn").style.fontSize = '48';
+  document.getElementById("submit-btn").style.height = '80px';
+  document.getElementById("learn-btn").style.height = '80px';
   document.getElementById("guess").style.height = '80px';
   document.getElementById("guess").style.width = '900px';
   for (let i = 0; i < 6; i++) {
