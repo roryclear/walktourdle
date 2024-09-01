@@ -13,7 +13,7 @@ gtag('js', new Date());
 
 gtag('config', 'G-VNE6R8FFTG');
 </script>
-<body onload="populate()" onresize="populate()" id="body">
+<body onload="populate()" onresize="resize()" id="body">
 <div class="yt-embed-holder">
  <iframe width="560" id="ytvid" height="315" src="" 
  title="YouTube video player" frameborder="0" 
@@ -2867,7 +2867,35 @@ function populate(){
   "video_id":"ikRFAIZ3A_0"
 }
 }
-for (let i = 0; i < 6; i++) {
+ resize()
+ now = Date.now()
+ now = now - 1724889600000
+ days = Math.floor(now / 8.64e+7)
+ //yes, you can cheat
+ locations = countries = countries = countries = ['uganda', 'czechia', 'armenia', 'fiji', 'philippines', 'pakistan', 'somalia', 'bahrain', 'aruba', 'portugal', 'venezuela', 'new caledonia', 'qatar', 'kazakhstan', 'burkina faso', 'philippines', 'cambodia', 'luxembourg', 'italy', 'somalia', 'south africa', 'belarus', 'northern mariana islands', 'kazakhstan', 'georgia', 'french southern territories', 'ascension island', 'gibraltar', 'north korea', 'philippines', 'reunion', 'bahamas', 'fiji', 'french polynesia', 'micronesia', 'luxembourg', 'philippines', 'bahamas', 'st. lucia', 'chad', 'guinea', 'reunion', 'turks & caicos islands', 'bolivia', 'grenada', 'trinidad & tobago', 'fiji', 'martinique', 'philippines', 'colombia', 'bahrain', 'philippines', 'iran', 'italy', 'england', 'french guiana', 'philippines', 'new zealand', 'south sudan', 'luxembourg', 'guadeloupe', 'yemen', 'samoa', 'philippines', 'north korea', 'netherlands', 'oman', 'french guiana', 'bahamas', 'bahamas', 'palau', 'croatia', 'belize', 'latvia', 'ascension island', 'cook islands', 'fiji', 'myanmar', 'aruba', 'slovenia', 'somalia', 'kazakhstan', 'russia', 'philippines', 'timor-leste', 'guinea-bissau', 'denmark', 'honduras', 'bahamas', 'fiji', 'burma', 'fiji', 'cayman islands', 'germany', 'angola'];
+ correctAnswer = locations[days];
+
+ //1724889600
+ //https://www.youtube-nocookie.com/embed/FeOL2myTopk?si=b_kt77svV7CQRb3h&amp;start=330
+ //&autoplay=1&mute=1&controls=0&color=white&modestbranding=0&rel=0&playsinline=enable&playlist=FeOL2myTopk&showinfo=0&iv_load_policy=1&cc_load_policy=3
+ //&wmode=opaque
+ vid = document.getElementById("ytvid")
+ start_time = 240
+ if(loc_data[locations[days]]["start_time"] != null) {
+  start_time = loc_data[locations[days]]["start_time"];
+ }
+ vid.src = "https://www.youtube-nocookie.com/embed/"+loc_data[locations[days]]["video_id"]+"?si=b_kt77svV7CQRb3h&amp;start="+String(start_time)+"&autoplay=1&mute=1&controls=0&color=white&modestbranding=0&rel=0&playsinline=enable&playlist="+loc_data[locations[days]]["video_id"]+"&showinfo=0&iv_load_policy=1&cc_load_policy=3&wmode=opaque"
+ k = 0
+ while(sessionStorage.getItem("guesses"+String(k)+"-"+String(days)) != null && k < 6) {
+     guess = sessionStorage.getItem("guesses"+String(k)+"-"+String(days));
+     var guess_array = guess.split(',');
+     fake_load(guess_array[1],guess_array[2],guess_array[0],k);
+     k+=1;
+ }
+}
+
+function resize() {
+  for (let i = 0; i < 6; i++) {
   if(window.screen.availWidth >= 700) {
     document.getElementById("grid"+String(i)).style.gridTemplateColumns = '200px 200px 50px';
     } else {
@@ -2911,31 +2939,6 @@ if(window.screen.availWidth >= 700) {
   document.getElementById("load1").style.bottom = 'calc(5*90px + 10px)';
   document.getElementById("load0").style.bottom = 'calc(6*90px + 10px)';
 }
-
- now = Date.now()
- now = now - 1724889600000
- days = Math.floor(now / 8.64e+7)
- //yes, you can cheat
- locations = countries = countries = countries = ['uganda', 'czechia', 'armenia', 'fiji', 'philippines', 'pakistan', 'somalia', 'bahrain', 'aruba', 'portugal', 'venezuela', 'new caledonia', 'qatar', 'kazakhstan', 'burkina faso', 'philippines', 'cambodia', 'luxembourg', 'italy', 'somalia', 'south africa', 'belarus', 'northern mariana islands', 'kazakhstan', 'georgia', 'french southern territories', 'ascension island', 'gibraltar', 'north korea', 'philippines', 'reunion', 'bahamas', 'fiji', 'french polynesia', 'micronesia', 'luxembourg', 'philippines', 'bahamas', 'st. lucia', 'chad', 'guinea', 'reunion', 'turks & caicos islands', 'bolivia', 'grenada', 'trinidad & tobago', 'fiji', 'martinique', 'philippines', 'colombia', 'bahrain', 'philippines', 'iran', 'italy', 'england', 'french guiana', 'philippines', 'new zealand', 'south sudan', 'luxembourg', 'guadeloupe', 'yemen', 'samoa', 'philippines', 'north korea', 'netherlands', 'oman', 'french guiana', 'bahamas', 'bahamas', 'palau', 'croatia', 'belize', 'latvia', 'ascension island', 'cook islands', 'fiji', 'myanmar', 'aruba', 'slovenia', 'somalia', 'kazakhstan', 'russia', 'philippines', 'timor-leste', 'guinea-bissau', 'denmark', 'honduras', 'bahamas', 'fiji', 'burma', 'fiji', 'cayman islands', 'germany', 'angola'];
- correctAnswer = locations[days];
-
- //1724889600
- //https://www.youtube-nocookie.com/embed/FeOL2myTopk?si=b_kt77svV7CQRb3h&amp;start=330
- //&autoplay=1&mute=1&controls=0&color=white&modestbranding=0&rel=0&playsinline=enable&playlist=FeOL2myTopk&showinfo=0&iv_load_policy=1&cc_load_policy=3
- //&wmode=opaque
- vid = document.getElementById("ytvid")
- start_time = 240
- if(loc_data[locations[days]]["start_time"] != null) {
-  start_time = loc_data[locations[days]]["start_time"];
- }
- vid.src = "https://www.youtube-nocookie.com/embed/"+loc_data[locations[days]]["video_id"]+"?si=b_kt77svV7CQRb3h&amp;start="+String(start_time)+"&autoplay=1&mute=1&controls=0&color=white&modestbranding=0&rel=0&playsinline=enable&playlist="+loc_data[locations[days]]["video_id"]+"&showinfo=0&iv_load_policy=1&cc_load_policy=3&wmode=opaque"
- k = 0
- while(sessionStorage.getItem("guesses"+String(k)+"-"+String(days)) != null && k < 6) {
-     guess = sessionStorage.getItem("guesses"+String(k)+"-"+String(days));
-     var guess_array = guess.split(',');
-     fake_load(guess_array[1],guess_array[2],guess_array[0],k);
-     k+=1;
- }
 }
 
 function share() {
