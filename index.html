@@ -113,7 +113,7 @@ gtag('config', 'G-VNE6R8FFTG');
  </select>
 </div>
 <div class="guess" id="guess" style="bottom:calc(10px);">
-     <select id="locations" name="locations" style="width: 50%; height: 100%;">
+     <select id="locations" name="locations" style="width: 50%; height: 100%; border-radius: 12px;">
          <option value="none">Pick a location 🗺️</option>
          <option value="afghanistan">🇦🇫Afghanistan</option>
          <option value="albania">🇦🇱Albania</option>
@@ -373,8 +373,8 @@ gtag('config', 'G-VNE6R8FFTG');
          <option value="zimbabwe">🇿🇼Zimbabwe</option>
          <option value="åland islands">🇦🇽Åland Islands</option>
      </select>
-     <button class="submit-btn" id="learn-btn" style="display: none; background-color: white; color:black; bottom: 10px;"></button>
-     <button class="submit-btn" id="submit-btn" onclick="make_guess()" style="bottom: 10px;">Guess</button>
+     <button class="submit-btn" id="learn-btn" style="display: none; background-color: white; color:black; bottom: 10px; border-radius: 12px;"></button>
+     <button class="submit-btn" id="submit-btn" onclick="make_guess()" style="bottom: 10px; border-radius: 12px;">Guess</button>
 </div>
 
 </div>
@@ -455,11 +455,9 @@ body{
 
 .submit-btn {
  width: 48%;
- height: 800px;
+ height: 80px;
  background-color: #007BFF;
  color: white;
- border: none;
- border-radius: 6px;
  cursor: pointer;
  transition: background-color 0.3s ease;
 }
@@ -512,16 +510,9 @@ body{
  align-items: center;
  justify-content: space-between;
  padding: 0 15px;
- border-radius: 8px;
  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
  z-index: 1;
  overflow: hidden;
-}
-
-
-body{
- background-color: black;
- font-family: Arial, sans-serif;
 }
 
 .score-container {
@@ -2877,13 +2868,13 @@ function populate(){
 }
 }
 for (let i = 0; i < 6; i++) {
-  if(window.screen.availWidth > 700) {
+  if(window.screen.availWidth >= 700) {
     document.getElementById("grid"+String(i)).style.gridTemplateColumns = '200px 200px 50px';
     } else {
         document.getElementById("grid"+String(i)).style.gridTemplateColumns = '300px 300px 80px';
     }
   }
-if(window.screen.availWidth > 700) {
+if(window.screen.availWidth >= 700) {
     document.getElementById("body").style.fontSize = '24';
     document.getElementById("guess").style.fontSize = '24';
     document.getElementById("locations").style.fontSize = '24';
