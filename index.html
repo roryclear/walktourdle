@@ -112,7 +112,7 @@ gtag('config', 'G-VNE6R8FFTG');
 
  </select>
 </div>
-<div class="guess" id="guess" style="bottom:calc(90*0px);">
+<div class="guess" id="guess" style="bottom:calc(10px);">
      <select id="locations" name="locations" style="width: 50%; height: 100%;">
          <option value="none">Pick a location 🗺️</option>
          <option value="afghanistan">🇦🇫Afghanistan</option>
@@ -373,8 +373,8 @@ gtag('config', 'G-VNE6R8FFTG');
          <option value="zimbabwe">🇿🇼Zimbabwe</option>
          <option value="åland islands">🇦🇽Åland Islands</option>
      </select>
-     <button class="submit-btn" id="learn-btn" style="display: none; background-color: white; color:black;"></button>
-     <button class="submit-btn" id="submit-btn" onclick="make_guess()">Guess</button>
+     <button class="submit-btn" id="learn-btn" style="display: none; background-color: white; color:black; bottom: 10px;"></button>
+     <button class="submit-btn" id="submit-btn" onclick="make_guess()" style="bottom: 10px;">Guess</button>
 </div>
 
 </div>
@@ -2890,12 +2890,12 @@ if(window.screen.availWidth > 700) {
     document.getElementById("submit-btn").style.fontSize = '24';
     document.getElementById("learn-btn").style.fontSize = '24';
     document.getElementById("guess").style.height = '40px';
-    document.getElementById("load5").style.bottom = '50px';
-    document.getElementById("load4").style.bottom = 'calc(50px + 1*50px)';
-    document.getElementById("load3").style.bottom = 'calc(50px + 2*50px)';
-    document.getElementById("load2").style.bottom = 'calc(50px + 3*50px)';
-    document.getElementById("load1").style.bottom = 'calc(50px + 4*50px)';
-    document.getElementById("load0").style.bottom = 'calc(50px + 5*50px)';
+    document.getElementById("load5").style.bottom = 'calc(50px + 10px)';
+    document.getElementById("load4").style.bottom = 'calc(50px + 1*50px + 10px)';
+    document.getElementById("load3").style.bottom = 'calc(50px + 2*50px + 10px)';
+    document.getElementById("load2").style.bottom = 'calc(50px + 3*50px + 10px)';
+    document.getElementById("load1").style.bottom = 'calc(50px + 4*50px + 10px)';
+    document.getElementById("load0").style.bottom = 'calc(50px + 5*50px + 10px)';
     for (let i = 0; i < 6; i++) {
       document.getElementById("load"+String(i)).style.width = '660px';
       document.getElementById("guess").style.width = '660px';
@@ -2913,12 +2913,12 @@ if(window.screen.availWidth > 700) {
       document.getElementById("load"+String(i)).style.height = '80px';
       document.getElementById("load"+String(i)).style.width = '860px';
     }
-  document.getElementById("load5").style.bottom = '90px';
-  document.getElementById("load4").style.bottom = 'calc(2*90px)';
-  document.getElementById("load3").style.bottom = 'calc(3*90px)';
-  document.getElementById("load2").style.bottom = 'calc(4*90px)';
-  document.getElementById("load1").style.bottom = 'calc(5*90px)';
-  document.getElementById("load0").style.bottom = 'calc(6*90px)';
+  document.getElementById("load5").style.bottom = 'calc(90px + 10px)';
+  document.getElementById("load4").style.bottom = 'calc(2*90px + 10px)';
+  document.getElementById("load3").style.bottom = 'calc(3*90px + 10px)';
+  document.getElementById("load2").style.bottom = 'calc(4*90px + 10px)';
+  document.getElementById("load1").style.bottom = 'calc(5*90px + 10px)';
+  document.getElementById("load0").style.bottom = 'calc(6*90px + 10px)';
 }
 
  now = Date.now()
