@@ -632,23 +632,7 @@ function fake_load(distance,angle,value,i) {
  document.getElementById("chosen-emoji"+String(i)).textContent = emoji;
 }
 
-async function lockWakeState() {
-    if(!canWakeLock()) return;
-    try {
-      wakelock = await navigator.wakeLock.request();
-      wakelock.addEventListener('release', () => {
-      });
-    } catch(e) {
-      console.error('Failed to lock wake state with reason:', e.message);
-    }
-    await lockWakeState();
-  }
-
 function populate(){
-  const canWakeLock = () => 'wakeLock' in navigator;
-  let wakelock;
-  lockWakeState();
-  
   loc_data = {
 "afghanistan": {
   "flag": "🇦🇫",
