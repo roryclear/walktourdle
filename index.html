@@ -583,7 +583,7 @@ function make_guess(){
  document.getElementById("guess"+String(i)).textContent=guess;
 }
 function fake_load(distance,angle,value,i) {
- let percentage = Math.max(100 - Math.round(distance*100 / 13238),0);
+ let percentage = Math.max(100 - Math.ceil(distance*100 / 13238),0);
  if(sessionStorage.getItem("percent"+String(i)+"-"+String(days)) == null) {
      sessionStorage.setItem("percent"+String(i)+"-"+String(days),String(percentage))
  }
