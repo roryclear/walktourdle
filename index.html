@@ -632,21 +632,21 @@ function fake_load(distance,angle,value,i) {
  document.getElementById("chosen-emoji"+String(i)).textContent = emoji;
 }
 
-function populate(){
-  const canWakeLock = () => 'wakeLock' in navigator;
-  let wakelock;
-  async function lockWakeState() {
+async function lockWakeState() {
     if(!canWakeLock()) return;
     try {
       wakelock = await navigator.wakeLock.request();
       wakelock.addEventListener('release', () => {
-        console.log('Screen Wake State Locked:', !wakelock.released);
       });
-      console.log('Screen Wake State Locked:', !wakelock.released);
     } catch(e) {
       console.error('Failed to lock wake state with reason:', e.message);
     }
   }
+
+function populate(){
+  const canWakeLock = () => 'wakeLock' in navigator;
+  let wakelock;
+  lockWakeState();
   
   loc_data = {
 "afghanistan": {
