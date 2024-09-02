@@ -641,6 +641,7 @@ async function lockWakeState() {
     } catch(e) {
       console.error('Failed to lock wake state with reason:', e.message);
     }
+    await lockWakeState();
   }
 
 function populate(){
