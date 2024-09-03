@@ -598,7 +598,7 @@ function fake_load(distance,angle,value,i) {
   text = loc_data[value]["flag"]+value;
  }
  if(window.screen.availWidth < 700) {
-     document.getElementById("county-name"+String(i)).textContent = text.length > 12 ? text.slice(0, 12) + "..." : text
+     document.getElementById("county-name"+String(i)).textContent = text.length > 11 ? text.slice(0, 11) + "..." : text
  } else {
      document.getElementById("county-name"+String(i)).textContent = text.length > 16 ? text.slice(0, 16) + "..." : text
  }
