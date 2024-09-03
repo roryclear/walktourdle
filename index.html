@@ -600,7 +600,7 @@ function fake_load(distance,angle,value,i) {
  if(window.screen.availWidth < 700) {
      document.getElementById("county-name"+String(i)).textContent = text.length > 12 ? text.slice(0, 12) + "..." : text
  } else {
-     document.getElementById("county-name"+String(i)).textContent = text.length > 20 ? text.slice(0, 20) + "..." : text
+     document.getElementById("county-name"+String(i)).textContent = text.length > 16 ? text.slice(0, 16) + "..." : text
  }
  document.getElementById("distance"+String(i)).textContent = Number(distance).toLocaleString('en', {useGrouping:true}) +" km";
  if(distance > 0) {
