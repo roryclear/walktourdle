@@ -626,9 +626,12 @@ function fake_load(distance,angle,value,i) {
      if(angle > 347.5  || angle <= 32.5) {
          emoji = "⬆️"
      }
+     if(text.substring(4) == "antarctica") {
+      emoji = "⬆️";
+     }
  } else {
      emoji = "✅"
- }
+ } 
  document.getElementById("chosen-emoji"+String(i)).textContent = emoji;
 }
 
