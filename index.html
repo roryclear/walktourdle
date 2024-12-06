@@ -574,7 +574,7 @@ function showPopup(scoreArray, correctAnswer) {
 
  function shareScore() {
      const scoreElement = document.getElementById('score')
-     text = "#walktourdle #" + (days+1) + "\n" + scoreElement.innerText + "\nhttps://www.walktourdle.com";
+     text = "#walktourdle #" + (days+1) + "\n" + scoreElement.innerText + "\n" + document.getElementById('time-taken').innerText + "\nhttps://www.walktourdle.com";
      navigator.clipboard.writeText(text);
      alert("copied to clipboard");
  }
