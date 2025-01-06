@@ -1,8 +1,11 @@
 <!-- https://www.youtube.com/watch?v=ZwC74uv3zic -->
 <head>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>"/>
   <link rel="icon" href="data:image/png,<png xmlns='http://www.w3.org/2000/png' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></png>"/>
-
+  
   
   <title>walktourdle - guess the video location</title>
   <meta name="description" content="Test and improve your geography knowledge by solving the daily video challenge.">
@@ -10,6 +13,9 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VNE6R8FFTG"></script>
 <script>
+$(document).ready(function() { 
+  $('#locations').select2(); 
+});
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
