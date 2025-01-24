@@ -616,25 +616,25 @@ function fake_load(distance,angle,value,i) {
  document.getElementById("distance"+String(i)).textContent = Number(distance).toLocaleString('en', {useGrouping:true}) +" km";
  if(distance > 0) {
      emoji = "↗️"
-     if(angle > 92.5 && angle <= 110.5) {
+     if(angle > 77.5 && angle <= 122.5) {
          emoji = "➡️"
      }
-     if(angle > 110.5 && angle <= 179.5) {
+     if(angle > 122.5 && angle <= 167.5) {
          emoji = "↘️"
      }
-     if(angle > 179.5 && angle <= 210.5) {
+     if(angle > 167.5 && angle <= 212.5) {
          emoji = "⬇️"
      }
-     if(angle > 210.5 && angle <= 269.5) {
+     if(angle > 212.5 && angle <= 257.5) {
          emoji = "↙️"
      }
-     if(angle > 269.5 && angle <= 290.5) {
+     if(angle > 257.5 && angle <= 302.5) {
          emoji = "⬅️"
      }
-     if(angle > 290.5 && angle <= 359.5) {
+     if(angle > 302.5 && angle <= 347.5) {
          emoji = "↖️"
      }
-     if(angle > 359.5  || angle <= 20.5) {
+     if(angle > 347.5  || angle <= 32.5) {
          emoji = "⬆️"
      }
      if(text.substring(4) == "antarctica") {
