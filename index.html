@@ -616,7 +616,6 @@ function fake_load(distance,angle,value,i) {
  document.getElementById("distance"+String(i)).textContent = Number(distance).toLocaleString('en', {useGrouping:true}) +" km";
  if(distance > 0) {
      emoji = "↗️"
-     alert(angle);
      if(angle > 92.5 && angle <= 110.5) {
          emoji = "➡️"
      }
